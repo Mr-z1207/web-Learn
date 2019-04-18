@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>过度底边</title>
+	<style>
+		div{
+			width: 100px;
+			height: 80px;
+			background-color: #999;
+			position: relative;
+		}
+		div:after{
+			content: "" ;
+			height: 3px;
+			width: 0px;
+			display: block;
+			background-color: #0ff;
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transition: all 1s;
+		}
+		div:hover:after{
+			width: 100px;
+			left: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+</body>
+</html>

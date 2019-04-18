@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#自我介绍{
+			resize: none;
+		}
+	</style>
+</head>
+<body>
+	<form action="表单考核.html" method="get">
+		<p>
+			<label for="username">用户名：</label><input type="text" name="username" id="username" placeholder="昵称">
+		</p>
+		<p>
+			<label for="password">密码：</label><input type="password" name="password" id="password" placeholder="******">
+		</p>
+		<p>
+			<label for="email">邮箱：</label><input type="email" name="email" id="email" placeholder="1436005686@qq.com">
+		</p>
+		<p>
+			性别：
+			<input type="radio" name="sex" id="male" value="male" checked><label for="male">男</label>
+			<input type="radio" name="sex" id="female" value="female"><label for="female">女</label>
+			<input type="radio" name="sex" id="none" value="none"><label for="none">保密</label>
+		</p>
+		<p>
+			爱好：
+			<input type="checkbox" name="hobby" id="hobby1" value="篮球" checked><label for="hobby1">篮球</label>
+			<input type="checkbox" name="hobby" id="hobby2" value="棒球"><label for="hobby2">棒球</label>
+			<input type="checkbox" name="hobby" id="hobby3" value="足球"><label for="hobby3">足球</label>
+			<input type="checkbox" name="hobby" id="hobby4" value="排球"><label for="hobby4">排球</label>
+		</p>
+		<p>
+			<label for="years">年龄：</label><input type="number" name="years" id="years" placeholder="20">
+		</p>
+		<p>
+			<label for="chushengriqi">出生日期：</label><input type="date" name="chushengriqi" id="chushengriqi">
+		</p>
+		<p>
+			<label for="个人主页">个人主页：</label><input type="text" name="个人主页" id="个人主页" placeholder="www.ZhouWensong.com">
+		</p>
+		<p>
+			<label for="地址">地址</label>
+			<select name="省份" id="地址">
+				<optgroup label="直辖市">
+					<option value="BJ">北京</option>
+					<option value="SH">上海</option>
+					<option value="TJ">天津</option>
+					<option value="CQ">重庆</option>
+				</optgroup>
+				<optgroup label="省份">
+					<option value="河北">河北</option>
+					<option value="河南" selected>河南</option>
+					<option value="湖北">湖北</option>
+					<option value="湖南">湖南</option>
+					<option value="广东">广东</option>
+				</optgroup>
+			</select>
+			<select name="市" id="">
+				<optgroup label="市级">
+					<option value="焦作市" selected>焦作市</option>
+					<option value="信阳市">信阳市</option>
+					<option value="许昌市">许昌市</option>
+					<option value="漯河市">漯河市</option>
+				</optgroup>
+			</select>
+			<select name="区" id="qu">
+				<optgroup label="区级">
+					<option value="中站区" selected>中站区</option>
+					<option value="解放区">解放区</option>
+					<option value="山阳区">山阳区</option>
+					<option value="马村区">马村区</option>
+					<option value="新区">新区</option>
+				</optgroup>
+			</select>
+		</p>
+		<p>
+			<label for="color">喜欢的颜色：</label><input type="color" name="color" id="color">
+		</p>
+		<p>
+			<label for="自我介绍">自我介绍：</label><textarea name="自我介绍" id="自我介绍" cols="30" rows="10"></textarea>
+		</p>
+		<p>
+			<input type="button" value="">
+			<input type="reset" value="重置">
+			<input type="submit" value="提交">
+			<input type="image" src="../002/pic/1.jpg" alt="">
+		</p>
+	</form>
+</body>
+</html>

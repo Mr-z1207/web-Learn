@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>注册某度账号</title>
+	<style>
+		#title{
+			font-size: 32px;
+			color: #545454FC
+		}
+		#sub{
+			width:400px;
+			height: 50px;
+			background: #1B7CE3FF 
+		}
+	</style>
+</head>
+<body>
+	<a href="http://www.baidu.com"><img src="pic/baidu.gif" alt=""><span id="title">|注册某度账号</span></a>
+	<form action="http:">
+		<div class="div">
+			<p><label for="username">用户名</label>&nbsp&nbsp<input type="text" placeholder="请设置用户名" id="username" autocomplete="off"></p>
+			<p><label for="phone">手机号</label>&nbsp&nbsp<input type="text" placeholder="可用于登陆和找回密码" id="phone" autocomplete="off"></p>
+			<p><label for="password">&nbsp&nbsp&nbsp密码</label>&nbsp&nbsp<input type="password" placeholder="请设置登陆密码" id="password" autocomplete="off"></p>
+			<p>
+				<label for="num">验证码</label>&nbsp&nbsp<input type="text" placeholder="请输入验证码" id="num" autocomplete="off">&nbsp&nbsp
+				<input type="button" value="获取短信验证码">
+			</p>
+		</div>
+		<p>
+			<input type="checkbox">阅读并接受<a href="https://passport.baidu.com/static/passpc-account/html/protocal.html">《百度用户协议》</a>及<a href="https://www.baidu.com/duty/yinsiquan.html">《百度隐私权保护声明》</a>
+		</p>
+		<p><input type="submit" value="注册" id="sub"></p>
+	</form>
+</body>
+</html>

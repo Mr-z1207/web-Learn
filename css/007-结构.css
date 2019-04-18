@@ -1,0 +1,31 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+header{
+	width: 100%;
+	height: 50px;
+	background-color: white;
+}
+.logo{
+	height: 100%;
+	float: left;
+	width: 10%;
+	margin-left: 20px;
+}
+nav{
+	width: 85%;
+	height: 100%;
+	background-color: #81E;
+	float: right;
+}
+.nav{
+	float: right;
+	margin-right: 30px;
+}
+li{
+	list-style-type: none;
+	float: left;
+	font-weight: bolder;
+	padding: 10px;
+}

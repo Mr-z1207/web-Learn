@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>014</title>
+	<style>
+		.cc{
+			width: 500px;
+			height: 500px;
+			margin: 80px auto;
+			border: 1px solid #000;
+		}
+		.dd{
+			width: 120px;
+			height: 120px;
+			border: 1px solid #000;
+			margin: 30px auto;
+			background-position: -405px -40px;
+			background-image: url(../pic/4-01.jpg);
+			animation: pao 6s infinite;
+		}
+		@keyframes pao {
+			0% { background-position: -405px -40px; }
+			17% { background-position: -223px -40px; }
+			33% { background-position: -30px -40px; }
+			50% { background-position: -30px -227px; }
+			67% { background-position: -223px -227px; }
+			83% { background-position: -405px -227px; }
+			100% { background-position: -405px -40px; }
+		}
+		.dd:hover{
+			animation-play-state: paused;
+		}
+	</style>
+</head>
+<body>
+	<div class="cc">
+		<div class="dd"></div>
+	</div>
+</body>
+</html>

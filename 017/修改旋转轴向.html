@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		ul li{
+			width: 400px;
+			height: 300px;
+			margin: 20px auto;
+			border: 1px solid #000;
+			list-style: none;
+			perspective: 500px;
+		}
+		li img{
+			width: 100%;
+			height: 100%;
+		}
+		li:nth-child(1) img{
+			transform: rotateZ(45deg);
+		}
+		li:nth-child(2) img{
+			transform: rotateX(45deg);
+		}
+		li:nth-child(3) img{
+			transform: rotateY(45deg);
+		}
+	</style>
+</head>
+<body>
+	<ul>
+		<li><img src="../pic/sfq/2.jpg" alt=""></li>
+		<li><img src="../pic/sfq/3.jpg" alt=""></li>
+		<li><img src="../pic/sfq/4.jpg" alt=""></li>
+	</ul>
+</body>
+</html>

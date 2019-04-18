@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+	.father{
+		position: relative;
+		margin: 50px auto;
+		width: 500px;
+		height: 500px;
+		/*overflow: hidden;  */  /*设置隐藏看不到后面穿出的son*/
+		background-color: #0ff;
+		perspective: 500px;
+		transform-style: preserve-3d;
+		transform: rotateY(20deg);
+	}
+	.son{
+		position: absolute;
+		top: 150px;
+		left: 150px;
+		width: 200px;
+		height: 200px;
+		background-color: #ff0;
+		transform: rotateX(20deg);
+	}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+		<div class="son"></div>
+	</div>
+</body>
+</html>

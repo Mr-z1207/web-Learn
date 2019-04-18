@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.father1{
+			background-color: #f00;
+		}
+		.father2{
+			background-color: #f0f;
+		}
+		.father1 p{
+			width: 50px;
+			height: 50px;
+			background-color: #ff0;
+		}
+		.father2 p{
+			width: 50px;
+			height: 50px;
+			background-color: #0ff;
+		}
+		.p11{
+			float: left;
+		}
+		.p12{
+			float: left;
+		}
+		.p13{
+			float: left;
+		}
+		.p21{
+			float: left;
+		}
+		.p22{
+			float: left;
+		}
+		.p23{
+			float: left;
+		}
+		.clearfix:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0px;
+        visibility: hidden;
+	    }
+	    .clearfix{
+	        *zoom: 1;
+	    }
+	</style>
+</head>
+<body>
+	<div class="father1 clearfix">
+		<p class="p11">paa</p>
+		<p class="p12">pbb</p>
+		<p class="p13">pcc</p>
+	</div>
+	<div class="father2">
+		<p class="p21">p11</p>
+		<p class="p22">p22</p>
+		<p class="p23">p33</p>
+	</div>
+</body>
+</html>

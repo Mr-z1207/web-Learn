@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			margin: 100px auto;
+			width: 1200px;
+			height: 700px;
+			border: 5px solid #000;
+			overflow: hidden;
+		}
+		li{
+			float: left;
+			list-style: none;
+			width: 1200px;
+			height: 700px;
+		}
+		li>img{
+			width: 100%;
+			height: 100%;
+		}
+		.box ul{
+			width: 6000px;
+			animation: pic 10s linear infinite;
+		}
+		@keyframes pic{
+			from{
+				margin-left: 0px;
+			}
+			to{
+				margin-left: -4800px;
+			}
+		}
+		.box ul:hover{
+			animation-play-state: paused;
+		}
+		.box ul:hover li{
+			opacity: 0.5;
+		}
+		.box ul li:hover{
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul>
+			<li><img src="../pic/sfq/1.jpg" alt=""></li>
+			<li><img src="../pic/sfq/2.jpg" alt=""></li>
+			<li><img src="../pic/sfq/3.jpg" alt=""></li>
+			<li><img src="../pic/sfq/5.jpg" alt=""></li>
+			<li><img src="../pic/sfq/1.jpg" alt=""></li>
+		</ul>
+	</div>
+</body>
+</html>

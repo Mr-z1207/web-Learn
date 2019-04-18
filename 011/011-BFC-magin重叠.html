@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BFC</title>
+	<style>
+		.div1{
+			width: 200px;
+			height: 200px;
+			background-color: #ff0;
+			margin: 100px;
+		}
+		.div2{
+			width: 200px;
+			height: 200px;
+			background-color: #f0f;
+			margin: 100px;
+		}
+		.father{
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="div1"></div>
+	<div class="father">
+		<div class="div2"></div>
+	</div>
+</body>
+</html>

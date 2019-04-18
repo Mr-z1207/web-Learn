@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BFC</title>
+	<style>
+		.son{
+			width: 200px;
+			height: 200px;
+			background-color: #ff0;
+			float: left;
+		}
+		.father{
+			border: 1px solid #000;
+			overflow: hidden;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son"></div>
+	</div>
+</body>
+</html>

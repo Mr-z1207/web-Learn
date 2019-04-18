@@ -1,0 +1,209 @@
+<!DOCTYPE html>    <!-- 文档类型定义(Document Type Definition),作用是告诉浏览器, 这个网页是用哪一个版本的HTML规范来编写的. 
+						浏览器就能够按照这个规范来正确的编译/解析/渲染我们的网页.  声明不是标签，所以没有结束标签。   -->
+<html lang="en">   <!-- html标签的作用是告诉浏览器这是一个HTML文档.
+						属性lang是英语language的缩写,意思是语言,”en”代表英语,”zh-CN”代表中文简体.
+						lang属性是全局属性,可以添加到其他标签上 -->
+<head>   <!-- head标签的作用是给网站添加一些配置信息 -->
+	<meta charset="UTF-8" />   <!-- charset属性,用来设置字符集,字符集可以理解为浏览器中的的一个翻译,负责把页面上的字符正确的显示出来 -->
+	<meta http-equiv="refresh" content="15;url=" />
+	<!-- content属性,content属性的内容是name属性或者http-equiv属性的值,具体取决于用哪个内容 -->
+	<!-- Refresh,页面重定向。15:延时15s;url:地址.例如：url=http://www.kuazu.com -->
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> <!-- 1:使用最新版本. -->
+	<!-- X-UA-Compatible,告诉浏览器用什么版本来渲染页面。如:<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> -->
+	<!-- name属性,HTML没有指定任何预先定义的名称。通常情况下，开发者可以自由使用有意义的名称, -->
+	<meta name="keyword" content="被搜索引擎搜索的关键词" />
+	<!-- 告诉搜索引擎当前网页的关键词, 在SEO中非常重要, 能够提高搜索命中率,让别人更容易找到你,搜索引擎会用这些关键字对文档进行分类。 -->
+	<meta name="description" content="页面描述" />
+	<!-- 告诉搜索引擎当前网页的主要内容,在SEO中非常重要,当别人在搜索引擎中搜索到你的网站时会自动该描述信息展示给用户, 能够提高搜索命中率。 -->
+	<meta name="author" content="作者姓名" />
+	<!-- 告诉搜索引擎当前网页的作者 -->
+	<meta name="renderer" content="webkit">
+	<!-- 告诉浏览器，用什么内核进行解析，主要用来指定双内核浏览器的默认渲染方式,当然前提是浏览器有相应的内核才可以,一般需要参考浏览器的开发文档 -->
+	<title>标题</title>  <!-- 指定网站的标题,标题的内容会显示在浏览器窗口的标题栏中 -->
+	<style> /*css样式*/
+		#多行文本框{
+			resize: none;
+		}
+	</style>
+</head>
+<body>  <!-- body标签就相当于浏览器窗口 -->
+	<!-- 格式标签 -->
+	<h1>这是标题1</h1> <!-- 一般一个页面只有一个h1标签 -->
+	<h2>这是标题2</h2> <!-- 标题标签是用来给文字添加标题语义的,而不是改变文字的样式的 -->
+	<h3>这是标题3</h3> <!-- 作用：指定标题 -->
+	<h4>这是标题4</h4>
+	<h5>这是标题5</h5>
+	<h6>这是标题6</h6>
+	<p>段落</p>        <!-- 作用：指定段落 -->
+	<hr>  <!-- 作用：画一条水平分割线 -->
+	<br>  <!-- 不另起一个段落进行换行, 而网页中绝大多数需要换行时都是因为另起了一个段落,所以应该用p标签来做 -->
+	<strong>加粗</strong> <!-- 重要性强调的文字 -->
+	<ins>下划线</ins> <!-- 插入的文字 -->
+	<em>倾斜</em> <!-- 强调的文字 -->
+	<del>删除线</del> <!-- 被删除的文字 -->
+	<!-- 列表标签 -->
+	<!-- 无序列表 ul(unordered list)  li(list item) -->
+	<ul> <!-- 作用是给内容添加无序列表语义，主要用在导航条，商品列表，新闻列表等场景 -->
+		<li>list item</li>  <!-- 列表中的条目不分先后顺序 -->
+		<li>list item</li>  <!-- 无序列表是一个标签组，由ul标签和li标签组成， ul中不能包含其他标签,li标签不能单独存在，但是li标签可以包含其他标签 -->
+	</ul>
+	<!-- 定义列表 dl(definition list) , dt(definition title),dd(definition description) -->
+	<dl> <!-- 作用是给内容添加定义列表语义, 通过dt罗列出列表的条目,然后再通过dd给每个条目进行相应的描述，主要用在网站底部相关信息,图文混排 -->
+		<dt>定义标题</dt> <!-- 由于dl和dt、dd是一个整体, 所以dl里面不推荐包裹其它标签 -->
+		<dd>定义描述</dd> <!-- dd和dt和li标签一样是容器标签, 里面可以添加任意标签 -->
+		<dd>定义描述</dd>
+	</dl>
+	<!-- 有序列表 ol(ordered list)  li(list item) -->
+	<ol> <!-- 作用是给内容添加有序列表语义,主要用在显示排行榜 -->
+		<li>赵</li> <!-- 列表中的条目有先后顺序之分,其他注意点和无序列表一样 -->
+		<li>钱</li>
+		<li>孙</li>
+		<li>李</li>
+	</ol>
+	<!-- 表格标签 -->
+	<table align="center" bgcolor="black" width="400px" height="500px" cellspacing="1px">
+		<!-- 表格标签 table tr(table row) td(table defines),作用是给内容添加表格语义,以表格的形式来展现数据 -->
+		<!-- 默认情况下表格的边框为0,可以通过border属性来改变 -->
+		<!-- 表格标签和列表标签一样, 它是一个组合标签, 所以table/tr/td要组合出现 -->
+		<!-- 内边距(cellpadding)，内边距是单元格的边框和文字之间的距离,默认有1个像素的距离 -->
+		<!-- 外边距(cellspacing)，外边距是单元格和单元格之间的距离,默认有2个像素的距离，可用来做细线表格 -->
+		<caption> <!-- 表头:caption,给整个表格设置标题,一定要嵌套在table标签内部才有效 -->
+			<h1>学员登记表</h1>
+		</caption>
+		<thead>
+			<tr bgcolor="blue"> <!-- 标题:thead tr th,th标签会给每一列设置标题,内容会自动加粗，居中 -->
+				<th>表头</th>
+			</tr>
+		</thead>
+		<tbody> <!-- 主体:tbody tr td,tbody用来存放页面中的主体数据, 如果不写会自动加上 -->
+			<tr bgcolor="white">
+				<td colspan="2" rowspan="2">照片</td>
+				<!-- 水平方向上的单元格合并：可以给td标签添加一个colspan属性, 来指定把某一个单元格当做多个单元格来看待 -->
+				<!-- 垂直方向上的单元格合并：可以给td标签设置一个rowspan属性, 来指定把某一个单元格当做多个单元格来看待 -->
+				<td>姓名</td>
+				<td>张三</td>
+			</tr>
+			<tr bgcolor="white">
+				<td>性别</td>
+				<td>男</td>
+			</tr>
+			<tr bgcolor="white">
+				<td>住址</td>
+				<td colspan="3">河南许昌</td>
+			</tr>
+			<tr bgcolor="white">
+				<td>学校</td>
+				<td>许昌学院</td>
+				<td>专业</td>
+				<td>计算机</td>
+			</tr>
+			<tr bgcolor="white">
+				<td>年级</td>
+				<td>大四</td>
+				<td>英文</td>
+				<td>四级</td>
+			</tr>
+		</tbody>
+		<tfoot> <!-- 表尾:tfoot tr td,tfoot用来存放表格的页脚 -->
+			<tr bgcolor="blue">
+				<td colspan="5">表尾</td>
+			</tr>
+		</tfoot>
+	</table>
+	<!-- 表单的作用是收集用户信息,类似在银行柜台填写的存单 -->
+	<form action="http://www.kuazhu.com" method="get"> <!-- 所有的表单内容,都要写在form标签里面 -->
+		<!-- 表单的action属性用来指定提交地址,表单的method属性用来指定提交方法(get,post) -->
+		<p> <!-- input标签无法自动换行 -->
+			<label for="123">用户名</label>	
+			<input type="text" name="usernme" placeholder="提示信息" autocomplete="on" id="123">  <!-- 作用:搜集用户信息 -->
+			<!-- type属性有很多类型的取值, 取值的不同就决定了input标签的功能和外观不同 -->
+			<!-- type="text":明文输入框,value属性用来指定默认值,value属性的值是传给服务器的值 -->
+			<!-- placeholder属性,给input设置输入字段的提示 -->
+			<!-- autocomplete属性,取值有on和off,设置是否使用输入字段的自动完成功能 -->
+			<!-- label标签，作用:把文字和输入框进行绑定,点击文字时让对应的输入框得到焦点  for-~-id -->
+		</p>
+		<p>
+			密码：
+			<input type="password" name="password">
+			<!-- type="password":暗文输入框,value属性用来指定默认值,value属性的值是传给服务器的值 -->
+		</p>
+		<p>
+			性别：
+			<input type="radio" name="sex" value="male" checked>男
+			<input type="radio" name="sex" value="female">女
+			<!-- 单选按钮，天生是不互斥的，如果想互斥，必须要有相同的name属性 -->
+			<!-- 可以给input标签添加一个checked属性,值也是checked,让单选框默认选中某一个 -->
+			<!-- value属性的值是传给服务器的值 -->
+		</p>
+		<p>
+			爱好：
+			篮球<input type="checkbox" name="hobby" value="蓝球">
+			足球<input type="checkbox" name="hobby" value="足球">
+			吃鸡<input type="checkbox" name="hobby" value="吃鸡">
+			跳水<input type="checkbox" name="hobby" value="跳水">
+			<!-- 在同一个表单中用相同的name属性可以把多选框的值合并发给服务器 -->
+			<!-- value属性的值是传给服务器的值 --> <!-- 默认值的设置和单选框一样 -->
+		</p>
+		<p>
+			图片<input type="image" src="../005/pic/baidu.gif">
+			<!-- type="image":定义图片按钮,src属性用来指定图片的位置,图片按钮可以提交表单,并且会把点击图片的坐标以参数的形式发送给服务器,一般是配合JS完成一些操作 -->
+		</p>
+		<p>
+			<input type="reset" value="清空">
+			<!-- type="reset":清空表单的数据,value属性用来指定按钮的内容(按钮上的字) -->
+		</p>
+		<p>
+			<input type="submit" value="提交">
+			<!-- type="submit":提交表单的数据到服务器 -->
+		</p>
+		<p>
+			<input type="hidden" name="偷" value="偷偷提交的">
+			<!-- type="hidden":隐藏数据,配合提交按钮将一些数据偷偷的提交到服务器，value属性的值是传给服务器的值 -->
+		</p>
+		<p>
+			文件<input type="file" name="文件" id="">
+			<!-- type="file":上传文件 -->
+		</p>
+		<p>
+			邮箱<input type="email" name="email" id="">
+			<!-- type="email":自动校验邮箱的合法性 -->
+		</p>
+		<p>
+			数字<input type="number" name="suzi" id="">
+			<!-- type="number":只能输入数字 -->
+		</p>
+		<p>
+			日期<input type="date" name="日期" id="">
+			<!-- type="date":通过日历来选择时间 -->
+		</p>
+		<p>
+			颜色<input type="color" name="颜色" id="">
+			<!-- type="color":通过取色板来选择颜色 -->
+		</p>
+		<p>
+			<!-- select标签 -->
+			下拉列表<select name="下拉列表" id=""> <!-- select中的name属性,指定向服务器传输数据时的名字 -->
+				<optgroup label="组名">
+					<option value="1" selected>1</option> <!-- 可以给option标签添加一个selected属性来指定列表的默认值 -->
+					<option value="2">2</option>  <!-- option中的value属性的值是传给服务器的值 -->
+					<option value="3">3</option>
+				</optgroup>
+			</select>
+			<!-- 格式:
+			<select name="city">
+			    <optgroup label="分组名称">
+			        <option value='1'>列表数据1</option>
+			        <option value='2' selected>列表数据2</option>
+			    </optgroup>
+			</select> -->
+		</p>
+		<p>
+			<!-- textarea标签 -->
+			<!-- 默认情况下输入框是可以手动拉伸的,如果要禁止手动拉伸,需要设置css为: resize: none; -->
+			多行文本框<textarea name="多行文本框" id="多行文本框" cols="30" rows="10"> <!-- 默认情况下输入框可以无限换行 -->
+				传给服务器的值
+			</textarea> <!-- 可以通过cols和rows来指定输入框的宽度和高度, 但是虽然指定了列数和行数, 但是还是可以无限往下输入 -->
+		</p>
+	</form>
+</body>
+</html>

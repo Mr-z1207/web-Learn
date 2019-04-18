@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选择器</title>
+	<style>
+		.L1,.s2{
+			color: yellow;
+		}
+		.s1{
+			color: skyblue;
+		}
+		li:nth-child(1){
+			color: red;
+		}
+		.s1+.s2{
+			color: tomato;
+		}
+		.L1.s1+.L1.s2{
+			color: pink;
+		}
+		li:nth-last-child(2){
+			color: olive;
+		}
+	</style>
+</head>
+<body>
+	<div>
+		<ul>
+			<li class="L1 s1">1</li>
+			<li class="L1 s1">2</li>
+			<li class="L1 s2">3</li>
+			<li class="L1 s2">4</li>
+			<li class="s1 s2">5</li>
+			<li class="s1 s2">6</li>
+		</ul>
+	</div>
+</body>
+</html>

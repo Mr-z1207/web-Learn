@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测试</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.son1{
+			background-color: red;
+		}
+		.son2{
+			background-color: skyblue;
+		}
+		.son2{
+			width: 50%;
+			height: 200px;
+			display: inline-block;
+		}
+		.son1{
+			width: 50%;
+			height: 200px;
+			float: right;
+		}
+		.box1{
+			width: 50%;
+			height: 200px;
+			background-color: yellow;
+			float: left;
+		}
+		.box2{
+			height: 200px;
+			background-color: tomato;
+		}
+		.fat{
+			overflow: hidden;
+		}
+		.son11,.son22{
+			width: 50%;
+			height: 200px;
+			display: inline-block;
+		}
+		.son11{
+			background-color: gray;
+		}
+		.son22{
+			background-color: blue;
+		}
+		.l,.r{
+			width: 50%;
+			height: 200px;
+		}
+		.l{
+			background-color: red;
+			float: left;
+		}
+		.r{
+			background-color: green;
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<!-- 第一种 -->
+	<div class="son1">
+		<p>display: inline-block;</p>
+	</div>
+	<div class="son2">
+		<p>float: left;</p>
+	</div>
+	<!-- 第二种 -->
+	<div class="box1">
+		<p>float: left;</p>
+	</div>
+	<div class="fat">
+		<div class="box2">
+			<p>BFC-overflow: hidden;</p>
+		</div>
+	</div>
+	<!-- 第三种 -->
+	<div class="son11">
+		<p>display: inline-block;</p>
+	</div><div class="son22">
+		<p>display: inline-block;</p>
+	</div>
+	<!-- 第四种 -->
+	<div class="r">
+		<p>float: left;</p>
+	</div>
+	<div class="l">
+		<p>float: right;</p>
+	</div>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单</title>
+	<style>
+		#txt{
+			resize: none;
+		}
+		#sel{
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<h1>登陆</h1>
+	<form action="http://www.kuazhu.com" method="gat">
+		<P>
+			手机号:
+			<input type="text" name="phion" placeholder="手机号">
+		</P>
+		<P>
+			密码:
+		<input type="password" name="password" placeholder="6-18位">
+		</P>
+		<P>
+			<input type="submit">
+		</P>
+		<p>
+			<label for="nan">男</label> <input type="radio" name="sex" id="nan" value="nan" checked>
+		</p>
+		<p>
+			<label for="nv">女</label> <input type="radio" name="sex" id="nv" value="nv">
+		</p>
+		<p>
+			爱好<br/>
+			<label for="1">一</label> <input type="checkbox" name="aihao" id="1" value="1" ><br/>
+			<label for="2">二</label> <input type="checkbox" name="aihao" id="2" value="2"><br/>
+			<label for="3">三</label> <input type="checkbox" name="aihao" id="3" value="3"><br/>
+			<label for="4">四</label> <input type="checkbox" name="aihao" id="4" value="4"><br/>
+		</p>
+		<p>
+			<input type="image" name="image" src="pic/baidu.gif">
+		</p>
+		<p>
+			城市：
+			<select name="city" id="sel">
+				<optgroup label="北上广">
+					<option value="bj">北京</option>
+					<option value="sh">上海</option>
+					<option value="gz">广州</option>
+				</optgroup>
+				<optgroup label="其他">
+					<option value="zz">郑州</option>
+					<option value="xc">许昌</option>
+					<option value="ly">洛阳</option>
+				</optgroup>
+			</select>
+		</p>
+		<p>
+			文本<textarea name="text" id="txt" cols="30" rows="10">飞洒发</textarea>
+		</p>
+	</form>
+</body>
+</html>

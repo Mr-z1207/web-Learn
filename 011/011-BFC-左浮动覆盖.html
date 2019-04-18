@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>BFC</title>
+	<style>
+		.left{
+			width: 200px;
+			/*height: 200px;*/
+			background-color: red;
+			float: left;
+		}
+		.right{
+			width: 200px;
+			/*height: 200px;*/
+			background-color: yellow;
+		}
+		.father{
+			overflow: hidden;
+		}
+		li{
+			display: inline-block;
+			left: 50px;
+			/*margin-left: 15px;*/
+		}
+		ul.father{
+			padding: 0px;
+		}
+		ul.father>li:not(fast-child):before{
+			display: inline-block;
+            border-top: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 5px solid gray;
+            content: "";
+            margin-right: -3px;
+		}
+	</style>
+</head>
+<body>
+	<nav>
+		<ul class="father">
+			<li>列表01</li>
+			<li>列表02</li>
+			<li>列表03</li>
+			<li>列表04</li>
+			<li>列表05</li>
+		</ul>
+	</nav>
+	<div class="left">
+		<p>我是段落左1</p>
+		<p>我是段落左2</p>
+		<p>我是段落左3</p>
+	</div>
+	<div class="father">
+		<div class="right father">
+			<p>我是段落右1</p>
+			<p>我是段落右2</p>
+			<p>我是段落右3</p>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>邮箱页面布局</title>
+	<link rel="stylesheet" href="http://yui.yahooapis.com/3.5.0/build/cssreset/cssreset-min.css">
+	<style>
+	    .clearfix:after{
+        content: "";
+        clear: both;
+        display: block;
+        height: 0px;
+        visibility: hidden;
+	    }
+	    .clearfix{
+	        *zoom:1;
+	    }
+		header{
+			background-color: #EFF4FA;
+			height: 62px;
+			border-bottom: 1px solid #d6dfea;
+		}
+		header>a{
+			width: 182px;
+			height: 35px;
+			background: url(../pic/images/mail-qq_logo.gif) no-repeat left center;
+			margin: 14px 40px 0;
+			float: left;
+		}
+		header>ul{
+			float: right;
+			line-height: 62px;
+			margin-right: 40px;
+		}
+		.link{
+			float: left;
+			color: #b6bcce;
+			font-size: 12px;
+		}
+		.link>a,footer>div>a{
+			font-size: 12px;
+			color: #1d5494;
+			text-decoration: none;
+		}
+		.link a:hover{
+			text-decoration: underline;
+		}
+		.box{
+			width: 900px;
+			margin: 73px auto 0px;
+		}
+		.pic{
+			height: 390px;
+			width: 480px;
+			margin-right: 80px;
+			background: url(../pic/images/mail-qq_con.gif) no-repeat left center;
+			float: left;
+		}
+		.fomer{
+			width: 335px;
+			height: 390px;
+			border: 1px solid #96a5b4;
+			float: left;
+			border-radius: 10px;
+		}
+		.hd span:first-child{
+			color: #999;
+			margin-left: 50px;
+		}
+		.hd span:last-child{
+			margin-left: 100px;
+		}
+		.hd{
+			height: 50px;
+			line-height: 50px;
+			border-bottom: 1px solid #96a5b4;
+		}
+		.cont{
+			padding-top: 30px;
+		}
+		.cont div{
+			width: 285px;
+			margin: 10px auto 0;
+		}
+		.inputer{
+			width: 285px;
+			height: 40px;
+			padding-left: 15px;
+			box-sizing: border-box;
+		}
+		[type="button"]{
+			width: 285px;
+			height: 40px;
+			font-size: 20px;
+			margin-top: 10px;
+			color: #fffffa;
+			background-color: #5a98de;
+			outline: #5a98de;
+		}
+		[type="button"]:hover{
+			opacity: 0.8;
+		}
+		[type="checkbox"]{
+			height: 18px;
+		    line-height: 18px;
+			vertical-align: middle;
+		}
+		label{
+			font-size: 12px;
+			margin-left: 10px;
+		}
+		.cont ul{
+			float: right;
+			margin: 90px 20px 0px 0px;
+		}
+		footer{
+			height: 36px;
+			line-height: 36px;
+			text-align: center;
+			margin-top: 400px;
+			color: #000;
+		}
+		footer a:hover{
+			text-decoration: underline;
+		}
+		footer span{
+			font-size: 12px;
+		}
+		footer div{
+			color: #868686;
+		}
+	</style>
+</head>
+<body>
+	<header>
+			<a href="#"></a>
+			<ul>
+				<li class="link"><a href="#">基本版</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+				<li class="link"><a href="#">English</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+				<li class="link"><a href="#">手机版</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+				<li class="link"><a href="#">企业邮箱</a></li>
+			</ul>
+	</header>
+	<section>
+		<div class="box clearfix">
+			<div class="pic"></div>
+			<div class="fomer">
+				<div class="hd clearfix">
+					<span>微信登陆</span><span>QQ登陆</span>
+				</div>
+				<div class="cont">
+					<div>
+						<input type="text" name="" id=""  class="inputer" placeholder="支持QQ号\邮箱\手机号登陆">
+					</div>
+					<div>
+						<input type="password" name="" id=""  class="inputer" placeholder="QQ密码">
+					</div>
+					<div>
+						<input type="checkbox" name="" id="yes"><label for="yes">下次自动登录</label>
+					</div>
+					<div>
+						<input type="button" value="登录">
+					</div>
+					<ul>
+						<li class="link"><a href="">忘了密码？</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+						<li class="link"><a href="">XXXXXXXX</a>&nbsp;&nbsp;|&nbsp;&nbsp;</li>
+						<li class="link"><a href="">XXXXXXXX</a></li>
+					</ul>			
+				</div>
+			</div>
+		</div>
+	</section>
+	<footer>
+		<div>
+			<a href="">关于腾讯</a>&nbsp;&nbsp;|&nbsp;
+			<a href="">服务条款</a>&nbsp;&nbsp;|&nbsp;
+			<a href="">隐私政策</a>&nbsp;&nbsp;|&nbsp;
+			<a href="">客服中心</a>&nbsp;&nbsp;|&nbsp;
+			<a href="">联系我们</a>&nbsp;&nbsp;|&nbsp;
+			<a href="">帮助中心</a>&nbsp;&nbsp;|&nbsp;
+			<span>©1998 - 2019 Tencent Inc. All Rights Reserved.</span>
+		</div>
+	</footer>
+</body>
+</html>
