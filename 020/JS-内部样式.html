@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			margin: 100px auto;
+		}
+	</style>
+	<script>
+		function toChange() {
+			var obox = document.getElementById('box')
+			obox.style.width="200px";
+			obox.style.height="200px";
+			obox.style.borderColor="red";			
+		}
+		function Normal() {
+			var obox = document.getElementById('box')
+			obox.style.width="100px";
+			obox.style.height="100px";
+			obox.style.borderColor="#000";			
+		}
+	</script>
+</head>
+<body>
+	<div id="box" onmouseover="toChange()" onmouseout="Normal()"></div>
+</body>
+</html>
