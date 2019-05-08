@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			margin: 50px auto;
+			width: 380px;
+			height: 600px;
+			border: 1px solid #000;
+		}
+		.mon{
+			overflow: hidden;
+		}
+		.mon .mon-item{
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			background-color: #000;
+			margin-top: 20px;
+			margin-left: 20px;
+			float: left;
+			line-height: 100px;
+			text-align: center;
+			color: #fff;
+			font-size: 30px;
+			font-weight: bold;
+		}
+		.box div p{
+			margin-left: 20px;
+		}
+		.p1{
+			margin-top: 20px;
+			font-size: 22px;
+			font-weight: bold;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<ul class="mon">
+			<li class="mon-item">1月</li>
+			<li class="mon-item">2月</li>
+			<li class="mon-item">3月</li>
+			<li class="mon-item">4月</li>
+			<li class="mon-item">5月</li>
+			<li class="mon-item">6月</li>
+			<li class="mon-item">7月</li>
+			<li class="mon-item">8月</li>
+			<li class="mon-item">9月</li>
+			<li class="mon-item">10月</li>
+			<li class="mon-item">11月</li>
+			<li class="mon-item">12月</li>
+		</ul>
+		<div id="plant">
+			
+		</div>
+	</div>
+</body>
+<script>
+	var oPlan = document.getElementById('plant')
+	var aLi = document.getElementsByTagName('li')
+
+
+	var aPlan = ["吃饭1","睡觉1","打豆豆1","吃饭2","睡觉2","打豆豆2","吃饭3","睡觉3","打豆豆3","吃饭4","睡觉4","打豆豆4"]
+
+
+	function css(obj,arrt,val){
+		obj.style[arrt] = val
+	}
+	// console.log(aLi)
+	oPlan.innerHTML = "<p class='p1'>1月</p>"+ "<p class='p2'>" + aPlan[0] + "</p>"
+	for(i=0;i<aLi.length;i++){
+		aLi[i].index = i
+		aLi[i].onmouseover = function() {
+			for(k=0;k<aLi.length;k++){
+				css(aLi[k],"backgroundColor","#000")
+				css(aLi[k],"color","#fff")
+			}
+			css(this,"backgroundColor","#fff")
+			css(this,"color","#000")
+			oPlan.innerHTML = "<p class='p1'>" + (this.index+1) + "月</p>"+ "<p class='p2'>" + aPlan[this.index] + "</p>"
+		}
+	}
+</script>
+</html>

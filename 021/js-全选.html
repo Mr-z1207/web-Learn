@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="all" id="btn1">
+	<input type="button" value="none" id="btn2">
+	<input type="button" value="fan" id="btn3">
+	<div id="box">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+		<input type="checkbox" name="" id="">
+	</div>
+</body>
+<script>
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+	var oBtn3 = document.getElementById('btn3')
+	var oBox = document.getElementById('box')
+	var oInput = oBox.getElementsByTagName('input')
+
+	oBtn1.onclick = function(){
+		for (var i = 0; i < oInput.length; i++){
+			oInput[i].checked = true;
+		}
+	}
+	oBtn2.onclick = function(){
+		for (var i = 0; i < oInput.length; i++){
+			oInput[i].checked = false;
+		}
+	}
+	oBtn3.onclick = function(){
+		for (var i = 0; i < oInput.length; i++){
+			if(oInput[i].checked == true){
+				oInput[i].checked = false;
+			}else{
+				oInput[i].checked = true;
+			}
+		}
+	}
+</script>
+</html>

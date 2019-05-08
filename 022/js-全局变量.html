@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = 1;
+	function f1() {
+		console.log(a)
+		a = 2;  //只是重新赋值
+		function f2() {
+			console.log(a)
+		}
+		f2()
+	}
+	f1()
+	console.log(a)
+
+
+	// 局部变量
+	var a = 1;
+	function f1() {
+		console.log(a)
+		a = 2;
+		function f2() {
+			console.log(a)
+		}
+		f2()
+	}
+	f1()
+	console.log(a)
+</script>
+</html>

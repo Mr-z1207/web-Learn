@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			background-color: #f00;
+			display: block;
+		}
+		#btn{
+			position: fixed;
+			top: 200px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+	<button id="btn">点我！</button>
+</body>
+<script>
+	// if用法
+	var oBox = document.getElementById('box')
+	var oBtn = document.getElementById('btn') 
+
+	oBtn.onclick = function() {
+		if(oBox.style.display == "none"){
+			oBox.style.display = "block"
+		}else{
+			oBox.style.display = "none"
+		}
+	}
+
+	// swich用法
+	var a = 1;
+	switch(a){
+		case 1:
+			alert("a=1")
+			break;
+		case 2:
+			alert("a=2")
+			break;
+		case 3:
+			alert("a=3")
+			break;
+		default:
+			alert("null")
+	}
+
+	// 三元运算符
+	var a = 3 ;
+	a<0 ? alert("负数") : alert("正数")
+</script>
+</html>

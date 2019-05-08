@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var a = Date.now()
+	var year = parseInt(a/31536000000);
+	var mot = parseInt(a%31536000000 / 2628000000);
+	var day = parseInt(a%31536000000 % 2628000000 / 86400000 / 30);
+	var hour = parseInt(a%31536000000 % 2628000000 % 86400000 / 3600);
+	var min = parseInt(a%31536000000 % 2628000000 % 86400000 % 3600 / 60);
+	var sec = parseInt(a%31536000000 % 2628000000 % 86400000 % 3600 % 60);
+
+	if(hour<10){
+		hour = "0" + hour
+	}
+	if(min<10){
+		min = "0" + min
+	}
+	if(sec<10){
+		sec = "0" + sec
+	}
+
+	alert(year + "/" + mot + "/" + day + "/" + hour + "/" + min + "/" + sec)
+</script>
+</html>

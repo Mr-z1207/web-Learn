@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn1">宽</button>
+	<button id="btn2">高</button>
+	<button id="btn3">色</button>	
+	<button id="btn4">取</button>	
+	<div id="box1"></div>
+	<div id="box2"></div>
+</body>
+<script>
+	// -----------参数------------
+	// function sayName(name){
+	// 	alert("hello " + name)
+	// }
+	// sayName("Tom")
+	// sayName("Leo")
+
+	var oBox1 = document.getElementById('box1')
+	// var oBox2 = document.getElementById('box2')
+	var oBtn1 = document.getElementById('btn1')
+	// var oBtn2 = document.getElementById('btn2')
+	// var oBtn3 = document.getElementById('btn3')
+	var oBtn4 = document.getElementById('btn4')
+	// -------------设置样式---------------
+
+
+	// function css(obj,arrt,val){
+	// 	obj.style[arrt] = val
+	// }
+
+	// oBtn1.onclick = function() {
+	// 	css(oBox1,"width","200px")
+	// }
+	// oBtn2.onclick = function() {
+	// 	css(oBox1,"height","200px")
+	// 	css(oBox2,"height","200px")
+	// }
+	// oBtn3.onclick = function() {
+	// 	css(oBox1,"backgroundColor","red")
+	// }
+
+	//-------------获取样式---------------
+	// oBtn4.onclick = function() {
+	// 	alert(getComputedStyle(oBox1,false)["width"])
+	// }
+
+
+	// ----------设置样式（改）------------
+	function css(obj,arrt,val){
+		console.log(arguments)
+		if (arguments.length == 2){
+			alert(getComputedStyle(obj,false)[arrt])
+		} else{
+			obj.style[arrt] = val
+		}
+	}
+	oBtn1.onclick = function() {
+		css(oBox1,"width","200px")
+	}
+	oBtn4.onclick = function() {
+		css(oBox1,"width")
+	}
+</script>
+</html>

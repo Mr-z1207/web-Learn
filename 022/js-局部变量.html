@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 函数执行时依赖于变量的作用域,这个作用域是在定义的时候决定的,而不时在调用的时候决定
+	var a = 1;
+	function fn(){
+		var a = 3;
+		console.log(a);//定义时a的值时1
+	}
+	function show(){
+		var a = 2;
+		fn();//执行时a的值是2
+	}
+	show();//show中的fn执行时a的值是2,fn在定义时a的值是1,所以结果是1
+
+
+
+
+	console.log(window)
+	console.log(console.log)
+</script>
+</html>
