@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="" id="txt" value="123">
+	<input type="button" value="添加" id="btn">
+	<textarea name="" id="cont" cols="30" rows="10" value="456"></textarea>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oCont = document.getElementById('cont')
+
+
+	oBtn.onclick = function() {
+		var newTxt = oTxt.getAttribute('value')
+		// console.log(newTxt)
+		var oldCont = oCont.getAttribute('value')
+		console.log(oldCont)
+	}
+</script>
+</html>

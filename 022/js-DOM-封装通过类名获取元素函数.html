@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<li class="item">1</li>
+		<li>2</li>
+		<li class="item">3</li>
+		<li>4</li>
+		<li class="item">5</li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('list')
+
+	function get(oParent,sClass) {
+		var result = [];
+		var aNodes = oParent.children
+		for(i=0; i<aNodes.length;i++){
+			if (aNodes[i].className == sClass) {
+				result.push(aNodes[i])
+			}
+		}
+		return result;
+	}
+
+	console.log(get(oUl,"item"))
+</script>
+</html>

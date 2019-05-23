@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+		}
+		#box{
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: #ff5;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+
+	window.onscroll = function (obj,num) {
+		clearInterval(timer)
+		timer = setInterval(function() {
+			var iSpeed = 0;
+			if (obj.offsetLeft < num) {
+				iSpeed = 10
+			} else {
+				iSpeed = -10
+			}
+			if (Math.abs(num - obj.offsetLeft) < Math.abs(iSpeed)) {
+				obj.style.left = "800px"
+				clearInterval(timer)
+			} else {
+				obj.style.left = obj.offsetLeft + iSpeed + "px"
+			}
+		},50)
+	}
+</script>
+</html>

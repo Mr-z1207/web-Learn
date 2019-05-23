@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// 方法一（源于瞎琢磨）
+	function randomer(n1,n2) {
+		var result = n1
+		while(result <= n1){
+			result = n2*Math.random()
+		}
+		console.log(Math.floor(result))
+	}
+	randomer(10,100)
+
+	// 方法二（源于百度）
+	// function abc(n1,n2) {
+	// 	return Math.floor(Math.random()*(n2-n1)+n1)
+	// }
+	// console.log(abc(10,100))
+</script>
+</html>

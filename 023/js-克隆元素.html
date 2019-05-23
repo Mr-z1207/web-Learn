@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.fbox{
+			position: relative;
+		}
+		div{
+			position: absolute;
+			width: 200px;
+			height: 200px;
+			background-color: #045;
+			margin-bottom: 10px;
+			margin-right: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">克隆</button>
+	<div class="fbox" id="box">
+		<div>
+			<p>lalalalalala</p>
+		</div>
+	</div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+	var oBtn = document.getElementById('btn')
+	var aDiv = oBox.children
+
+
+	oBtn.onclick = function() {
+		var newbox = aDiv[0].cloneNode()
+		oBox.appendChild(newbox)
+
+		for(var i = 0;i<aDiv.length;i++){
+			aDiv[i].style.top = parseInt(i / 3) * 210 +"px"
+			aDiv[i].style.left = (i%3) *  210 + "px"
+		}
+
+	}
+</script>
+</html>

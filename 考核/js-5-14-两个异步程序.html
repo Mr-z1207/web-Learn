@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="button" value="点我" id="btn">
+</body>
+<script>
+	var oBtn = document.getElementById('btn')
+	var a = 1;
+	a++;
+
+	console.log(a)
+
+	setTimeout("console.log(a)",2000)
+
+	oBtn.onclick = function() {
+		console.log(a)
+	}
+
+</script>
+</html>

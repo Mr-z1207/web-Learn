@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#ftabox{
+			position: relative;
+			width: 300px;
+			height: 500px;
+			border: 1px solid #000;
+			margin: 20px auto;
+		}
+		#sonbox{
+			position: absolute;
+			margin: 20px 30px;
+			padding: 10px 20px;
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			background-color: #5f5;
+		}
+	</style>
+</head>
+<body>
+	<div id="ftabox">
+		<div id="sonbox"></div>
+	</div>
+</body>
+<script>
+	console.log(document.compatMode)
+
+	var son = document.getElementById('sonbox')
+	console.log("son.offsetLeft:::",son.offsetLeft)
+	console.log("son.offsetTop:::",son.offsetTop)
+	console.log("son.offsetWidth:::",son.offsetWidth)
+	console.log("son.offsetHeight:::",son.offsetHeight)
+	console.log("son.clientWidth:::",son.clientWidth)
+	console.log("son.clientHeight:::",son.clientHeight)
+
+	var w =0,h=0;
+	if(document.compatMode == 'CSS1Compat'){
+		w = document.documentElement.clientWidth;
+		h = document.documentElement.clientHeight;
+	}else{
+		w = document.body.clientWidth;
+		h = document.body.clientHeight;		
+	}
+	console.log(w,h)
+
+
+	var l = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;		
+	var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+	console.log(l,t)
+</script>
+</html>

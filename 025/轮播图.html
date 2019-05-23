@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.boxx{
+			position: relative;
+			width: 1226px;
+			height: 460px;
+			overflow: hidden;
+			margin: 100px auto;
+		}
+		.coursel-list-item img{
+			width: 100%;
+			height: 100%;
+			transition: all 1000ms;
+		}
+		.coursel-list-item{
+			position: absolute;
+			top: 0;
+			left: 0;
+			cursor: pointer;
+		}
+		.coursel-icon{
+			position: absolute;
+			top: 50%;
+			margin-top: -35px;
+			width: 43px;
+			height: 70px;
+			text-align: center;
+			line-height: 70px;
+			cursor: pointer;
+			color: #b0b0b0;
+			font-size: 46px;
+		}
+		.coursel-icon-left{
+			left: 0px;
+		}
+		.coursel-icon-right{
+			right: 0px;
+		}
+		.coursel-icon:hover{
+			color: #fff;
+			background-color: rgba(0,0,0,0.3);
+			transition: all 300ms;
+		}
+		.coursel-icon-bottom{
+			position: absolute;
+			right: 35px;
+			bottom: 25px;
+		}
+		.coursel-icon-bottom-cont{
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			border: 2px solid #b0b0b0;
+			border-radius: 50%;
+			box-sizing: border-box;
+			margin-left: 10px;
+			cursor: pointer;
+			background-color: rgba(0,0,0,0.3);
+		}
+		.checked{
+			background-color: #5f5;
+		}
+	</style>
+</head>
+<body>
+	<div class="boxx" id="box">
+		<ul class="coursel-list">
+			<li class="coursel-list-item"><img src="../../Monkey-Mi/img/index-img/b1.jpg" alt="" style="opacity: 1"></li>
+			<li class="coursel-list-item"><img src="../../Monkey-Mi/img/index-img/b2.jpg" alt="" style="opacity: 0"></li>
+			<li class="coursel-list-item"><img src="../../Monkey-Mi/img/index-img/b3.jpg" alt="" style="opacity: 0"></li>
+			<!-- <li class="coursel-list-item"><img src="../../Monkey-Mi/img/index-img/e3.jpg" alt="" style="opacity: 0"></li> -->
+		</ul>
+		<span class="iconfont coursel-icon coursel-icon-left">&lt;</span>
+		<span class="iconfont coursel-icon coursel-icon-right">&gt;</span>
+		<div class="coursel-icon-bottom">
+			<span class="coursel-icon-bottom-cont checked"></span>
+			<span class="coursel-icon-bottom-cont"></span>
+			<span class="coursel-icon-bottom-cont"></span>
+			<!-- <span class="coursel-icon-bottom-cont"></span> -->
+		</div>
+	</div>
+</body>
+<script>
+	var aImg = document.querySelectorAll(".coursel-list-item img")
+	var aSpan = document.querySelectorAll(".coursel-icon-bottom-cont")
+	var oLeft = document.querySelector(".coursel-icon-left")
+	var oRight = document.querySelector(".coursel-icon-right")
+	var oBox = document.getElementById('box')
+	var index = 0
+	var timer = null
+
+
+	function indeximg() {
+		for (var i = 0; i < aImg.length; i++) {
+			aImg[i].style.opacity = "0"
+			aSpan[i].className ="coursel-icon-bottom-cont"
+		}
+		aImg[index].style.opacity = "1"
+		aSpan[index].className = "coursel-icon-bottom-cont checked"
+	}
+
+
+	oRight.onclick = function() {
+		index++;
+		if(index >= aImg.length){
+			index = 0;
+		}
+		indeximg()
+	}
+
+	oLeft.onclick = function() {
+		index--;
+		if(index < 0){
+			index = aImg.length-1;
+		}
+		indeximg()
+	}
+
+	for (var i = 0; i < aSpan.length; i++) {
+		aSpan[i].index = i
+		aSpan[i].onclick = function() {
+			index = this.index
+			indeximg()
+		}
+	}
+
+
+	timer = setInterval(oRight.onclick,4000)
+
+	oBox.onmouseover = function() {
+		clearInterval(timer)
+	}
+	oBox.onmouseout = function() {
+		timer = setInterval(oRight.onclick,4000)
+	}
+</script>
+</html>

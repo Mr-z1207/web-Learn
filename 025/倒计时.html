@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			background-color: #000;
+		}
+		div{
+			width: 800px;
+			line-height: 80px;
+			color: #fff;
+			margin: 100px auto;
+			font-weight: bold;
+			font-size: 60px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+</body>
+<script>
+	function str2(num) {
+			return num<10 ? "0"+num : ""+num
+		}
+	var oBox = document.getElementById('box')
+	var timerId;
+
+	function endtimer() {
+		var oEndTime = new Date("2019-5-15 12:00:00")
+		var iAllSecond = oEndTime.getTime() - Date.now()
+		if (iAllSecond <= 0) {
+			clearInterval(timerId)
+			iAllSecond = 0
+		}
+		var iHour = parseInt(iAllSecond / 3600000)
+		var iMin = parseInt(iAllSecond % 3600000 / 60000)
+		var iSec = parseInt(iAllSecond % 3600000 % 60000 / 1000)
+		var iMsec = parseInt(iAllSecond % 3600000 % 60000 % 1000 /10)
+
+		oBox.innerHTML = "距离活动结束还有<br/>"+str2(iHour)+"时"+str2(iMin)+"分"+str2(iSec)+"秒"+str2(iMsec)
+	}
+
+	timerId = setInterval(endtimer,10)
+	endtimer()
+</script>
+</html>

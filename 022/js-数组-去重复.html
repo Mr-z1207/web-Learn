@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,5,6,5,8,6,2,2,6,5,7,8,9,6,5,4,1,2,3]
+	function unique1(arr){
+		var newArr = [];
+	    for (var i = 0; i < arr.length; i++) {
+	    	if(newArr.indexOf(arr[i],0) == -1){
+	    		newArr.push(arr[i])
+	    	}
+	    }
+	    return newArr
+	}
+    console.log(":::1",arr)
+    console.log(unique1(arr))
+
+
+    var arr2 = [1,5,6,5,8,6,2,2,6,5,7,8,9,6,5,4,1,2,3]
+    function unique2(arr) {
+    	var newArr2 = [];
+    	for(var i = 0; i < arr2.length; i++){
+    		var isTrue = false;
+    		for(var j = 0; j<newArr2.length; j++){
+    			if (arr2[i] == newArr2[j]) {
+    				isTrue = true;
+    				break;
+    			}
+    		}
+    		if (!isTrue) {
+    			newArr2.push(arr2[i])
+    		}
+    	}
+    	return newArr2
+    }
+    console.log(":::1",arr2)
+    console.log(unique2(arr2))
+</script>
+</html>

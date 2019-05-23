@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn1">打开</button>
+	<button id="btn2">关闭</button>
+</body>
+<script>
+	console.log("上边距屏幕",window.screenLeft)
+	console.log("下边距屏幕",window.screenTop)
+	console.log("可视区高",window.innerHeight)
+	console.log("可视区宽",window.innerWidth)
+	console.log("浏览器高",window.outerHeight)
+	console.log("浏览器宽",window.outerWidth)
+
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+
+	oBtn1.onclick = function() {
+		window.open("about:blank","_self")
+	}
+	oBtn2.onclick = function() {
+		window.close()
+	}
+</script>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>循环计时器-秒表</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 300px;
+			height: 200px;
+			border: 1px solid #ff6700;
+			margin: 0px auto;
+			margin-top: 100px;
+		}
+		.time-box{
+			width: 300px;
+			height: 150px;
+			background-color: #5f5;
+			line-height: 150px;
+			text-align: center;
+		}
+		span{
+			font-size: 42px;
+		}
+		.btn-box{
+			width: 300px;
+			height: 50px;
+			background-color: #0fa;
+			line-height: 50px;
+			text-align: center;
+		}
+		button{
+			width: 70px;
+			height: 30px;
+			outline: none;
+		}
+		#btn2,#btn3{
+			margin-left: 30px;
+		}
+
+		ul{
+			margin: 10px auto;
+			width: 300px;
+		}
+		ul li{
+			list-style: none;
+			line-height: 40px;
+			font-size: 24px;
+			border-bottom: 1px solid #ff6700;
+		}
+		li a{
+			float: right;
+			color: #ff6700;
+		}
+
+		#btn4{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="time-box">
+			<span id="sp-m">00</span><span>:</span>
+			<span id="sp-s">00</span><span>:</span>
+			<span id="sp-l">00</span>
+		</div>
+		<div class="btn-box">
+			<button id="btn1">开始</button>
+			<button id="btn3">记录</button>
+			<button id="btn2">归零</button>
+		</div>
+	</div>
+	<ul id="list">
+		<li>
+			记录列表
+			<button id="btn4">全部删除</button>
+		</li>
+	</ul>
+</body>
+<script>
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+	var oBtn3 = document.getElementById('btn3')
+	var oBtn4 = document.getElementById('btn4')
+	var oSpM = document.getElementById('sp-m')
+	var oSpS = document.getElementById('sp-s')
+	var oSpL = document.getElementById('sp-l')
+	var oUl = document.getElementById('list')
+	var aLi = oUl.childNodes
+	var m = "00"
+	var s = "00"
+	var l = "00"
+
+
+	var time = 0;
+	function timer() {
+		time += 1;
+		msl();
+	}
+	function msl() {
+		m = parseInt(time / 6000)
+		s = parseInt(time % 6000 / 100)
+		l = parseInt(time % 6000 % 100)
+
+		if(m<10){
+			m = "0" + m
+		}
+		if(s<10){
+			s = "0" + s
+		}
+		if(l<10){
+			l = "0" + l
+		}
+		oSpM.innerHTML = m
+		oSpS.innerHTML = s
+		oSpL.innerHTML = l
+	}
+	var oTime;
+	oBtn1.onclick = function() {
+		if (oBtn1.innerHTML == "开始") {
+			oTime = setInterval(timer,10)
+			oBtn1.innerHTML = "暂停"
+			oBtn1.style.color = "red"
+			// console.log(oTime)
+		} else {
+			clearInterval(oTime)
+			oBtn1.innerHTML = "开始"
+			// console.log(oTime)
+			oBtn1.style.color = "#000"
+		}
+	}
+	oBtn2.onclick = function() {
+		clearInterval(oTime)
+		oTime = 0;
+		time = 0;
+		msl();
+		oBtn1.innerHTML = "开始"
+		oBtn1.style.color = "#000"
+	}
+
+	oBtn3.onclick = function() {
+		var newLi = document.createElement("li")
+		var sVal = m + ":" + s + ":" + l
+		// console.log(sVal)
+		newLi.innerHTML = sVal;
+
+		var oA = document.createElement('a')
+		oA.href = "javascript:;"
+		oA.innerHTML = "删除"
+		newLi.appendChild(oA)
+
+		oA.onclick =function() {
+			oUl.removeChild(this.parentNode)
+		}
+
+		oUl.insertBefore(newLi,aLi[2])
+	}
+
+
+	oBtn4.onclick = function() {
+		for (var i = aLi.length - 1; i > 1; i--) {
+			oUl.removeChild(aLi[i])
+		}
+	}
+</script>
+</html>

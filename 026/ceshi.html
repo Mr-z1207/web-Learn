@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #55f;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+
+	oBox.onmouseover = function() {
+		clearInterval(oBox.bbb)
+		oBox.bbb = setInterval(function() {
+			console.log("111")
+		}, 10);
+	}
+</script>
+</html>

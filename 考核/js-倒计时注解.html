@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function to2Str(num){  //定义了一个用来处理时间的函数
+		return num < 10 ? '0'+num : ''+num;  //函数的返回值，无论一位，还是两位，都变成两位，并转为字符串
+	}
+	var oBox = document.getElementById('box'); //获取DOM元素,后来放置页面内容
+	var aImg = oBox.children;     //获取子元素，oBox里面的图片，页面上显示的内容
+	var timer = 0;  //定义变量，用来存定时器Id，控制定时器开关
+	var orderTime = new Date('2018-12-07 19:00:00');  //新建Date对象，定义倒计时结束的时间点
+	var endTime = orderTime.getTime();  //调用Date实例方法，表示从1970-1-1 00:00:00距离倒计时结束的时间点对象所代表时间的毫秒数
+	function time(){    //定义函数，
+		var allTime = (endTime - Date.now())/1000;//定义变量表示剩余秒数，从1970-1-1 00:00:00距离倒计时结束的时间点对象所代表时间的毫秒数减去从1970-1-1 00:00:00距离现在时间所代表时间的毫秒数，并把毫秒变为秒
+		if(allTime <= 0 ){   //判断剩余时间是否小于0，用来判断是否应该停止倒计时
+			allTime = 0;     //剩余时间小于0，让剩余毫秒数恒为0
+			clearInterval(timer);//剩余时间小于0，应该停止计时，清除倒计时定时器
+		}
+		var oH = parseInt(allTime/3600);   // 一小时为3600秒，取整数
+		var oM = parseInt((allTime%3600)/60);//剩下不足一小时的，一分钟60秒，取整数
+		var oS = parseInt(allTime%3600)%60;//剩下不足一分钟的，为秒
+		var time = to2Str(oH)+to2Str(oM)+to2Str(oS);//调用处理时间函数，把一位数的变为两位数，并拼接成一个长的字符串
+		for(var i =0;i<aImg.length;i++){ //循环遍历定义过的子元素，获取每个img元素
+			aImg[i].src = 'image/'+time.charAt(i)+'.png'; //为每一个元素添加地址属性，图片名称与时间与i值一一对应，第i个循环上，time字符串下标为i的字符，就是下标为i的img元素 的图片名称
+		}
+
+	}
+	timer = setInterval(time,1000); //开启定时器，用变量timer获取定时器Id,每过一秒调用一次time函数，使页面内容每秒刷新
+	time();//当手动刷新时立即调用一次，使页面不会产生空白时间
+</script>
+</html>

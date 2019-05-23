@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 400px;
+			margin: 100px auto;
+			border-top: 1px solid #000;
+		}
+		.int-box{
+			overflow: hidden;
+		}
+		input{
+			margin: 10px 0px;
+		}
+		#btn{
+			float: right;
+		}
+		ul li{
+			list-style: none;
+			line-height: 40px;
+			font-size: 24px;
+			border-bottom: 1px solid #ff6700;
+		}
+		li a{
+			float: right;
+			color: #ff6700;
+		}
+		[type="button"]{
+			width: 60px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div class="int-box">
+			<input type="text" name="" id="txt">
+			<input type="button" value="发布" id="btn">
+		</div>
+		<ul id="list">
+
+		</ul>
+	</div>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oUl = document.getElementById('list')
+
+
+	oBtn.onclick = function() {
+		var sVal = oTxt.value
+
+		var newLi = document.createElement("li")
+		newLi.innerHTML = sVal
+
+		var oA = document.createElement('a')
+		oA.href = "javascript:;"
+		oA.innerHTML = "撤销"
+		newLi.appendChild(oA)
+
+		oA.onclick =function() {
+			oUl.removeChild(this.parentNode)
+		}
+
+		oUl.insertBefore(newLi,oUl.firstChild)
+
+		oTxt.value = ""
+	}
+</script>
+</html>

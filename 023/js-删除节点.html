@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<li>1<a href="#">删除</a></li>
+		<li>2<a href="#">删除</a></li>
+		<li>3<a href="#">删除</a></li>
+		<li>4<a href="#">删除</a></li>
+		<li>5<a href="#">删除</a></li>
+		<li>6<a href="#">删除</a></li>
+	</ul>
+</body>
+<script>
+	var oUl = document.getElementById('list')
+	var aA = document.getElementsByTagName('a')
+
+	for(var i = 0;i <aA.length; i++){
+		aA[i].onclick = function() {
+			oUl.removeChild(this.parentNode)       //删除【父元素（ul）】中的【子节点（li）】
+		}
+	}
+</script>
+</html>

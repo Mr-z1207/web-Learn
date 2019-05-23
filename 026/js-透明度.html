@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			position: absolute;
+			top: 50px;
+			left: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: #5f5;
+			opacity: 0.2
+		}
+		.line{
+			position: absolute;
+			top: 0px;
+			left: 800px;
+			width: 1px;
+			height: 400px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">开始</button>
+	<div id="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+	var oBtn = document.getElementById('btn')
+	// var timer = null
+
+	oBtn.onclick = function() {
+		clearInterval(oBox.timer)
+		oBox.timer = setInterval(function() {
+			var current = parseFloat(getComputedStyle(oBox,false)["opacity"])
+			current = Math.round(current*100)
+			var iSpeed = 0;
+			if (current < 100) {
+				iSpeed = 5
+			} else {
+				iSpeed = -5
+			}
+			if (Math.abs(100 - current) < Math.abs(iSpeed)) {
+				oBox.style.opacity = 1
+				clearInterval(oBox.timer)
+			} else {
+				oBox.style.opacity = (current + iSpeed)/100
+			}
+		},50)
+	}
+
+</script>
+</html>

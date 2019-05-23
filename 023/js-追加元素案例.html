@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" name="" id="txt">
+	<input type="button" value="插入" id="btn">
+	<ul id="list">
+		
+	</ul>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oUl = document.getElementById('list')
+
+	oBtn.onclick = function() {
+		var sVal = oTxt.value
+
+		var newLi = document.createElement("li")
+		newLi.innerHTML = sVal
+
+		oUl.appendChild(newLi)
+
+		oTxt.value = ""
+	}
+</script>
+</html>

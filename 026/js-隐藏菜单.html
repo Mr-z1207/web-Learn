@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#fat{
+			position: absolute;
+			left: -400px;
+			top: 0;
+			width: 400px;
+			height: 500px;
+			background-color: #5f5;
+		}
+		#son{
+			position: absolute;
+			top: 0;
+			right: -100px;
+			width: 100px;
+			height: 500px;
+			background-color: #55f;
+		}
+	</style>
+</head>
+<body>
+	<box id="fat">
+		<box id="son"></box>
+	</box>
+</body>
+<script>
+	var oFat = document.getElementById('fat')
+	var timer = null
+	function sport(obj,num) {
+		clearInterval(timer)
+		timer = setInterval(function() {
+			var iSpeed = 0;
+			if (obj.offsetLeft <= num) {
+				iSpeed = 7
+			} else {
+				iSpeed = -7
+			}
+			if (Math.abs(num - obj.offsetLeft) < Math.abs(iSpeed)) {
+				obj.style.left = num + "px"
+				clearInterval(timer)
+			} else {
+				obj.style.left = obj.offsetLeft + iSpeed + "px"
+			}
+			// console.log(800 - oBox.offsetLeft)
+		},50)
+	}
+
+
+	oFat.onmouseover = function() {
+		sport(oFat,0)
+	}
+	oFat.onmouseout = function() {
+		sport(oFat,-400)
+	}
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<ul id="list">
+		<li>12</li>
+		<li>89</li>
+		<li>3</li>
+		<li>45</li>
+		<li>21</li>
+		<li>16</li>
+	</ul>
+	<button id="btn">排序</button>
+</body>
+<script>
+	var oUl = document.getElementById('list')
+	var aLi = oUl.children
+	var oBtn = document.getElementById('btn')
+
+	oBtn.onclick = function() {
+		var newLi = []
+		for(i = 0 ;i <aLi.length; i++){
+			newLi.push(aLi[i])
+		}
+		newLi.sort(function(n1,n2) {
+			return n1.innerHTML - n2.innerHTML
+		})
+		for(j = 0; j<newLi.length; j++){
+			oUl.appendChild(newLi[j])
+		}
+	}
+</script>
+</html>

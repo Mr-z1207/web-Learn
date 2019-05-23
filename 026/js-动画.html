@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			position: absolute;
+			top: 50px;
+			left: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: #5f5;
+		}
+		.line{
+			position: absolute;
+			top: 0px;
+			left: 800px;
+			width: 1px;
+			height: 400px;
+			background-color: #000;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">开始</button>
+	<div id="box"></div>
+	<div class="line"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+	var oBtn = document.getElementById('btn')
+	var timer = null
+	function sport(obj,num) {
+		clearInterval(timer)
+		timer = setInterval(function() {
+			var iSpeed = 0;
+			if (obj.offsetLeft < num) {
+				iSpeed = 10
+			} else {
+				iSpeed = -10
+			}
+			if (Math.abs(num - obj.offsetLeft) < Math.abs(iSpeed)) {
+				obj.style.left = "800px"
+				clearInterval(timer)
+			} else {
+				obj.style.left = obj.offsetLeft + iSpeed + "px"
+			}
+		},50)
+	}
+
+	oBtn.onclick = function(){
+		sport(oBox,800)
+	}
+
+</script>
+</html>
