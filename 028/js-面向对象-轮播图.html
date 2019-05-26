@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		
+	</div>
+</body>
+<script>
+	function coursel() {
+		//1、罗列属性
+		this.oBox = document.getElementById('box')
+
+		this.oUlImg = null
+		//2、初始化页面
+		this.Init()
+	}
+	coursel.prototype.Init = function() {
+		this.oUlImg = document.createElement('ul')
+		
+	};
+</script>
+</html>

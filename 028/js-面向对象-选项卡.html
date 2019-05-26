@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>选项卡</title>
+	<style>
+		*{
+			list-style: none;
+		}
+		.hd{
+			overflow: hidden;
+		}
+		.hd li{
+			width: 100px;
+			line-height: 50px;
+			margin-bottom: 20px;
+			float: left;
+			text-align: center;
+			cursor: pointer;
+		}
+		.bd li{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+			line-height: 100px;
+			text-align: center;
+			margin: 5px;
+			display: none;
+		}
+		.check{
+			color: #ff6700;
+			border-bottom: 1px solid #ff6700;
+		}
+	</style>
+</head>
+<body>
+	<ul id="hd" class="hd">
+		<li>选项卡1</li>
+		<li>选项卡2</li>
+		<li>选项卡3</li>
+		<li>选项卡4</li>
+	</ul>
+	<ul id="bd" class="bd">
+		<li>内容1</li>
+		<li>内容2</li>
+		<li>内容3</li>
+		<li>内容4</li>
+	</ul>
+</body>
+<script>
+	// var ohd = document.getElementById('hd')
+	// var obd = document.getElementById('bd')
+	// var ohdaLi = ohd.getElementsByTagName('li')
+	// var obdaLi = obd.getElementsByTagName('li')
+
+	// for (var i = 0; i < ohdaLi.length; i++) {
+	// 	console.log(i)
+	// 	ohdaLi[i].index=i;
+	// 	console.log(ohdaLi)
+	// 	ohdaLi[i].onmouseover = function(){
+	// 		for (var j = 0; j < ohdaLi.length; j++) {
+	// 			ohdaLi[j].className = ""
+	// 			obdaLi[j].style.display= "none"
+	// 		}
+	// 		this.className = "check" ;
+	// 		obdaLi[this.index].style.display= "block"
+	// 	}
+	// }
+
+
+	//*************
+	function Tab(aBtn,aCont) {
+		this.aBtn = document.querySelectorAll(aBtn)
+		this.aCont = document.querySelectorAll(aCont)
+		this.init()
+		this.clickBtn()
+	}
+	Tab.prototype.init = function() {
+		this.aBtn[0].className = "check"
+		this.aCont[0].style.display= "block"
+	}
+	Tab.prototype.clickBtn = function() {
+		for (var i = 0; i < this.aBtn.length; i++) {
+			this.aBtn[i].index = i
+			var _this = this
+			this.aBtn[i].onclick = function() {
+				_this.change(this)
+			}
+		}
+	}
+	Tab.prototype.change = function(oBtn) {
+		for (var i = 0; i < this.aBtn.length; i++) {
+			this.aBtn[i].className = "";
+			this.aCont[i].style.display= "none"
+		}
+		oBtn.className = "check"
+		this.aCont[oBtn.index].style.display= "block"
+	}
+
+	new Tab("#hd li","#bd li")
+</script>
+</html>
