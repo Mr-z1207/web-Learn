@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function createPerson(name,age) {
+		// var createPerson = {}
+		// this = createPerson
+		this.name = name
+		this.age = age
+		// this.sayName = sayName    //实例访问原型上的属性，工厂内不用写了
+		// this.sayAge = sayAge    //实例访问原型上的属性，工厂内不用写了
+		// return this
+
+		//原型
+		if (!createPerson.prototype.sayName) {
+			createPerson.prototype.sayName = function() {
+				console.log("I am is " + this.name)
+			}
+		}
+		if (!createPerson.prototype.sayAge) {
+			createPerson.prototype.sayAge = function() {
+				console.log("我" + this.age + "岁了")
+			}
+		}
+		if (!createPerson.prototype.legs) {
+			createPerson.prototype.legs = 2
+		}
+	}
+
+	var person1 = new createPerson("tom",18)
+	console.log(person1)
+	person1.sayName()
+	person1.sayAge()
+	console.log(person1.legs)
+	var person2 = new createPerson("Leo",20)
+	console.log(person2)
+	person2.sayName()
+	person2.sayAge()
+	console.log(person2.legs)
+	console.log(createPerson.prototype)
+</script>
+</html>

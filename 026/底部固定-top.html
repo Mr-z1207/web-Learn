@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 3000px;
+			width: 3000px;
+		}
+		#box{
+			position: absolute;
+			bottom: 0px;
+			right: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: #ff5;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="../Js/animation.js"></script>
+<script>
+	var oBox = document.getElementById('box')
+
+
+	window.onresize = window.onscroll = function() {
+
+		var w =0,h=0;
+		if(document.compatMode == 'CSS1Compat'){
+			w = document.documentElement.clientWidth;
+			h = document.documentElement.clientHeight;
+		}else{
+			w = document.body.clientWidth;
+			h = document.body.clientHeight;		
+		}
+
+		var l = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;		
+		var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+
+
+		var iTop = h + t - 100
+		var iLeft = w + l - 100
+		animation(oBox,{top:iTop,left:iLeft})
+	}
+</script>
+</html>

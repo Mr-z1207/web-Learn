@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father{
+			margin: 50px auto;
+			width: 600px;
+			/*height: 500px;*/
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			margin: 20px auto;
+			background-color: #f55;
+		}
+		.box:last-child{
+			opacity: 0.2
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="box" id="box1"></div>
+		<div class="box" id="box2"></div>
+		<div class="box" id="box3"></div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1')
+	var oBox2 = document.getElementById('box2')
+	var oBox3 = document.getElementById('box3')
+
+
+	function animation(obj,artt,iTaget) {
+		clearInterval(obj.timer)
+		obj.timer = setInterval(function() {
+			var current = parseFloat(getComputedStyle(obj,false)[artt])
+			if (artt == "opacity") {
+				current = current * 100
+			}
+			var iSpeed = (iTaget - current)/20;
+			iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+			if (!iSpeed) {
+				clearInterval(obj.timer)
+			} else {
+				if (artt == "opacity") {
+					obj.style[artt] = (current + iSpeed)/100
+				} else {
+					obj.style[artt] = current + iSpeed + "px"
+				}
+			}
+		},50)
+	}
+
+
+	oBox1.onmouseover = function() {
+		animation(oBox1,"width",400)
+	}
+	oBox2.onmouseover = function() {
+		animation(oBox2,"height",400)
+	}
+	oBox3.onmouseover = function() {
+		animation(oBox3,"opacity",100)
+	}
+		
+</script>
+</html>

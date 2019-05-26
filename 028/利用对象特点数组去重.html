@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,2,3,4,4,4,5,5,5,9,9,9,6,6,6,7,7,1,8,8,2,5]
+
+	function quChong(arr) {
+		var newArr = []
+		var obj ={}
+
+		for (var i = 0; i < arr.length; i++) {
+			obj[arr[i]] = ""
+		}
+		for(attr in obj){
+			newArr.push(attr-0)
+		}
+		return newArr
+	}
+
+	console.log(quChong(arr))
+</script>
+</html>

@@ -4,28 +4,34 @@
 	<meta charset="UTF-8">
 	<title>Document</title>
 	<style>
-		*{
-			margin: 0;
-			padding: 0;
+		.father{
+			margin: 50px auto;
+			width: 600px;
+			/*height: 500px;*/
 		}
-		body{
-			height: 3000px;
-		}
-		#box{
-			position: absolute;
-			bottom: 0px;
-			right: 0px;
+		.box{
 			width: 100px;
 			height: 100px;
-			background-color: #ff5;
+			margin: 20px auto;
+			background-color: #f55;
+		}
+		.box:last-child{
+			opacity: 0.2
 		}
 	</style>
 </head>
 <body>
-	<div id="box"></div>
+	<div class="father">
+		<div class="box" id="box1"></div>
+		<div class="box" id="box2"></div>
+		<div class="box" id="box3"></div>
+	</div>
 </body>
 <script>
-	var oBox = document.getElementById('box')
+	var oBox1 = document.getElementById('box1')
+	var oBox2 = document.getElementById('box2')
+	var oBox3 = document.getElementById('box3')
+
 
 	function animation(obj,arrt,iTager) {
 		clearInterval(obj.timer)
@@ -36,9 +42,9 @@
 			}
 			var iSpeed = 0;
 			if (current < iTager) {
-				iSpeed = 10
+				iSpeed = 5
 			} else {
-				iSpeed = -10
+				iSpeed = -5
 			}
 			if (Math.abs((iTager - current)) < Math.abs(iSpeed)) {
 				if (arrt == "opacity") {
@@ -54,13 +60,19 @@
 					obj.style[arrt] = current + iSpeed + "px"
 				}
 			}
-		},30)
+		},50)
 	}
 
-	window.onscroll = function() {
-		var iBottom = -(window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop)
-		animation(oBox,"bottom",iBottom)
-		// console.log(oBox.style.height)
+
+	oBox1.onmouseover = function() {
+		animation(oBox1,"width",400)
 	}
+	oBox2.onmouseover = function() {
+		animation(oBox2,"height",400)
+	}
+	oBox3.onmouseover = function() {
+		animation(oBox3,"opacity",100)
+	}
+		
 </script>
 </html>

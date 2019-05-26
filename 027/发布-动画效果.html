@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			width: 500px;
+			margin: 50px auto;
+		}
+		#btn{
+			float: right;
+		}
+		#list li{
+			list-style: none;
+			height: 40px;
+			line-height: 40px;
+			border-bottom: 1px solid #000;
+			overflow: hidden;
+		}
+		#list li a{
+			float: right;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<input type="text" name="" id="txt">
+		<button id="btn">发布</button>
+		<br>
+		<br>
+		<hr>
+		<ul id="list">
+			
+		</ul>
+	</div>
+</body>
+<script src="../Js/animation.js"></script>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oUl = document.getElementById('list')
+
+	oBtn.onclick = function() {
+		var sVal = oTxt.value
+		var oLi = document.createElement('li')
+		oLi.innerHTML = sVal
+
+		var oA = document.createElement('a')
+		oA.href = "javascript:;"
+		oA.innerHTML = "删除"
+
+		oLi.appendChild(oA)
+
+		oLi.style.height = "0px"
+		oUl.insertBefore(oLi,oUl.firstChild)
+		animation(oLi,{height:40})
+
+		oA.onclick = function() {
+			animation(oA.parentNode,{height:0},true,function() {
+				oUl.removeChild(oA.parentNode)
+			})
+		}
+
+		oTxt.value = ""
+	}
+	oTxt.onkeydown = function(ev) {
+		if (ev.code == "Enter") {
+			oBtn.onclick()
+		}
+	}
+</script>
+</html>

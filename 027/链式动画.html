@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.father{
+			margin: 50px auto;
+			width: 600px;
+			/*height: 500px;*/
+		}
+		.box{
+			width: 100px;
+			height: 100px;
+			margin: 20px auto;
+			background-color: #f55;
+		}
+		.box:last-child{
+			opacity: 0.2
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="box" id="box1"></div>
+		<div class="box" id="box2"></div>
+		<div class="box" id="box3"></div>
+	</div>
+</body>
+<script>
+	var oBox1 = document.getElementById('box1')
+	var oBox2 = document.getElementById('box2')
+	var oBox3 = document.getElementById('box3')
+
+
+
+	function animation(obj,attr,iTarget,lianer,fn) {
+		if (lianer == undefined) {
+			lianer = true
+		}
+		clearInterval(obj.timer)
+		obj.timer = setInterval(function() {
+			var stop = false
+			var current = parseFloat(getComputedStyle(obj,false)[attr])
+			if (attr == "opacity") {
+				current = current * 100
+			}
+			var iSpeed = 0;
+			if (lianer) {
+				if (current < iTarget) {
+					iSpeed = 5
+				} else {
+					iSpeed = -5
+				}
+				if (Math.abs((iTarget - current)) < Math.abs(iSpeed)) {
+					if (attr == "opacity") {
+						obj.style[attr] = iTarget/100
+					}else{
+						obj.style[attr] = iTarget + "px"
+					}
+					stop = true
+				}
+			} else {
+				var iSpeed = (iTarget - current)/10;
+				iSpeed = iSpeed > 0 ? Math.ceil(iSpeed) : Math.floor(iSpeed)
+				if (!iSpeed) {
+					stop = true
+				}
+			}
+			if (stop) {
+				clearInterval(obj.timer)
+				if (typeof fn == "function") {
+					fn()
+				}
+			} else {
+				if (attr == "opacity") {
+					obj.style[attr] = (current + iSpeed)/100
+				}else{
+					obj.style[attr] = current + iSpeed + "px"
+				}
+			}
+		},50)
+	}
+
+
+	oBox1.onmouseover = function() {
+		animation(oBox1,"width",400)
+	}
+	oBox2.onmouseover = function() {
+		animation(oBox2,"height",400,false)
+	}
+	oBox3.onmouseover = function() {
+		animation(oBox3,"opacity",100,false,function() {
+			animation(oBox3,"height",400,true,function() {
+				animation(oBox3,"width",400,false)
+			})
+		})
+	}
+</script>
+</html>

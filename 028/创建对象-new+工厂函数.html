@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function sayName() {
+		console.log("I am is " + this.name)
+	}
+	function sayAge() {
+		console.log("我" + this.age + "岁了")
+	}
+	function createPerson(name,age) {
+		// var createPerson = {}
+		// this = createPerson
+		this.name = name
+		this.age = age
+		this.sayName = sayName
+		this.sayAge = sayAge
+		// return this
+	}
+
+	var person1 = new createPerson("tom",18)
+	console.log(person1)
+	person1.sayName()
+	person1.sayAge()
+	var person2 = new createPerson("Leo",20)
+	console.log(person2)
+	person2.sayName()
+	person2.sayAge()
+</script>
+</html>
