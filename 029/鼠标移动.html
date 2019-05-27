@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		body{
+			width: 3000px;
+			height: 3000px;
+		}
+		#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: #5f5;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+
+	document.onmousemove = function(ev) {
+		var l = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;		
+		var t = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop;
+		// console.log(ev)
+
+		oBox.style.top = ev.clientY + t + "px"
+		oBox.style.left = ev.clientX + l + "px"
+	}
+</script>
+</html>

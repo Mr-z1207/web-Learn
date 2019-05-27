@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			width: 100px;
+			height: 100px;
+			background-color: #f5f;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script>
+	var oBox = document.getElementById('box')
+
+
+	document.addEventListener("click",function() {
+		console.log("document click false")
+	},false)
+	document.documentElement.addEventListener("click",function() {
+		console.log("html click false")
+	},false)
+	document.body.addEventListener("click",function() {
+		console.log("body click false")
+	},false)
+	oBox.addEventListener("click",function() {
+		console.log("box click false")
+	},false)
+	
+
+	document.addEventListener("click",function() {
+		console.log("document click")
+	},true)
+	document.documentElement.addEventListener("click",function() {
+		console.log("html click")
+	},true)
+	document.body.addEventListener("click",function() {
+		console.log("body click")
+	},true)
+	oBox.addEventListener("click",function() {
+		console.log("box click")
+	},true)
+</script>
+</html>
