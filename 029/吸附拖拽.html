@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#father{
+			position: relative;
+			margin: 50px auto;
+			width: 500px;
+			height: 500px;
+			border: 1px solid #000;
+		}
+		#son{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 100px;
+			height: 100px;
+			background-color: red;
+		}
+	</style>
+</head>
+<body>
+	<div id="father">
+		<div id="son"></div>
+	</div>
+</body>
+<script>
+	var oBoxFat = document.getElementById('father')
+	var oBoxSon = document.getElementById('son')
+
+	oBoxSon.onmousedown = function(ev) {
+		var isX = ev.clientX - oBoxSon.offsetLeft
+		var isY = ev.clientY - oBoxSon.offsetTop
+		var l = 0
+		var t = 0
+
+		document.onmousemove = function(ev) {
+			l = ev.clientX - isX
+			t = ev.clientY - isY
+
+			if (l<20) {
+				l = 0
+			} else if(l > oBoxFat.offsetWidth - oBoxSon.offsetWidth - 20){
+				l = oBoxFat.offsetWidth - oBoxSon.offsetWidth
+			}
+			if (t<20) {
+				t = 0
+			} else if(t > oBoxFat.offsetHeight - oBoxSon.offsetHeight - 20){
+				t = oBoxFat.offsetHeight - oBoxSon.offsetHeight
+			}
+
+			oBoxSon.style.top = t + "px"
+			oBoxSon.style.left = l + "px"
+		}
+		document.onmouseup = function() {
+			document.onmousemove = null
+			document.onmouseup = null
+		}
+	}
+</script>
+</html>
