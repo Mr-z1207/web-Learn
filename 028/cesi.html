@@ -8,20 +8,20 @@
 	
 </body>
 <script>
-	function student(name,age,zy) {
+	function Student(name,age,zy) {
 		this.name = name
 		this.age = age
 		this.zy = zy
 	}
-	student.prototype.sayZy = function() {
+	Student.prototype.sayZy = function() {
 		console.log("我的专业是" + this.zy)
 	}
 	
 
-	var student1 = new student("Leo",18,"材料")
+	var student1 = new Student("Leo",18,"材料")
 	console.log(student1)
 	student1.sayZy()
-	var student2 = new student("Tom",19,"WEB")
+	var student2 = new Student("Tom",19,"WEB")
 	console.log(student2)
 	student2.sayZy()
 </script>

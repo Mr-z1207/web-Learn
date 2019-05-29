@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">发布</button>
+	<ul id="list"></ul>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oBtn = document.getElementById('btn')
+	var oUl = document.getElementById('list')
+
+	oBtn.onclick = function() {
+		var sVal = oTxt.value
+		var oLi = document.createElement('li')
+		var reg = /淘宝|天猫|某宝|某猫/g
+		var newVal = sVal.replace(reg,"**")
+		oLi.innerHTML = newVal
+		oUl.insertBefore(oLi,oUl.firstchild)
+	}
+</script>
+</html>

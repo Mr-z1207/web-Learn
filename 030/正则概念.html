@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var str = "12jk3b 123 njnj 12___344		ii 4_	1  f4NK 1 12 123 1234 12345 哈哈哈哈哈"
+
+	console.log(str)
+	console.log(str.replace(/2|n|k/g,'*'),":::::2|n|k")
+	console.log(str.replace(/[2,n,k]/g,'*'),":::::[2,n,k]")
+	console.log(str.replace(/[0-9]/g,'*'),":::::[0-9]")
+	console.log(str.replace(/[^1,2]/g,'*'),"[^1,2]")
+	console.log(str.replace(/./g,'*'),":::::.")
+	console.log(str.replace(/\d/g,'*'),":::::\d")
+	console.log(str.replace(/\D/g,'*'),":::::\D")
+	console.log(str.replace(/\w/g,'*'),":::::\w")
+	console.log(str.replace(/\W/g,'*'),":::::\W")
+	console.log(str.replace(/\s/g,'*'),":::::\s")
+	console.log(str.replace(/\S/g,'*'),":::::\S")
+	console.log(str.replace(/\d{2}/g,'*'),"::::\d{2}")
+	console.log(str.replace(/\d{2,}/g,'*'),"::::\d{2,}")
+	console.log(str.replace(/\d{2,3}/g,'*'),"::::\d{2,3}")
+	console.log(str.replace(/\d+/g,'*'),"::::\d+")
+	console.log(str.replace(/\d?/g,'*'),"::::\d?相当于{0,1}")
+	console.log(str.replace(/\d*/g,'*'),"::::\d*相当于{0,}")
+	console.log(str.replace(/[\u4e00-\u9fa5]/g,'bb'),"::::匹配汉字")
+	
+	// console.log(str.replace(//g,'*'),"")
+	
+</script>
+</html>

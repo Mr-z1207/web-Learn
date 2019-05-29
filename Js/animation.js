@@ -47,9 +47,7 @@ function animation(obj,options,lianer,fn) {
 			}
 			if (allStop) {
 				clearInterval(obj.timer)
-				if (typeof fn == "function") {
-					fn()
-				}
+				typeof fn == "function" && fn()		
 			}
 		},50)
 	}

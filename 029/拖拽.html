@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: #5f5;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="../Js/getScrollTop left.js"></script>
+<script>
+	var oBox = document.getElementById('box')
+
+	oBox.onmousedown = function(ev) {
+		var isX = ev.clientX - oBox.offsetLeft
+		var isY = ev.clientY - oBox.offsetTop
+		document.onmousemove = function(ev) {
+			oBox.style.left =  ev.clientX  - isX + "px"
+			oBox.style.top =  ev.clientY  - isY + "px"
+		}
+		oBox.onmouseup = function() {
+			document.onmousemove = null
+			oBox.onmouseup = null
+		}
+	}
+</script>
+</html>
