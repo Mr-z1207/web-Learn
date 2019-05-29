@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+		var reg = /[a-z]/g;
+		console.log(reg.lastIndex);//0
+		console.log(reg.test('a1b2'));//true 从下标0开始匹配到a
+		console.log(reg.lastIndex);//a的下一个位置是1
+		console.log(reg.test('a1b2'));//true 从下标1开始匹配到b
+		console.log(reg.lastIndex);//b的下一个位置是3
+		console.log(reg.test('a1b2'));//false 从下标3开始匹配,没有字符
+		console.log(reg.lastIndex);//匹配结束,lastIndex重置为0	
+
+		var str = "a2019-06-05b2019-11-11c"
+		var reg = /(?<years>\d{4})-(?<moth>\d{2})-(?<day>\d{2})/g
+		console.log(reg.lastIndex);//0
+		console.log(reg.exec(str));//groups(组)：需要分组，并起名字；index：匹配到的是从第几个字符开始的；input：从哪个字符串匹配的
+		console.log(reg.lastIndex);//11
+		console.log(reg.exec(str));//null
+		console.log(reg.lastIndex);//0
+		console.log(reg.exec(str));//
+</script>
+</html>

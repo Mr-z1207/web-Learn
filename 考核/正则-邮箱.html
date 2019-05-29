@@ -15,7 +15,7 @@
 </head>
 <body>
 	<div class="fatbox">
-		<p>请输入qq或163网易邮箱：</p>
+		<!-- <p>请输入qq或163网易邮箱：</p> -->
 		<input type="text" id="txt">
 		<button id="btn">检测</button>
 	</div>
@@ -26,18 +26,17 @@
 
 	oBtn.onclick = function() {
 		var sVal = oTxt.value
-		if (!/^[a-zA-Z0-9]\w{5,15}\@(163|qq|QQ)\.(com|COM)$/.test(sVal)) {
-			alert("请输入正确的qq或163邮箱")
-		}else{
-			alert("邮箱合法")
-		}
-
-		//只要是符合格式
-		// if (!/^[a-zA-Z0-9]\w{5,15}\@[a-zA-Z0-9]+\.(com|COM)$/.test(sVal)) {
+		// if (!/^[a-zA-Z0-9]\w{4,15}\@(163|qq|QQ)\.(com|COM)$/.test(sVal)) {
 		// 	alert("请输入正确的qq或163邮箱")
 		// }else{
 		// 	alert("邮箱合法")
 		// }
+
+		if (!/^([a-zA-Z0-9]\w{5,15})\@([a-zA-Z0-9]+)\.([a-zA-Z]{2,5})$/.test(sVal)) {
+			alert("请输入正确的邮箱")
+		}else{
+			alert("邮箱合法")
+		}
 	}
 </script>
 </html>

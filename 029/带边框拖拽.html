@@ -3,8 +3,70 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
+	<style>
+		#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background-color: #5f5;
+		}
+		.border{
+			position: absolute;
+			border: 3px solid #000;
+			box-sizing: border-box;
+		}
+	</style>
 </head>
 <body>
-	
+	<div id="box"></div>
 </body>
+<script src="../Js/getScrollTop left.js"></script>
+<script>
+	var oBox = document.getElementById('box')
+
+	oBox.onmousedown = function(ev) {
+		var isX = ev.clientX - oBox.offsetLeft
+		var isY = ev.clientY - oBox.offsetTop
+		var l = 0;
+		var t = 0;
+
+		var oBorder = document.createElement('div')
+		oBorder.style.width = oBox.offsetWidth + "px"
+		oBorder.style.height = oBox.offsetHeight + "px"
+		oBorder.style.top = oBox.offsetTop + "px"
+		oBorder.style.left = oBox.offsetLeft + "px"
+		oBorder.className = "border"
+
+		document.body.appendChild(oBorder)
+
+		document.onmousemove = function(ev) {
+			l = ev.clientX - isX;
+			t = ev.clientY - isY;
+
+			if (l < 0) {
+				oBorder.style.left = 0
+			} else if(l > window.innerWidth - oBorder.offsetWidth){
+				l =  window.offsetWidth - oBorder.offsetWidth +"px"
+			}else{
+				oBorder.style.left =  l + "px"
+			}
+			if (t < 0) {
+				oBorder.style.top = 0
+			} else if(t > window.innerHeight - oBorder.offsetHeight){
+				t =  window.innerHeight - oBorder.offsetHeight +"px"
+			}else{
+				oBorder.style.top =  t + "px"
+			}
+		}
+		document.onmouseup = function() {
+			oBox.style.top = oBorder.offsetTop + "px"
+			oBox.style.left = oBorder.offsetLeft + "px"
+			document.body.removeChild(oBorder)
+			document.onmousemove = null
+			document.onmouseup = null
+		}
+	}
+</script>
 </html>

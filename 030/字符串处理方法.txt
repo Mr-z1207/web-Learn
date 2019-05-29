@@ -1,0 +1,72 @@
+字符串处理方法
+	str.search(reg)
+		从字符中检索与正则相匹配的字符串,返回第一个匹配结果的index,查不到返回-1
+		search方法不执行全局匹配,它会忽略g,并且总是从字符串开始检索
+		举例:
+		var str = 'good baby,have a good day';
+		console.log(str.search(/good/));//0
+		console.log(str.search(/good/g));//0
+		console.log(str.search(/good/g));//0
+	str.match(reg)
+		全局匹配
+			找到字符串中的所有匹配的字符串,如果没有匹配的话返回null,有的话返回一个数组
+				数组中的每一项就是一个匹配结果,数组中没有index,input和groups等属性
+				全局匹配不需要分组
+				举例:
+		var reg = /\d{4}-\d{2}-\d{2}/g;
+		var str = 'a2018-05-10b2019-06-10c';
+		console.log(str.match(reg));//["2018-05-10", "2019-06-10"]
+		非全局匹配
+			和reg.exec(str)非全局匹配的结果一样
+				非全局匹配可以分组
+				举例:
+		var reg = /(?<year>\d{4})-(?<month>\d{2})-(?<day>\d{2})/;
+		var str = 'a2018-05-10b2019-06-10c';
+		console.log(str.match(reg));//["2018-05-10", "2018", "05", "10", index: 1, input: "a2018-05-10b2019-06-10c", groups:{year: "2018", month: "05", day: "10"}
+	str.split(reg)
+		根据正则匹配的内容把字符串分隔成数组
+		举例
+			判断是否回文字符串:str === str.split('').reverse().join('')
+			以空白符分隔字符串为数组,'ab c 	d ef      fgh'.split(/\s+/)的结果是["ab", "c", "d", "ef", "fgh"]
+	str.replace(reg,str2)
+		把字符串str中匹配到正则的子串用str2进行替换
+	str.replace(reg,function(匹配结果,index,原值))
+		把字符串中匹配到正则的子串传递到回调函数进一步处理,用函数的返回值来替换匹配项
+		举例:
+		var str = 'a1b2c3d4'.replace(/\d/g,function(match,index,origin){
+		    return parseInt(match)*10;
+		})
+		console.log(str);//a10b20c30d40
+	str.charAt(index)
+		根据位置返回字符
+		位置在0和str.length-1之间,如果不在返回空字符
+		一个汉字是一个字节 
+	str.charCodeAt(index)
+		根据位置返回字符的编码
+		位置在0和str.length-1之间,如果不在返回空字符
+		一个汉字是一个字节 
+		charCodeAt返回的是字符的Unicode码
+		Unicode码是统一的编码,Unicode码包含了ASCII码(0-127)
+	str.indexOf(str1)
+		根据字符返回位置,从前向后找,找不到返回-1
+	str.lastIndexOf(str1)
+		根据字符返回位置,从后向前找,找不到返回-1
+	encodeURIComponent(str)
+		URI 编码
+		编码除了字母、数字、(、)、.、!、~、*、'、-和_之外的所有字符
+	decodeURIComponent(str)
+		URI 解码
+	str1.concat(str2)
+		连接字符串
+	str.slice(起始下标,结束下标)
+		截取字符串,下标可以是负数,负数表示从尾部开始计算,包括起始下标但不包括结束下标
+	str.substr(起始下标,长度)
+		截取字符串,下标可以是负数,负数表示从尾部开始计算
+	str.substring(起始下标,结束下标)
+		截取字符串,下标不可以是负数
+	str.toLowerCase()
+		把字符串转换为小写
+	str.toUpperCase() 
+		把字符串转换为大写
+	str.trim()
+		去除字符串两边的空白
