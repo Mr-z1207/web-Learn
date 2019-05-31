@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="userword">
+	</form>
+	<form action="">
+		<input type="text" name="userword">
+	</form>
+	<form action="">
+		<input type="text" name="userword">
+	</form>
+	<form action="">
+		<input type="text" name="userword">
+	</form>
+</body>
+<script>
+	var aForm = document.forms
+
+	console.log(aForm)
+
+	var aElement = aForm[0].elements
+	var Element1 = aForm[0].elements[0]
+	var Element2 = aForm[1].elements["userword"]
+	var Element3 = aForm[2].elements.userword
+	var Element4 = aForm[3].userword
+	console.log(aElement)
+	console.log(Element1)
+	console.log(Element2)
+	console.log(Element3)
+	console.log(Element4)
+</script>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<form action="">
+		<input type="text" name="userword">
+
+		<select name="sheng">
+			<option value="hb">河北</option>
+			<option value="hn">河南</option>
+		</select>
+		<select name="shi">
+			<option value="cz">沧州</option>
+			<option value="xt">邢台</option>
+			<option value="hd">邯郸</option>
+		</select>
+	</form>
+	<button id="btn"></button>
+</body>
+<script>
+	var oForm = document.forms[0]
+	var sheng = oForm.sheng
+	var shi = oForm.shi
+
+	sheng.onchange = function() {
+		if (sheng.options[1].selected) {
+			shi.options[0].value = "xc"
+			shi.options[1].value = "xy"
+			shi.options[2].value = "kf"
+			shi.options[0].innerHTML = "许昌"
+			shi.options[1].innerHTML = "信阳"
+			shi.options[2].innerHTML = "开封"
+		} else if(sheng.options[0].selected){
+			shi.options[0].value = "cz"
+			shi.options[1].value = "xt"
+			shi.options[2].value = "hd"
+			shi.options[0].innerHTML = "沧州"
+			shi.options[1].innerHTML = "邢台"
+			shi.options[2].innerHTML = "邯郸"
+		}
+	}
+
+</script>
+</html>

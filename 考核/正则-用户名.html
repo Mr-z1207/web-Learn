@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			margin: 100px auto;
+			padding: 10px;
+			width: 320px;
+			border: 1px solid #000;
+		}
+		.yes{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 20px;
+			background-color: #5f5;
+			font-size: 12px;
+		}
+		.no{
+			display: inline-block;
+			width: 20px;
+			height: 20px;
+			border-radius: 50%;
+			text-align: center;
+			line-height: 20px;
+			background-color: #f00;
+			font-size: 12px;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<span>请输入用户名：</span>
+		<input type="text" id="txt">
+		<span id="yes"></span>
+	</div>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oYes = document.getElementById('yes')
+
+	oTxt.onblur = function() {
+		var sVal = oTxt.value
+		var reg1 = /[\u4e00-\u9fa5]/g
+		var newVal = sVal.replace(reg1,"aa")
+
+		if (newVal.length < 1) {
+			oYes.innerHTML = "X"
+			oYes.className = "no"
+			alert("用户名不能为空")
+		} else if(newVal.length > 14){
+			oYes.innerHTML = "X"
+			oYes.className = "no"
+			alert("用户名最多为7个汉字或14个字符")
+		} else if(newVal.search(/\D/) == -1){
+			oYes.innerHTML = "X"
+			oYes.className = "no"
+			alert("请不要输入纯数字")
+		}else{
+			oYes.innerHTML = "Y"
+			oYes.className = "yes"
+		}
+	}
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>自定义滚动条</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		.box{
+			margin: 50px auto;
+			width: 354px;
+		}
+		#father{
+			position: relative;
+			float: right;
+			width: 50px;
+			height: 400px;
+			border: 1px solid #000;
+		}
+		#son{
+			position: absolute;
+			left: 0;
+			top: 0;
+			width: 50px;
+			height: 50px;
+			background-color: red;
+		}
+		#con{
+			position: relative;
+			width: 300px;
+			height: 400px;
+			border: 1px solid #000;
+			overflow: hidden;
+		}
+		#con p {
+			position: absolute;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<div id="father">
+			<div id="son"></div>
+		</div>
+		<div id="con">
+			<p id="conp">考了几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡几分连卡佛尽快了解分厘卡拉夫林卡吗</p>
+		</div>
+	</div>
+</body>
+<script>
+	var oFather = document.getElementById('father');
+	var oSon = document.getElementById('son');
+	var oBox = document.getElementById('conp');
+	var iWidth = oBox.offsetWidth
+	var iHeight = oBox.offsetHeight
+
+	oSon.onmousedown = function(ev){
+		var disX = ev.clientX - oSon.offsetLeft;
+		var disY = ev.clientY - oSon.offsetTop;
+		var l = 0;
+		var t = 0;
+		document.onmousemove = function(ev){
+
+			t = ev.clientY - disY;
+			if(t < 0){
+				t = 0;
+			}else if(t > oFather.clientHeight - oSon.clientHeight){
+				t = oFather.clientHeight - oSon.clientHeight; 
+			}
+			oSon.style.top = t + "px";
+
+			var icc = t/(oFather.clientHeight - oSon.clientHeight)
+
+			oBox.style.top = - icc*(iHeight-400) + "px"
+			console.log(oBox.style.top)
+		}
+		document.onmouseup = function(){
+			document.onmousemove = null;
+			document.onmouseup = null;
+		}
+	}
+</script>
+</html>
