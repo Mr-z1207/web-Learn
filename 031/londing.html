@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.londing{
+			position: relative;
+			width: 3px;
+			height: 20px;
+			background-color: #55f;
+			margin: 0px auto;
+			transform: scale(1,0.3);
+			animation: sport 1s linear alternate infinite;
+		}
+		.londing:before,.londing:after{
+			position: absolute;
+			top: 0px;
+			left: 0px;
+			width: 3px;
+			height: 20px;
+			background-color: #f55;
+			content: "";
+		}
+		.londing:before{
+			margin-left: -10px;
+			animation: sport 1s  linear alternate infinite;
+		}
+		.londing:after{
+			margin-left: 10px;
+			animation: sport 1s  linear alternate infinite;
+		}
+		@keyframes sport{
+			from{
+				transform: scale(1,0.3);
+			}
+			to{
+				transform: scale(1,1);
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="londing"></div>
+</body>
+</html>

@@ -18,7 +18,6 @@
 			<option value="hd">邯郸</option>
 		</select>
 	</form>
-	<button id="btn"></button>
 </body>
 <script>
 	var oForm = document.forms[0]
@@ -33,7 +32,8 @@
 			shi.options[0].innerHTML = "许昌"
 			shi.options[1].innerHTML = "信阳"
 			shi.options[2].innerHTML = "开封"
-		} else if(sheng.options[0].selected){
+		}
+		if(sheng.options[0].selected){
 			shi.options[0].value = "cz"
 			shi.options[1].value = "xt"
 			shi.options[2].value = "hd"

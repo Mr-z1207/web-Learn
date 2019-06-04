@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>166-键盘移动物体.html</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#fat{
+			position: relative;
+			width: 800px;
+			height: 800px;
+			border: 1px solid #000;
+			margin: 50px auto;
+		}
+		.oHeadBox,#box{
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100px;
+			height: 100px;
+			background: blue;
+		}
+		.newbox{
+			position: absolute;
+			width: 100px;
+			height: 100px;
+			background: red;
+		}
+	</style>
+</head>
+<body>
+	<div id ="fat">
+		<div id="box"></div>
+	</div>
+</body>
+<script>
+	//生成随机数
+	function getRandom(min,max){
+		return Math.round(min+(max-min)*Math.random());
+	}
+	//碰撞检测
+	function checkBump(obj1,obj2){
+		if(obj1.offsetWidth + obj1.offsetLeft > obj2.offsetLeft 
+				&& obj1.offsetHeight + obj1.offsetTop > obj2.offsetTop 
+				&& obj2.offsetWidth + obj2.offsetLeft > obj1.offsetLeft
+				&& obj2.offsetHeight + obj2.offsetTop > obj1.offsetTop
+				){
+				return true;
+		}else{
+			return false;
+		}
+	}
+
+
+	//获取元素
+	var oBox = document.getElementById('box');
+	var oFat = document.getElementById('fat');
+	var oNewBox
+
+	var sl = 0
+	var st = 0
+	var timer = null
+	var index = 0
+
+	//改变方向
+	document.onkeydown = function(ev) {
+		if (ev.keyCode == 37) {
+			sl = -100
+			st = 0
+		}
+		if (ev.keyCode == 38) {
+			sl = 0
+			st = -100
+		}
+		if (ev.keyCode == 39) {
+			sl = 100
+			st = 0
+		}
+		if (ev.keyCode == 40) {
+			sl = 0
+			st = 100
+		}
+	}
+	function sport() {
+		var oHeadBox = document.createElement('div')
+		oHeadBox.className = 'oHeadBox'
+//88888888888888888888888888888888888888888888888888888写到这里了
+		oFat.appendChild(oHeadBox)
+	}
+
+	// 生成随机块
+	addbox()
+	function addbox() {
+		oNewBox = document.createElement('div')
+		oNewBox.className = 'newbox'
+
+		var isTop = getRandom(1,7) * 100
+		var isLeft = getRandom(1,7) * 100
+
+		oNewBox.style.top = isTop + 'px'
+		oNewBox.style.left = isLeft + 'px'
+
+		oFat.appendChild(oNewBox)
+	}
+
+	//定时移动
+	timer = setInterval(function() {
+		sport()
+
+		//超出边界
+		if (oBox.offsetLeft < 0 || oBox.offsetLeft > 700 || oBox.offsetTop < 0 || oBox.offsetTop > 700) {
+			clearInterval(timer)
+		}
+
+		//碰撞
+		if (checkBump(oBox,oNewBox)) {
+			oFat.removeChild(oNewBox)
+			addbox()
+		}
+	},500)
+
+</script>
+</html>
