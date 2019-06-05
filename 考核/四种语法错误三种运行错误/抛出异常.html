@@ -11,17 +11,18 @@
 	var a = 1;
 
 	function sum(num) {
+		var result = 0;
 		try{
 			if(isNaN(parseInt(num))){
 				throw new Error('is not number');
+				return result
 			}
 			var result = a + num
-			return result
 		}catch(err){
 			console.log(err)
 		}finally{
 			console.log("is a finally")
-		}
+		}	
 	}
 	console.log(sum("b"))
 </script>
