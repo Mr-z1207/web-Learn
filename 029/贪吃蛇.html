@@ -15,13 +15,18 @@
 			border: 1px solid #000;
 			margin: 50px auto;
 		}
-		.oHeadBox,#box{
+		.oHeadBox{
 			position: absolute;
 			top: 0;
 			left: 0;
 			width: 100px;
 			height: 100px;
-			background: blue;
+			background: #5f5;
+			box-shadow: 2px 2px 10px #000;
+			border-radius: 50%;
+		}
+		.middleBox{
+			background: #f5f;
 		}
 		.newbox{
 			position: absolute;
@@ -33,7 +38,7 @@
 </head>
 <body>
 	<div id ="fat">
-		<div id="box"></div>
+		
 	</div>
 </body>
 <script>
@@ -53,17 +58,32 @@
 			return false;
 		}
 	}
+	function dead() {
+		clearInterval(timer)
+		alert("your dead")
+	}
 
 
 	//获取元素
-	var oBox = document.getElementById('box');
 	var oFat = document.getElementById('fat');
-	var oNewBox
+	var oHeadBox
+	var oNewBox;
+	var aBox = []
 
 	var sl = 0
 	var st = 0
 	var timer = null
 	var index = 0
+
+	//初始化页面
+	init()
+	function init() {
+		oHeadBox = document.createElement('div')
+		oHeadBox.className = 'oHeadBox'
+		aBox.unshift(oHeadBox)
+		oFat.appendChild(oHeadBox)
+	}
+
 
 	//改变方向
 	document.onkeydown = function(ev) {
@@ -85,10 +105,15 @@
 		}
 	}
 	function sport() {
-		var oHeadBox = document.createElement('div')
+		oHeadBox = document.createElement('div')
 		oHeadBox.className = 'oHeadBox'
-//88888888888888888888888888888888888888888888888888888写到这里了
+		oHeadBox.style.left = aBox[0].offsetLeft + sl + 'px'
+		oHeadBox.style.top = aBox[0].offsetTop + st + 'px'
 		oFat.appendChild(oHeadBox)
+		aBox.unshift(oHeadBox)
+		var arr = document.querySelectorAll('.oHeadBox')
+		aBox.pop()
+		oFat.removeChild(arr[0])
 	}
 
 	// 生成随机块
@@ -104,23 +129,40 @@
 		oNewBox.style.left = isLeft + 'px'
 
 		oFat.appendChild(oNewBox)
+
+		for(var i = 0; i < aBox.length; i++){
+			if (checkBump(oNewBox,aBox[i])){
+				oFat.removeChild(oNewBox)
+				addbox()
+			}
+		}
 	}
 
 	//定时移动
-	timer = setInterval(function() {
-		sport()
+			timer = setInterval(function() {
+				sport()
+				//超出边界
+				if (oHeadBox.offsetLeft < 0 || oHeadBox.offsetLeft > 700 || oHeadBox.offsetTop < 0 || oHeadBox.offsetTop > 700) {
+					dead()
+				}
+				for(var i = 1; i < aBox.length; i++){
+					if (checkBump(oHeadBox,aBox[i])){
+						dead()
+					}
+				}
 
-		//超出边界
-		if (oBox.offsetLeft < 0 || oBox.offsetLeft > 700 || oBox.offsetTop < 0 || oBox.offsetTop > 700) {
-			clearInterval(timer)
-		}
-
-		//碰撞
-		if (checkBump(oBox,oNewBox)) {
-			oFat.removeChild(oNewBox)
-			addbox()
-		}
-	},500)
+				//碰撞
+				if (checkBump(oHeadBox,oNewBox)) {
+					oFat.removeChild(oNewBox)
+					addbox()
+					var middleBox = document.createElement('div')
+					middleBox.className = 'oHeadBox middleBox'
+					middleBox.style.left = aBox[aBox.length-1].offsetLeft + 'px'
+					middleBox.style.top = aBox[aBox.length-1].offsetTop + 'px'
+					aBox.push(middleBox)
+					oFat.insertBefore(middleBox,oFat.firstElementChild)
+				}
+			},150)
 
 </script>
 </html>
