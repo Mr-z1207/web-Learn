@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+
+
+
+<body>
+	
+</body>
+<script>
+	function Person(name,age) {
+		this.name = name
+		this.age = age
+	}
+
+
+	// Person.prototype.showName = function() {
+	// 	console.log("我叫" + this.name)
+	// }
+
+	// console.log("Person.prototype:::",Person.prototype)
+	// console.log("Person.prototype.constructor:::",Person.prototype.constructor)
+	// console.log("Person.prototype.__proto__:::",Person.prototype.__proto__)
+
+	var per1 = new Person('tom',18)
+	// var per2 = new Person('leo',28)
+
+	// console.log(per1)
+	// console.log(per2)
+
+
+	// console.log("Object.prototype:::",Object.prototype)
+	// console.log('Object.prototype.__proto__::::',Object.prototype.__proto__)
+
+	// // delete Person.prototype.__proto__.toString
+
+	// console.log(per1.toString())
+
+
+	// console.log(per1.hasOwnProperty('name'))
+	// console.log(per1.hasOwnProperty('showName'))
+	// console.log('showName' in per1)
+
+	// console.log(!per1.hasOwnProperty('name') && 'name' in per1)
+	// console.log(!per1.hasOwnProperty('showName') && 'showName' in per1)
+
+
+	//静态添加属性
+	Object.defineProperty(per1,'sex',{
+		value : 'meal',
+		//默认不可被 枚举、修改、删除
+		enumerable : true,       //是否可以枚举 , 默认为falseenumerable:true,//是否可以枚举,默认是false
+		writable : true,         //是否可写(赋值) , 默认为falsewritable:true,//是否可写(赋值),默认是false
+		configurable : false,     //是否可删除 , 默认为falseconfigurable:true//是否可删除,
+	})
+
+
+	console.log(delete per1.sex) //删不掉，返回值false
+	per1.sex = 'femeal'
+	console.log(per1)
+
+
+	for(attr in per1){
+		console.log(attr,per1[attr])
+	}
+</script>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+
+
+
+
+
+<body>
+	
+</body>
+<script>
+	function Person(name,age) {
+		this.name = name
+		this.age = age
+	}
+
+
+	var per1 = new Person('tom',18)
+
+
+	//静态添加属性
+	Object.defineProperty(per1,'sex',{
+		value : 'meal',
+		//默认不可被 枚举、修改、删除
+		enumerable : true,       //是否可以枚举 , 默认为falseenumerable:true,//是否可以枚举,默认是false
+		writable : true,         //是否可写(赋值) , 默认为falsewritable:true,//是否可写(赋值),默认是false
+		configurable : false,     //是否可删除 , 默认为falseconfigurable:true//是否可删除,
+	})
+
+
+	console.log(delete per1.sex) //删不掉，返回值false
+	per1.sex = 'femeal'
+	console.log(per1)
+
+
+	for(attr in per1){
+		console.log(attr,per1[attr])
+	}
+
+
+	//添加多个属性
+	Object.defineProperties(per1,{
+		EYES : {
+			value : 2,
+			enumerable : true,
+			writable : true,
+			configurable : true,
+		},
+		LEGS : {
+			value : 2,
+			enumerable : true,
+			writable : true,
+			configurable : true,
+		},
+		HEAD : {
+			value : 1,
+			enumerable : true,
+			writable : true,
+			configurable : true,
+		}
+	})
+
+	console.log(Object.getOwnPropertyDescriptor(per1,'HEAD'))
+</script>
+</html>
