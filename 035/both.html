@@ -27,6 +27,10 @@
 			oAjax.open(method,url,true)
 
 			oAjax.send()
+		}else{
+			oAjax.open(method,url,true)
+
+			oAjax.send('ok')
 		}
 
 		oAjax.onreadystatechange = function() {
@@ -42,8 +46,8 @@
 	}
 
 	oBtn1.onclick = function() {
-		ajax('GET',
-			'http://127.0.0.1:3300/data.js',
+		ajax('PUT',
+			'http://127.0.0.1:3300',
 			'',
 			function(data) {
 					console.log("Obj:::",data);
