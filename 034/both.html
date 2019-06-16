@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn1">请求数据</button>
+	<!-- <button id="btn2">请求数据GET</button> -->
+</body>
+<script>
+	var oBtn1 = document.getElementById('btn1')
+	// var oBtn2 = document.getElementById('btn2')
+
+
+	function ajax(method,url,data,fnok,fnerr) {
+		var oAjax = new XMLHttpRequest();
+
+		if (method == 'POST') {
+			oAjax.open(method,url,true)
+
+			oAjax.send(data)
+		}else if(method == 'GET'){
+			var url = url + '/?' + data
+			oAjax.open(method,url,true)
+
+			oAjax.send()
+		}
+
+		oAjax.onreadystatechange = function() {
+			if (oAjax.readyState == 4) {
+				if (oAjax.status == 200) {
+					var strToObj  =  JSON.parse(oAjax.responseText);
+					typeof fnok == 'function' && fnok(strToObj)
+				}else{
+					typeof fnerr == 'function' && fnerr()
+				}
+			}
+		}
+	}
+
+	oBtn1.onclick = function() {
+		ajax('POST',
+			'http://127.0.0.1:3000',
+			'{"name":"leo","age":20}',
+			function(data) {
+					console.log("Obj:::",data);
+			})
+	}
+</script>
+</html>

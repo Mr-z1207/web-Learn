@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [54,32,11,67,25,45,98]
+	console.log(arr)
+	var result = arr.forEach(function(value,index) {
+		console.log("forEach:::","value,index",value,index)
+	})
+	console.log("forEach result:::",result)
+
+	var result = arr.map(function(value,index) {
+		console.log("map:::","value,index",value,index)
+		return value + 10
+	})
+	console.log("map result:::",result)
+
+	var result = arr.filter(function(value,index) {
+		console.log("filter:::","value,index",value,index)
+		return value > 30
+	})
+	console.log("filter result:::",result)
+
+	var result = arr.every(function(value,index) {
+		console.log("every:::","value,index",value,index)
+		return value > 30
+	})
+	console.log("every result:::",result)
+
+	var result = arr.some(function(value,index) {
+		console.log("some:::","value,index",value,index)
+		return value > 30
+	})
+	console.log("some result:::",result)
+</script>
+</html>

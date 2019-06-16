@@ -46,7 +46,7 @@ function getScrollLeft(){
 }
 
 //综合动画完善
-function animate(obj,options,isLinear,fnEnd){
+function animate(obj,options,speed,isLinear,fnEnd){
 	//默认情况下做匀速动画
 	if(isLinear == undefined){
 		isLinear = true;
@@ -71,9 +71,9 @@ function animate(obj,options,isLinear,fnEnd){
 			if(isLinear){//匀速动画
 				// 匀速动画取值
 				if(currentVal < options[attr]){
-					iSpeed = 10;
+					iSpeed = speed;
 				}else{
-					iSpeed = -10;
+					iSpeed = -speed;
 				}
 				// 动画的终止条件
 				if(Math.abs(options[attr] - currentVal) < Math.abs(iSpeed)){

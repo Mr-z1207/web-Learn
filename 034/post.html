@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn1">请求数据POST</button>
+	<button id="btn2">请求数据GET</button>
+</body>
+<script>
+	var oBtn1 = document.getElementById('btn1')
+	var oBtn2 = document.getElementById('btn2')
+
+
+	oBtn1.onclick = function() {
+		var oAjax = new XMLHttpRequest();
+
+		oAjax.open('POST','http://127.0.0.1:3000',true)
+
+		oAjax.send('{"name":"leo","age":20}')
+
+		oAjax.onreadystatechange = function() {
+			if (oAjax.readyState == 4) {
+				if (oAjax.status == 200) {
+					console.log("JSON:::",oAjax.responseText)
+					var strToObj  =  JSON.parse(oAjax.responseText);
+					console.log("Obj:::",strToObj);
+				}
+			}
+		}
+	}
+
+	oBtn2.onclick = function() {
+		var oAjax = new XMLHttpRequest();
+
+		oAjax.open('GET','http://127.0.0.1:3000/?name=tom&age=18',true)
+		// oAjax.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+		oAjax.send()
+
+		oAjax.onreadystatechange = function() {
+			if (oAjax.readyState == 4) {
+				if (oAjax.status == 200) {
+					console.log("JSON:::",oAjax.responseText)
+					var strToObj  =  JSON.parse(oAjax.responseText);
+					console.log("Obj:::",strToObj);
+				}
+			}
+		}
+	}
+</script>
+</html>

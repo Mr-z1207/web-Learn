@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function person(name,age) {
+		this.name  = name
+		this.age = age
+	}
+	person.prototype.showName = function() {
+		console.log(this.name)
+	}
+	Object.defineProperty(person.prototype,'showAge',{
+		value : function() {
+			console.log(this.age)
+		},
+		enumerable : false,  // 不可被枚举
+	})
+
+	function student(name,age,major) {
+		// this.name = name
+		// this.age = age
+
+		//调用person的函数,但是要改变person的this为student的this
+		person.call(this,name,age)
+		this.major = major
+	}
+
+	// student.prototype.showName = function() {
+	// 	console.log(this.name)
+	// }
+
+	//继承方法
+	for(var attr in person.prototype){   // 遍历父类的每一个属性
+		student.prototype[attr] = person.prototype[attr]  // 复制属性
+	}
+	//缺点：如果父类不可枚举，则不可被遍历，无法复制
+
+	var s1 = new student('tom',18,'lala')
+
+	console.log(s1)
+	s1.showName()
+	s1.showAge()  //报错  :::22行
+</script>
+</html>
