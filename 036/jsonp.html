@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<ul id="list"></ul>
+</body>
+<script>
+	var oTxt = document.getElementById('txt')
+	var oUl = document.getElementById('list')
+
+	function Handolll(data) {
+		oUl.innerHTML = ''
+		for (var i = 0; i < data.result.length; i++) {
+			var oLi = document.createElement("li")
+			oLi.innerHTML = data.result[i][0]
+
+			oUl.appendChild(oLi)
+		}
+	}
+
+	oTxt.oninput = function() {
+		var sVal = oTxt.value
+		var script = document.createElement("script")
+		script.src = 'https://suggest.taobao.com/sug?code=utf-8&q='+sVal+'&_ksTS=1560769810483_508&callback=Handolll&k=1&area=c2c&bucketid=10'
+		document.body.appendChild(script)
+	}
+</script>
+</html>

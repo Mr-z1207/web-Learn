@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			margin: 5px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<div id="box"></div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	var oBox = document.getElementById('box')
+
+	// DOM ==> jQuery
+	console.log($(oBox))
+
+	// jQuery ==> DOM
+	console.log($(oBox)[0]) //通过下标
+	console.log($(oBox).get(0)) //通过下标
+</script>
+</html>
