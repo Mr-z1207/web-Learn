@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		.box{
+			width: 100px;
+			height: 100px;
+			background-color: #f38;
+			opacity: 0.1
+		}
+	</style>
+</head>
+<body>
+	<div class="box"></div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('div').delay(1000).animate({width:300},1000);
+		$('div').animate({height:300},1000);
+		$('div').animate({opacity:1},1000)
+		$('div').on('click',function() {
+			$('div').stop()
+		})
+	})
+</script>
+</html>

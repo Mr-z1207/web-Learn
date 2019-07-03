@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div class='div4' data-name = 'tom'></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		console.log($('div').index($('div')[2]))
+		console.log($('.div4').data('name'))
+	})
+</script>
+</html>

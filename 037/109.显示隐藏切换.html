@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 200px;
+			height: 200px;
+			float: left;
+			background-color: #5f5;
+		}
+	</style>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('div').hide(3000,function() {
+			$('div').eq(0).slideDown(1000,function() {
+				$('div').eq(1).slideDown(1000,function() {
+					$('div').eq(2).slideDown(1000,function() {
+						$('div').eq(3).slideDown(1000,function() {
+							$('div').eq(4).slideDown(1000,function() {
+								$('div').eq(0).fadeOut(1000)
+								$('div').eq(2).fadeOut(1000)
+								$('div').eq(4).fadeOut(1000,function() {
+									$('div').slideToggle(1000,function() {
+										console.log(1)
+										$('div').slideToggle(1000,function() {
+											console.log(2)
+											$('div').slideToggle(1000,function() {
+												console.log(3)
+												$('div').fadeIn(1000,function() {
+													$('div').slideUp(1000)
+												})
+											})
+										})
+									})
+								})
+							})
+						})
+					})
+				})
+			})
+		})
+	})
+</script>
+</html>

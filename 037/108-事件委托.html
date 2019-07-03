@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		li{
+			list-style: none;
+			width: 100px;
+			height: 100px;
+			background: #5f5;
+			margin-top: 10px;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn"></button>
+	<ul id="list">
+		<li>li1</li>
+		<li>li2</li>
+		<li>li3</li>
+	</ul>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('#list').on('click','li',function() {
+			alert($(this).html())
+		})
+
+		$('#btn').on('click',function() {
+			
+		})
+	})
+</script>
+</html>

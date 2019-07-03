@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 100px;
+			height: 100px;
+			border: 1px solid #000;
+		}
+	</style>
+</head>
+<body>
+	<button id="btn">克隆</button>
+	<div>div</div>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('#btn').on('click',function() {
+			$('body').append($('div').clone())
+		})
+	})
+</script>
+</html>

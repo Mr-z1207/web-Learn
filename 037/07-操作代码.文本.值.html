@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<input type="text" id="txt">
+	<button id="btn">发布</button>
+	<ul id="list"></ul>
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('#btn').click(function() {
+			var $li = $('<li></li>').html($('#txt').val())
+			$('#list').prepend($li)
+			$('#txt').val('')
+			$('#txt').
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button>请求数据</button>
+</body>
+<script src="http://127.0.0.1:3001/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		$('button').on('click',function() {
+			$.ajax({
+				url : "http://127.0.0.1:3000",
+				dataType:"jsonp",
+				success:function(data,statusMsg,jqXHR){
+					console.log(data);
+					console.log(statusMsg)
+					console.log(jqXHR)
+				}
+			})
+		})
+	})
+</script>
+</html>
