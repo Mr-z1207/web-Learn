@@ -1,0 +1,52 @@
+/*共通宽度*/
+.container{
+	width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/*浮动相关*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
+/*共同样式开始*/
+
+/*基本字体大小*/
+body{
+	font-size: 14px;
+}
+/*a连接*/
+a{
+	text-decoration: none;
+	color: #3c434a;
+}
+a.link:hover{
+	color: #ea675a
+}
+/*下拉层共同样式*/
+.dropdown{
+	position: relative;
+}
+.dropdown-lyap{
+	position: absolute;
+	display: none;
+}
+.dropdown-left{
+	left: 0;
+}
+.dropdown-right{
+	right: 0;
+}
+/*共同样式结束
