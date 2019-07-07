@@ -1,29 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>Document</title>
-	<style>
-		div{
-			width: 400px;
-			height: 200px;
-			background-color: #f00;
-		}
-	</style>
-</head>
-<body>
-	<button>1</button>
-	<button>2</button>
-	<div></div>
-</body>
-<script src="js/jquery-1.12.4.js"></script>
-<script>
+(function($) {
 	var js = {
 		showner : {
 			init : function($elem) {
 				init($elem)
 			},
 			show : function($elem) {
+				console.log($elem)
 				show($elem,function() {
 					$elem.show()
 					$elem.trigger('shown').data('sta','shown')
@@ -36,15 +18,26 @@
 				})
 			}
 		},
-		sport : {
+		fade : {
 			init : function($elem) {
 				js._init($elem)
 			},
-			show : function($elem,mod) {
-				js._show($elem,mod)
+			show : function($elem) {
+				js._show($elem,'fadeIn')
 			},
-			hide : function($elem,mod) {
-				js._hide($elem,mod)
+			hide : function($elem) {
+				js._hide($elem,'fadeOut')
+			}
+		},
+		slide : {
+			init : function($elem) {
+				js._init($elem)
+			},
+			show : function($elem) {
+				js._show($elem,'slideDown')
+			},
+			hide : function($elem) {
+				js._hide($elem,'slideUp')
 			}
 		},
 		slideRow : {
@@ -70,7 +63,7 @@
 				})
 			}
 		},
-		feadslideRow : {
+		fadeslideRow : {
 			init : function($elem) {
 				js._rowInit($elem,{
 					width:0,
@@ -165,22 +158,37 @@
 			})
 		})
 	}
-	//******************************************************
-</script>
-<script>
-	$(function() {
-		$('div').on('show shown hide hidden',function(ev) {
-			console.log(ev.type)
-		})
 
 
-		js.feadslideRow.init($('div'))
-		$('button').eq(0).on('click',function() {
-			js.feadslideRow.show($('div'),"slideDown")
-		})
-		$('button').eq(1).on('click',function() {
-			js.feadslideRow.hide($('div'),"fadeOut")
-		})
+	//********************************************************
+	//获取显示隐藏动画的方法
+	function getShowHide($elem,mode){
+		//初始化
+		js[mode].init($elem);
+
+		//返回对应的显示隐藏方法
+		return {
+			show:js[mode].show,
+			hide:js[mode].hide
+		}
+	}
+
+	//封装showHide插件
+	$.fn.extend({
+		showHide:function(mode){
+			//遍历元素,实现隐式迭代
+			return this.each(function(){//实现单例模式
+				var $elem = $(this);
+				var showHideObj = $elem.data('showHideObj');
+				if(!showHideObj){
+					showHideObj = getShowHide($elem,mode);
+					$elem.data('showHideObj',showHideObj);
+				}
+				//第二次进入该函数则是调用显示隐藏的动画方法
+				if(typeof showHideObj[mode] == 'function'){
+					showHideObj[mode]($elem)
+				}
+			})
+		}
 	})
-</script>
-</html>
+})(jQuery)

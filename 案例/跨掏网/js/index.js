@@ -1,8 +1,14 @@
 $(function() {
+	var timer = null
 	$(".dropdown").hover(function() {
-		$(this).addClass($(this).data('active')+"-active")
-		// $('.dropdown-lyap').slideDown(500) 
+		$(this).find('.dropdown-lyap').showHide('slide')
+		 timer = setTimeout(function() {
+		 	$(this).find('i').addClass($(this).data('active')+'-active')
+		 	$(this).find('.dropdown-lyap').showHide('show')
+		 }.bind(this),400)
 	},function() {
-		$(this).removeClass($(this).data('active')+"-active")
+		clearTimeout(timer)
+		$(this).find('i').removeClass($(this).data('active')+'-active')
+		$(this).find('.dropdown-lyap').showHide('hide')
 	})
 })

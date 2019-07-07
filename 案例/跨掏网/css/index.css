@@ -37,14 +37,8 @@
 	line-height: 40px;
 	white-space: nowrap;
 }
-.dropdown-a i{
-	transition: all 500ms;
-}
-.mune-active .dropdown-a i{
+.mune-active{
 	transform: rotateZ(180deg);
-}
-.mune-active .dropdown-lyap{
-	display: block;
 }
 /* 顶部结束 */
 

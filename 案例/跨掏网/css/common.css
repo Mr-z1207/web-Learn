@@ -35,6 +35,10 @@ a{
 a.link:hover{
 	color: #ea675a
 }
+/*过度*/
+.transition{
+	transition: all 500ms;
+}
 /*下拉层共同样式*/
 .dropdown{
 	position: relative;
