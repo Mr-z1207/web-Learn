@@ -44,8 +44,19 @@
 
 /* 头部开始 */
 .header{
-	height: 150px;
-	background-color: #f55;
+	height: 100px;
+	background-color: #fff;
+}
+.logo{
+	display: block;
+	width: 248px;
+	height: 70px;
+	margin-top: 15px;
+	background-image: url(../images/header-logo.png);
+}
+.inputer{
+	margin-top: 15px;
+	margin-left: 300px;
 }
 /* 头部结束 */
 

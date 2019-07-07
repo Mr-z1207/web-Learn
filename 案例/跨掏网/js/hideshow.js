@@ -163,6 +163,9 @@
 	//********************************************************
 	//获取显示隐藏动画的方法
 	function getShowHide($elem,mode){
+		if (!mode) {
+			mode = 'fade'
+		}
 		//初始化
 		js[mode].init($elem);
 
