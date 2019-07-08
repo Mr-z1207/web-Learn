@@ -19,14 +19,15 @@
 				<li class="fl"><a href="javascript:;" class="link">手机逛跨淘</a></li>
 			</ul>
 			<ul class="top-right fr">
-				<li class="dropdown fl" data-active="mune">
+				<li class="dropdown fl" data-active="mune" data-load="js/data/Top/mykuatao.json">
 					<a href="javascript:;" class="dropdown-a link">
 						我的跨淘
 						<i class="fas fa-angle-down transition"></i>
 					</a>
 					<ul class="dropdown-lyap dropdown-left">
-						<li><a href="javascript:;">已加入的宝贝</a></li>
-						<li><a href="javascript:;">我的足迹</a></li>
+						<!-- <li><a href="javascript:;">已加入的宝贝</a></li>
+						<li><a href="javascript:;">我的足迹</a></li> -->
+						<div class="dropdown-loading"></div>
 					</ul>
 				</li>
 				<li class="dropdown fl" data-active="mune">
@@ -78,18 +79,18 @@
 	<div class="header">
 		<div class="container">
 			<h1><a href="javascript:;" class="logo fl"></a></h1>
-			<div class="inputer fl clearfix">
-				<form action="">
-						<input type="text">
-						<button id="sub"></button>
+			<div class="search fl clearfix">
+				<form action="https://s.taobao.com/search" class="search-form clearfix">
+						<input type="text" class="search-input fl">
+						<button class="search-btn fl">查询搜索</button>
 					
 				</form>
-				<ul>
-					<li>保温杯</li>
-					<li>保温杯</li>
-					<li>保温杯</li>
-					<li>保温杯</li>
-					<li>保温杯</li>
+				<ul class="search-layer">
+					<!-- <li class="search-cont">保温杯</li>
+					<li class="search-cont">保温杯</li>
+					<li class="search-cont">保温杯</li>
+					<li class="search-cont">保温杯</li>
+					<li class="search-cont">保温杯</li> -->
 				</ul>
 			</div>
 		</div>
@@ -142,4 +143,5 @@
 <script src="js/hideshow.js"></script>
 <script src="js/dropdown.js"></script>
 <script src="js/index.js"></script>
+<script src="js/search.js"></script>
 </html>

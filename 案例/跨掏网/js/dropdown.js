@@ -11,7 +11,7 @@ Dropdown.prototype = {
 		//初始化
 		this.$lyap.showHide(this.options.mode)
 		//监听事件
-		this.$layer.on('show shown hide hidden',function(ev){
+		this.$lyap.on('show shown hide hidden',function(ev){
 			this.$elem.trigger('dropdown-' + ev.type)
 		}.bind(this))
 		//绑定事件
@@ -52,8 +52,14 @@ $.fn.extend({
 		//1.实现隐式迭代
 		this.each(function(){
 			var $elem = $(this);
-			options = $.extend({},Dropdown.DEFAULTS,options);
-			dropdown = new Dropdown($elem,options);
+			if (!$elem.data('dropdown')) {
+				options = $.extend({},Dropdown.DEFAULTS,options);
+				dropdown = new Dropdown($elem,options);
+				$elem.data('dropdown',true)
+			}
+			if (typeof dropdown[options] == 'function') {
+				dropdown[options]()
+			}
 		})
 	}
 })
