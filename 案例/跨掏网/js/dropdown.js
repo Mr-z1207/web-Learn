@@ -2,16 +2,16 @@
 
 function Dropdown($elem,options){
 	this.$elem = $elem
-	this.$lyap = $elem.find('.dropdown-lyap')
+	this.$layer = $elem.find('.dropdown-layer')
 	this.options = options
 	this.init()
 }
 Dropdown.prototype = {
 	init:function() {
 		//初始化
-		this.$lyap.showHide(this.options.mode)
+		this.$layer.showHide(this.options.mode)
 		//监听事件
-		this.$lyap.on('show shown hide hidden',function(ev){
+		this.$layer.on('show shown hide hidden',function(ev){
 			this.$elem.trigger('dropdown-' + ev.type)
 		}.bind(this))
 		//绑定事件
@@ -32,10 +32,21 @@ Dropdown.prototype = {
 		}
 	},
 	show:function() {
-		this.$lyap.showHide('show')
+		if(this.options.delay){
+			this.timer = setTimeout(function(){
+				this.$layer.showHide('show');
+				//显示时添加对应class
+				this.$elem.addClass(this.activeClass);
+			}.bind(this),this.options.delay)
+		}else{
+			this.$layer.showHide('show');
+			//显示时添加对应class
+			this.$elem.addClass(this.activeClass);
+		}
 	},
 	hide:function() {
-		this.$lyap.showHide('hide')
+		clearTimeout(this.timer);
+		this.$layer.showHide('hide')
 	}
 }
 

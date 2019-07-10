@@ -65,6 +65,7 @@
 		},
 		fadeslideRow : {
 			init : function($elem) {
+				console.log($elem)
 				js._rowInit($elem,{
 					width:0,
 					paddingLeft:0,
@@ -140,11 +141,12 @@
 			styles[key] = $elem.css(key)
 		}
 		$elem.data('styles',styles)
-		js._init($elem,function(options){
+		js._init($elem,function(){
 			$elem.css(options)
 		})
 	}
 	js._rowShow = function($elem) {
+		$elem.show()
 		show($elem,function(){
 			$elem.animate($elem.data('styles'),function() {
 				$elem.trigger('shown').data('sta','shown')

@@ -43,7 +43,7 @@ a.link:hover{
 .dropdown{
 	position: relative;
 }
-.dropdown-lyap{
+.dropdown-layer{
 	position: absolute;
 	display: none;
 }
