@@ -1,0 +1,109 @@
+(function($) {
+	function Carousel($elem,options) {
+		this.$elem = $elem
+		this.options = options
+		this.$courselItems = this.$elem.find('.carousel-item');
+		this.$courselBtns = this.$elem.find('.btn-item');
+		this.$courselControls = this.$elem.find('.control');
+
+		this.now = this._getCorrectIndex(this.options.activeIndex)
+
+		//2.初始化
+		this.init();
+	}
+	Carousel.prototype = {
+		init:function() {
+			if(this.options.slide){//划入划出
+				//1.移走所有图片,显示默认图片
+				this.$elem.addClass('slide')
+				this.$courselItems.eq(this.now).css({left:0});
+				//记录当前容器的宽度
+				this.itemWidth = this.$courselItems.eq(this.now).width()
+				//2.底部按钮默认选中
+				//3.监听鼠标移入移除显示隐藏左右按钮事件
+				//初始化移动插件
+				//4.(事件代理)监听点击左右划入划出图片事件
+				//5.是否自动轮播//6.鼠标移入容器停止轮播移出开始轮播
+				//7.监听底部按钮事件//获取当前索引值
+			}else{//淡入淡出
+				this.$elem.addClass('fade')
+				this.$courselItems.eq(this.now).show()
+				this.$courselBtns.eq(this.now).addClass('active')
+				this.$elem.hover(function() {
+					this.$courselControls.show()
+				}.bind(this),function() {
+					this.$courselControls.hide()
+				}.bind(this))
+				//初始化显示隐藏插件
+				this.$courselItems.showHide('fade')
+				//事件代理
+				this.$elem.on('click','.control-left',function() {
+					this._fade(this._getCorrectIndex(this.now-1))
+				}.bind(this))
+				this.$elem.on('click','.control-right',function() {
+					this._fade(this._getCorrectIndex(this.now+1))
+				}.bind(this))
+				//点击底部按钮
+				var _this = this
+				this.$courselBtns.on('click',function(){
+					var index = _this.$courselBtns.index(this)
+					_this._fade(index)
+				})
+				//自动轮播
+				if(this.options.autoplay){
+					this.autoplay();
+					//6.鼠标移入容器停止轮播移出开始轮播
+					this.$elem.hover($.proxy(this.paused,this),$.proxy(this.autoplay,this))
+				}
+			}
+		},
+		_getCorrectIndex:function(num){
+			if(num >= this.$courselItems.length) return 0;
+			if(num <0) return this.$courselItems.length -1;
+			return num;
+		},
+		_fade:function(index) {
+			if(index == this.now) return;
+			this.$courselItems.eq(this.now).showHide('hide')
+			this.$courselItems.eq(index).showHide('show')
+			this.$courselBtns.eq(this.now).removeClass('active')
+			this.$courselBtns.eq(index).addClass('active')
+			this.now = index
+		},
+		autoplay:function(){
+			clearInterval(this.timer);
+			this.timer = setInterval(function(){
+				this._fade(this._getCorrectIndex(this.now+1))
+			}.bind(this),this.options.autoplay)
+		},
+		paused:function(){
+			clearInterval(this.timer);
+		}
+	}
+
+
+	Carousel.DEFAULTS = {
+		slide:false,
+		activeIndex:0,
+		js:true,
+		mode:'fade',
+		autoplay:1000
+	}
+
+	$.fn.extend({
+		carousel:function(options) {
+			this.each(function() {
+				var $elem = $(this)
+				var carousel = $elem.data('carousel')
+				if (!carousel) {
+					options = $.extend({},Carousel.DEFAULTS,options);
+					carousel = new Carousel($elem,options)
+					$elem.data('carousel',carousel)
+				}
+				if (typeof carousel[options] == 'function') {
+					carousel[options]()
+				}
+			})
+		}
+	})
+})(jQuery)
