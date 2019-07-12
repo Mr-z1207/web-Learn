@@ -1,5 +1,6 @@
 $(function() {
 	//**************************************************************************************************
+	//1、只加载一次
 	function loadHtmlOnce($elem,callback){
 		var url = $elem.data('load');
 		//如果没有地址则无需加载数据
@@ -10,6 +11,45 @@ $(function() {
 				typeof callback == 'function' && callback($elem,data);
 			})
 		}
+	}
+	//2.加载图片
+	function loadImage(imgUrl,success,error){
+		var image = new Image();
+		image.onload = function(){
+			typeof success == 'function' && success(imgUrl);
+		}
+		image.onerror = function(){
+			typeof error == 'function' && error();
+		}
+		image.src = imgUrl;
+	}
+	//3、图片懒加载
+	function imgLazyLoad($elem) {
+		var item = {};//0:loaded 1:loaded
+		var totalNum = $coursel.find('.carousel-img').length - 1;
+		var totalLoadedNum = 0;
+		var loadFn = null;
+		$elem.on('coursel-show',loadFn = function(ev,index,elem){
+			if (!item[index]) {
+				var $elem = $(elem);
+				var $img = $elem.find('.carousel-img');
+				$img.each(function() {
+					var $img = $(this);
+					var imgUrl = $img.data('src');
+					loadImage(imgUrl,function(){
+						$img.attr('src',imgUrl);
+					},function(){
+						$img.attr('src','images/focus-carousel/placeholder.png');
+					});
+				})
+				item[index] = 'isLoaded';
+				totalLoadedNum++;
+				//所有图片都被加载则移除事件
+				if(totalLoadedNum > totalNum){
+					$coursel.off('coursel-show',loadFn);
+				}
+			}
+		})
 	}
 	//**************************************************************************************************
 
@@ -63,8 +103,6 @@ $(function() {
 		$elem.search('appendHTML','');
 		$elem.search('hideLayer');
 	});
-
-	$search.search({});
 	//生成搜索下拉列表html结构并且可以控制数据条目
 	function createSearchLayer(data,max){
 		var html = '';
@@ -116,5 +154,12 @@ $(function() {
 
 	//**************************************************************************************************
 	var $coursel = $('.carousel .carousel-wrap')
+	imgLazyLoad($coursel)
 	$coursel.carousel({slide:true,})
+	//**************************************************************************************************
+
+	//**************************************************************************************************
+	var $todays = $('.todays .carousel-wrap')
+	imgLazyLoad($todays)
+	$todays.carousel({slide:true,autoplay:0})
 })

@@ -9,7 +9,6 @@
 		y = (typeof y == 'number') ? y : this.currentY;
 		if(this.currentX == x && this.currentY == y) return;
 		this.$elem.trigger('move');
-		console.log('will move to.....',x,y,this);
 		typeof callback == 'function' && callback(x,y)
 		this.currentX = x;
 		this.currentY = y;
