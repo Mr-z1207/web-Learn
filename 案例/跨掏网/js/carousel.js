@@ -20,9 +20,22 @@
 				//记录当前容器的宽度
 				this.itemWidth = this.$courselItems.eq(this.now).width()
 				//2.底部按钮默认选中
+				this.$courselBtns.eq(this.now).addClass('active')
 				//3.监听鼠标移入移除显示隐藏左右按钮事件
+				this.$elem.hover(function() {
+					this.$courselControls.show()
+				}.bind(this),function() {
+					this.$courselControls.hide()
+				}.bind(this))
 				//初始化移动插件
+				this.$courselItems.move({})
 				//4.(事件代理)监听点击左右划入划出图片事件
+				this.$elem.on('click','.control-left',function() {
+					this._move(this._getCorrectIndex(this.now-1))
+				}.bind(this))
+				this.$elem.on('click','.control-right',function() {
+					this._move(this._getCorrectIndex(this.now+1))
+				}.bind(this))
 				//5.是否自动轮播//6.鼠标移入容器停止轮播移出开始轮播
 				//7.监听底部按钮事件//获取当前索引值
 			}else{//淡入淡出
@@ -38,10 +51,10 @@
 				this.$courselItems.showHide('fade')
 				//事件代理
 				this.$elem.on('click','.control-left',function() {
-					this._fade(this._getCorrectIndex(this.now-1))
+					this._fade(this._getCorrectIndex(this.now-1),-1)
 				}.bind(this))
 				this.$elem.on('click','.control-right',function() {
-					this._fade(this._getCorrectIndex(this.now+1))
+					this._fade(this._getCorrectIndex(this.now+1),1)
 				}.bind(this))
 				//点击底部按钮
 				var _this = this
@@ -68,6 +81,29 @@
 			this.$courselItems.eq(index).showHide('show')
 			this.$courselBtns.eq(this.now).removeClass('active')
 			this.$courselBtns.eq(index).addClass('active')
+			this.now = index
+		},
+		_move:function(index,direation) {
+			if(index == this.now) return;
+			//direation代表方向1表示正方向-1表示反方向
+			if (index > this.now) {
+				direation = 1
+			}else{
+				direation = -1
+			}
+			//1.把将要显示的放到指定位置
+			this.$courselItems.eq(index).css({
+				left:direation*this.itemWidth
+			})
+			//2.移走当前
+			console.log(direation*this.itemWidth)
+			this.$courselItems.eq(this.now).move("x",-1*direation*this.itemWidth)
+			//3.移入将要显示的
+			this.$courselItems.eq(index).move("x",0)
+			//4.底部按钮更新
+			this.$courselBtns.eq(this.now).removeClass('active')
+			this.$courselBtns.eq(index).addClass('active')
+			//5.更新索引值
 			this.now = index
 		},
 		autoplay:function(){
