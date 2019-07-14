@@ -31,24 +31,30 @@ $(function() {
 		var loadFn = null;
 		$elem.on('coursel-show',loadFn = function(ev,index,elem){
 			if (!item[index]) {
-				var $elem = $(elem);
-				var $img = $elem.find('.carousel-img');
-				$img.each(function() {
-					var $img = $(this);
-					var imgUrl = $img.data('src');
-					loadImage(imgUrl,function(){
-						$img.attr('src',imgUrl);
-					},function(){
-						$img.attr('src','images/focus-carousel/placeholder.png');
-					});
-				})
-				item[index] = 'isLoaded';
-				totalLoadedNum++;
-				//所有图片都被加载则移除事件
-				if(totalLoadedNum > totalNum){
-					$coursel.off('coursel-show',loadFn);
-				}
+				$elem.trigger('coursel-load',[index,elem]);
 			}
+		})
+		$elem.on('coursel-load',function(ev,index,elem) {
+			var $elem = $(elem);
+			var $img = $elem.find('.carousel-img');
+			$img.each(function() {
+				var $img = $(this);
+				var imgUrl = $img.data('src');
+				loadImage(imgUrl,function(){
+					$img.attr('src',imgUrl);
+				},function(){
+					$img.attr('src','images/focus-carousel/placeholder.png');
+				});
+			})
+			item[index] = 'isLoaded';
+			totalLoadedNum++;
+			//所有图片都被加载则移除事件
+			if(totalLoadedNum > totalNum){
+				$elem.trigger('coursel-loaded');
+			}
+			$elem.on('coursel-loaded',function(){
+				$elem.off('coursel-show',loadFn);
+			})
 		})
 	}
 	//**************************************************************************************************
