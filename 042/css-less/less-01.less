@@ -1,5 +1,108 @@
-@c:#ccc;
+*{
+	margin: 0;
+	padding: 0;
+}
+div{
+	margin-top: 10px;
+}
+//单行注释需要下载LESS包
 
-body{
-	background: @c;
+
+/*定义变量*/
+@c:#5f5;
+@w:750px;  //@变量名:值
+@h:100px;
+
+//使用变量
+.box1{
+	width: @w;
+	height: @h;
+	background-color: @c;
+}
+.box2{
+	.box1; //混合引用
+}
+.box3{
+	.box1;
+	.border-r-def(20px); //混合引用，带参数
+}
+
+.border-r-def(@r:10px){  //@r 参数； ：10px 默认值
+	border-radius: @r;
+}
+
+//匹配模式
+//选择符合条件的混合模式,根据传入的参数来决定使用哪个混合
+.triangle(@_,@w,@c){    //  @_  任意匹配规则,引用时匹配规则改变，这里也要变
+	width: 0;
+	height: 0;
+	overflow: hidden;
+	border-style: solid;
+}
+.triangle(top,@w,@c){  // top 匹配规则
+	// width: 0;
+	// height: 0;
+	// overflow: hidden;
+	// border-style: solid;
+	border-width: @w;
+	border-color: @c transparent transparent transparent;
+}
+.triangle(left,@w,@c){
+	// width: 0;
+	// height: 0;
+	// overflow: hidden;
+	// border-style: solid;
+	border-width: @w;
+	border-color: transparent transparent transparent @c;
+}
+.triangle(right,@w,@c){
+	// width: 0;
+	// height: 0;
+	// overflow: hidden;
+	// border-style: solid;
+	border-width: @w;
+	border-color: transparent @c transparent transparent;
+}
+.triangle(bottom,@w,@c){
+	// width: 0;
+	// height: 0;
+	// overflow: hidden;
+	// border-style: solid;
+	border-width: @w;
+	border-color: transparent transparent @c transparent;
+}
+.box4{
+	.triangle(left,30px,#55f);
+}
+.box5{
+	.triangle(top,10px,#f5f);
+}
+
+//嵌套使用
+ul{
+	width: 300px;
+	height: 200px;
+	border: 1px solid #000;
+	list-style: none;
+	li{
+		width: 100%;
+		height: 30px;
+		line-height: 30px;
+		span{
+			float: left;
+		}
+		a{
+			float: right;
+		}
+		&:hover{    //在嵌套中&代表父元素（ 此处指li ）
+			background-color: #ccc;
+		}
+	}
+}
+
+.set(@attr,@val){
+	@{attr}: unit(@val,px);      //@{ 属性 } 属性做为参数的时候   unit( @val/10,px )设置计算后的属性值
+}
+.box6{
+	.set(width,30)
 }

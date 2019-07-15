@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>媒体类型</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=0">
+	<style>
+		@media screen and (min-width: 320px) and (max-width: 980px) { 
+			/*min-width: 320px 最小值320，小于320则不生效*/
+			/*max-width: 980px 最大值980，大于980则不生效*/
+			body{
+				font-size: 50px;
+				color: #000;
+				background-color: #5f5;
+			}
+		}
+		@media screen and (orientation:landscape) {
+			body{
+				font-size: 20px;
+				color: #ff5;
+				background-color: #f55;
+			}
+		}
+	</style>
+</head>
+<body>
+	你好
+</body>
+</html>

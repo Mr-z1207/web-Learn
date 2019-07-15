@@ -1,0 +1,63 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div {
+  margin-top: 10px;
+}
+/*定义变量*/
+.box1 {
+  width: 750px;
+  height: 100px;
+  background-color: #55ff55;
+}
+.box2 {
+  width: 750px;
+  height: 100px;
+  background-color: #55ff55;
+}
+.box3 {
+  width: 750px;
+  height: 100px;
+  background-color: #55ff55;
+  border-radius: 20px;
+}
+.box4 {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 30px;
+  border-color: transparent transparent transparent #5555ff;
+}
+.box5 {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  border-style: solid;
+  border-width: 10px;
+  border-color: #ff55ff transparent transparent transparent;
+}
+ul {
+  width: 300px;
+  height: 200px;
+  border: 1px solid #000;
+  list-style: none;
+}
+ul li {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+}
+ul li span {
+  float: left;
+}
+ul li a {
+  float: right;
+}
+ul li:hover {
+  background-color: #ccc;
+}
+.box6 {
+  width: 30px;
+}
