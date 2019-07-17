@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>圣杯布局-改</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		body{
+			height: 100vh;
+			display: flex;
+			flex-direction: column;
+		}
+		.header,.footer{
+			flex: 0 0 10vh;
+			background-color: #5ff;
+		}
+		.section{
+			flex-grow: 1;
+			display: flex;
+			flex-direction: row;
+		}
+		.main{
+			flex-grow: 1;
+			background-color: #f5f;
+		}
+		.nav,.side{
+			flex: 0 0 10vw;
+			background-color: #ff5;
+		}
+	</style>
+</head>
+<body>
+	<div class="header">header</div>
+	<div class="section">
+		<div class="nav">nav</div>
+		<div class="main">main</div>
+		<div class="side">side</div>
+	</div>
+	<div class="footer">footer</div>
+</body>
+</html>

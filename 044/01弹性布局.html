@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<style>
+		.father{
+			width: 1000px;
+			margin: 0 auto;
+			border: 1px solid #000;
+			display: flex;
+			/*
+			弹性布局：
+			flex加在父元素上，
+			子元素水平排版
+			且不会失去高度（浮动和定位会），无须清除浮动
+			父元素称为容器，子元素称为项目
+			*/
+		}
+		.father div{
+			height: 50px;
+		}
+		.son1{
+			width: 100px;
+			background-color: #5f5;
+		}
+		.son2{
+			width: 200px;
+			background-color: #5ff;
+		}
+		.son3{
+			width: 400px;
+			background-color: #ff5;
+		}
+	</style>
+</head>
+<body>
+	<div class="father">
+		<div class="son1"></div>
+		<div class="son2"></div>
+		<div class="son3"></div>
+	</div>
+</body>
+</html>
