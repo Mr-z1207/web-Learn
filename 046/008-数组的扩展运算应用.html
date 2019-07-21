@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [1,2,3,4,5,6,7]
+
+	//数组的扩展运算  符号 ...
+	console.log(...arr) // console.log(1,2,3,4,5,6,7)
+	//数组的扩展运算就是将一个数组转为用逗号分隔的参数序列
+
+
+	//函数调用时使用把数组转换为参数列表
+	let arr1 = [4,5]
+
+	function sum(n1,n2) {
+		return n1 + n2
+	}
+
+	console.log(sum(...arr1))
+	//函数定义时使用把参数列表转换为数组
+	function add(...arr2) {
+		console.log(arr2)
+	}
+
+	add(4,5)
+
+	//数组最大值
+	let arr3 = [1,2,3,4,5,6,7]
+	// Math.max.apply(null,arr3)
+	const res = Math.max(...arr3)
+	console.log(res)
+
+	//深拷贝数组 (浅拷贝为 ： newArr = oldArr ; 只复制地址)
+	let arr4 = [1,2,3,4,5,6,7]
+	// copy1循环遍历每一个，添加到新数组
+	let copyArr1 = []
+	for (var i = 0; i < arr3.length; i++) {
+		copyArr1.push(arr3[i])
+	}
+	console.log(copyArr1)
+
+	// copy2 利用数组拼接，生成新数组
+	let copyArr2 = arr4.concat();
+	console.log(copyArr2)
+
+	// copy3 利用数组分割，生成新数组
+	let copyArr3 = arr4.slice();
+	console.log(copyArr3)
+
+	//copy4 利用扩展运算
+	let copyArr4 = [...arr4]
+	console.log(copyArr4)
+
+	//可以用数组的扩展运算来把伪数组转换伪真数组 let arr = [...伪数组]
+	//真数组可以调用数组上面的方法
+</script>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<button id="btn">点我啊</button>
+</body>
+<script>
+	var oBtn = document.getElementById('btn')
+	var data = ['tom','leo','anny']
+
+	oBtn.onclick = function() {
+		var html = ''
+		html += '<ul>'
+		for (var i = 0; i < data.length; i++) {
+			// html += '<li>' + data[i] + '</li>'
+			html += `<li>${data[i]}</li>`
+		}
+		html += '</ul>'
+
+
+		document.body.innerHTML = html
+	}
+</script>
+</html>

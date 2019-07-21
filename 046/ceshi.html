@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name: 'Tom',
+		age: 18,
+		friend: {
+			name: 'Leo'
+		}
+	}
+
+	function getDataTypeOf(data) {
+		if (data instanceof Array) {
+			return 'Array'
+		}else if(data instanceof Object){
+			return 'Object'
+		}
+	}
+	function copy(data) {
+		var type = getDataTypeOf(data)
+		if (type == 'Array') {
+
+		}else if(type == 'Object'){
+
+		}else{
+			return data
+		}
+	}
+</script>
+</html>

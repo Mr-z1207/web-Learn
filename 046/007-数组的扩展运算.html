@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let arr = [1,2,3,4,5,6,7]
+
+	//数组的扩展运算  符号 ...
+	console.log(...arr) // console.log(1,2,3,4,5,6,7)
+	//数组的扩展运算就是将一个数组转为用逗号分隔的参数序列
+
+
+	//函数调用时使用把数组转换为参数列表
+	let arr1 = [4,5]
+
+	function sum(n1,n2) {
+		return n1 + n2
+	}
+
+	console.log(sum(...arr1))
+	//函数定义时使用把参数列表转换为数组
+	function add(...arr2) {
+		console.log(arr2)
+	}
+
+	add(4,5)
+</script>
+</html>

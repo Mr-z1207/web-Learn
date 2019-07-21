@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name: 'Tom',
+		age: 18,
+		friend: {
+			name: 'Leo'
+		}
+	}
+
+	// console.log(...obj)  会报错obj 要写在对象里
+	console.log('{...obj}::::', {...obj} )
+
+	var obj1 = {...obj}  //浅copy （个人感觉不深不浅。。。）
+
+	obj1.name = 'Amy'             //不改变obj;  基本数据类型
+	obj1.friend.name = 'Peter'    //会改变obj;  引用数据类型
+
+	console.log('obj',obj)
+	console.log('obj1',obj1)
+</script>
+</html>

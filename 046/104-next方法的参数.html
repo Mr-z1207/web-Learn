@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen(x) {
+		console.log('x=',x)
+
+		const y = yield (x + 10)
+		//走到yield 函数暂停，想要继续走，再调用一次next
+
+		console.log('y=',y)  //undefined
+
+		const z = yield (y + x)
+
+		console.log('z=',z)
+		return (z+x)
+	}
+
+	const g = gen(5)
+
+	// g.next()
+	console.log(g.next())
+	//返回一个对象  {value: "aaa", done: false}，value: 是yield的返回值
+	console.log(g.next())
+
+	console.log(g.next(10))
+</script>
+</html>

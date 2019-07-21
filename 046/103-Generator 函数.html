@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function * gen() {
+		console.log(11111)
+
+		yield 'aaa'
+		//走到yield 函数暂停，想要继续走，再调用一次next
+
+		console.log(22222)
+
+		yield function() {
+			console.log(123321)
+		}
+
+		return 'bbb'
+	}
+
+	gen()
+	//函数不执行
+	console.log(gen())
+	//返回一个Generator 遍历器对象
+	const g = gen()
+
+	// g.next()
+	console.log(g.next())
+	//返回一个对象  {value: "aaa", done: false}，value: 是yield的返回值
+	// console.log(g.next())
+
+	g.next().value()
+
+	console.log(g.next())
+</script>
+</html>
