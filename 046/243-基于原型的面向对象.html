@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	function Person(name,age) {
+		this.name = name
+		this.age = age
+	}
+
+	Person.prototype.sayName = function() {
+		console.log(this.name)
+	}
+	Person.sayHi = function() {
+		console.log('Hi')
+	}
+
+	var p1 = new Person('tom',18)
+	console.log(p1)
+	p1.sayName()
+	Person.sayHi()
+
+	function Student(name,age,zhuanye) {
+		Person.call(this,name,age)
+		this.zhuanye = zhuanye
+	}
+	Student.prototype = Object.create(Person.prototype)
+	Student.sayHi = Person.sayHi
+
+	var s1 = new Student('leo',28,'comp')
+	console.log(s1)
+	s1.sayName()
+	Student.sayHi()
+</script>
+</html>

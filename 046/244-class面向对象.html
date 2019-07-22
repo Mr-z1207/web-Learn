@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	class Person{  //创建一个构造函数
+		constructor(name,age){ //从这里添加属性
+			//constructor方法是类的默认方法,通过new命令生成对象实例时,自动调用该方法。
+			//一个类必须有constructor方法,如果没有显式定义,系统默认添加一个空的constructor方法
+			this.name = name
+			this.age = age
+		}
+		sayName(){  //添加动态方法
+			console.log('sayName:::',this.name)
+		}
+		static sayHi(){  //添加静态方法 关键字 static
+			console.log('sayHi:::','hi')
+		}
+	}
+
+	let p1 = new Person('tom',18)
+	console.log('p1:::',p1)
+	p1.sayName()
+	Person.sayHi()
+
+	class Student extends Person{  //继承 关键字 extends
+		constructor(name,age,major){
+			super(name,age)       //子类必须在constructor方法中调用super方法,该super方法实际上是调用父类的constructor
+			this.major = major    //在子类的构造函数中,只有调用super之后,才可以使用this关键字
+		}
+		sayMajor(){               //子类动态(或静态static)方法直接写就好了
+			console.log('sayMajor:::',this.major)
+		}
+	}
+
+
+	let s1 = new Student('leo',20,'computer')
+	console.log('s1:::',s1)
+	s1.sayName()
+	s1.sayMajor()
+	Student.sayHi()  //父类的静态方法,可以被子类继承
+</script>
+</html>

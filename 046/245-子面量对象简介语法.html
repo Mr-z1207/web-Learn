@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	const name = 'Tom'
+	const age = 18
+
+	const obj1 = {
+		name: name,
+		age: age
+	}
+	const obj2 = {   //简洁写法
+		name,
+		age
+	}
+	const obj3 = {
+		name,
+		age,
+		sayName : function() {
+			console.log(this.name)
+		}
+	}
+	const obj4 = {   //简洁写法
+		name,
+		age,
+		sayName() {
+			console.log(this.name)
+		}
+	}
+	obj4.sayName()
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	// set对象的生成
+	let s1 = new Set()
+	console.log("s1",s1)
+
+	let arr = [11,22,11,33]
+	//set里的值有唯一性
+	let s2 = new Set(arr)
+	console.log("s2",s2) // 11，22，33
+
+	// Set对象的操作方法
+	// add(value):添加某个值,返回 Set 结构本身
+	// delete(value):删除某个值,返回一个布尔值,表示删除是否成功
+	// has(value):返回一个布尔值,表示该值是否为Set的成员
+	// clear():清除所有值,没有返回值
+	let s3 = new Set()
+	s3.add(1)
+	s3.add(2)
+	s3.add(3)
+	s3.add(4)
+	console.log("s3.add(5):::",s3.add(5))
+	console.log("s3.delete:::",s3.delete(3))
+	console.log("s3.has:::",s3.has(5))
+	console.log("s3",s3)
+	s3.clear()
+	console.log("s3.clear:::",s3)
+</script>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var s = new Set([11,22,33,44,55])
+	var k = s.keys()     //返回 键 的遍历器
+	var v = s.values()   //返回 值 的遍历器
+	var e = s.entries()  //返回 键值对 的遍历器
+	console.log('k',k)
+	console.log('v',v)
+	console.log('e',e)
+
+	//遍历器可以被for of 遍历
+	for(let res of s){
+		console.log('s::::res',res)
+	}
+	for(let res of k){
+		console.log('k::::res',res)
+	}
+	for(let res of v){
+		console.log('v::::res',res)
+	}
+	for(let res of e){
+		console.log('e::::res',res)
+	}
+
+	s.forEach(function(value,key){
+		console.log('value,key',value,key)
+	})
+
+	//Set只有值没有键,所以key(键)和value(值)一样
+
+	//利用Set值唯一特点，数组去重
+	var arr = [1,2,86,8,98,4,6,4,9,4,89,74,48,9,45,45,89,6,54,54,89,2,]
+	var seter = new Set(arr)
+	var newArr = [...seter]
+	console.log(arr)
+	console.log(newArr)
+</script>
+</html>

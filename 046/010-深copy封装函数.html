@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var obj = {
+		name: 'Tom',
+		age: 18,
+		friend: {
+			name: 'Leo'
+		},
+		sum:[1,2,3]
+	}
+
+	//获取原对象数据类型
+	function getDataTypeOf(data) {
+		if (data instanceof Array) {
+			return 'Array'
+		}else if(data instanceof Object){
+			return 'Object'
+		}
+	}
+	function copy(data) {
+		const type = getDataTypeOf(data)
+		let result
+		//根据不同数据类型定义不同的返回值类型
+		if (type == 'Array') {
+			result = []
+		}else if(type == 'Object'){
+			result = {}
+		}else{
+			return data
+		}
+		//遍历复杂(引用)数据类型
+		for(let key in data){
+			let val = data[key]
+			// 判断每一个值的数据类型
+			let valType = getDataTypeOf(val)
+			//复杂数据类型需要进一步再次深copy
+			if (valType == 'Array' || valType == 'Object') {
+				result[key] = copy(val)
+			}
+			//简单数据类型直接添加到result中
+			else{
+				result[key] = val
+			}
+		}
+		return result
+	}
+	let result = copy(obj)
+
+	result.name = 'Amy'
+	result.friend.name = 'peter'
+	result.sum.push(33)
+
+	console.log(obj)
+	console.log(result)
+</script>
+</html>

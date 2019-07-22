@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+	<div></div>
+</body>
+<script>
+	var aDiv = document.getElementsByTagName('div')//伪数组
+	var likeArry = {  //伪数组
+		0:'data1',
+		1:'data2',
+		length:2
+	}
+
+	// Array.from()  作用:将伪数组转为真数组
+	var arr1 = Array.from(likeArry)
+	var arr2 = Array.from(aDiv)
+	console.log(arr1)
+	console.log(arr2)
+
+	const arr3 = [11,22,33,44,55,66,77]
+
+	console.log(arr3.find( n=>n>40 ))
+	//作用:用于找出第一个符合条件的数组成员。
+	//参数是一个回调函数，所有数组成员依次执行该回调函数，直到找出第一个返回值为true的成员，然后返回该成员。如果没有符合条件的成员，则返回undefined。
+	console.log(arr3.findIndex( n=>n>40 ))
+	//用法与find方法非常类似，返回第一个符合条件的数组成员的位置，如果所有成员都不符合条件，则返回-1。
+	console.log(arr3.includes(33))   //ES7语法,Array.prototype.includes(搜索的值,[搜索的开始索引])
+	console.log(arr3.includes(33,3)) //作用:返回一个布尔值，表示某个数组是否包含给定的值
+</script>
+</html>
