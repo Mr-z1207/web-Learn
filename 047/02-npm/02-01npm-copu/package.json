@@ -1,5 +1,5 @@
 {
-  "name": "custom",
+  "name": "01-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "jquery": "^3.4.1"
+  },
+  "devDependencies": {
+    "webpack": "^4.37.0"
   }
 }

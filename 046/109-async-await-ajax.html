@@ -22,18 +22,13 @@
 	})
 
 
-
-	function * gen(url) {
-		const data1 = yield getPromiseData(url)
-		const data2 = yield getPromiseData(data1)
+	async function fn() {
+		const data1 = await getPromiseData('https://api.github.com/')
+		const data2 = await getPromiseData(data1.feeds_url)
+		return data2
 	}
 
-	var g = gen('https://api.github.com/')
-
-	g.next().value.then(data=>{
-		return g.next(data.feeds_url).value
-	})
-	.then(data=>{
+	fn().then(data=>{
 		console.log(data)
 	})
 </script>

@@ -21,20 +21,16 @@
 		})
 	})
 
-
-
-	function * gen(url) {
-		const data1 = yield getPromiseData(url)
-		const data2 = yield getPromiseData(data1)
-	}
-
-	var g = gen('https://api.github.com/')
-
-	g.next().value.then(data=>{
-		return g.next(data.feeds_url).value
+	getPromiseData('https://api.github.com/')
+	.then(data=>{
+		console.log(data.feeds_url)
+		return getPromiseData(data.feeds_url)
 	})
 	.then(data=>{
 		console.log(data)
+	})
+	.catch(err=>{
+		console.log(err)
 	})
 </script>
 </html>

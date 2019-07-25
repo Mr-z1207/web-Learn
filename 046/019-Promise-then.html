@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script src="../jQuery/jquery-1.12.4.js"></script>
+<script>
+	$(function() {
+		const promise = new Promise((resolve,reject)=>{
+			setTimeout(function() {
+				resolve('ok data')
+			}, 10);
+		})
+
+
+		promise
+		.then(data=>{                   //then方法返回一个新的Promise，与之前的不同
+			console.log(data)
+			return data + ' good'       //从这里处理数据
+		})
+		.then(data=>{
+			console.log(data)           //可以再then，然后拿到数据，一步一步操作
+		})
+	})
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	let s1 = Symbol('s1')  //Symbol是一种新的数据类型,表示独一无二的值
+	let s2 = Symbol('s2')
+
+	console.log(s1)
+
+	let obj = {
+		name: 'tom',
+		[s1]:'s1',      //Symbol的主要作用是用来表示对象的属性名
+		[s2]:'s2'       //Symbol值作为对象属性名时,不能用点运算符,在对象的内部也不可以
+	}
+
+	console.log(obj)
+
+	for(key in obj){        //无法遍历symbol
+		console.log(key)
+	}
+	//可以利用Reflect.ownKeys(obj)获取对象上的所有key来遍历
+
+	console.log(Reflect.ownKeys(obj)) //这是一个数组
+	const arr = Reflect.ownKeys(obj)
+	for(key in arr){
+		console.log(arr[key])
+		console.log(obj[arr[key]])
+	}
+</script>
+</html>

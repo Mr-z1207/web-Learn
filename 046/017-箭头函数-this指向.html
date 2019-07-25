@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	//箭头函数中的this是在定义时确定的(定义时属于谁),而不是在运行时确定(谁调用)的
+	function show(id) {
+		this.id = id
+		setTimeout(function() {
+			console.log(this,this.id)     //this -> window
+		}, 10);
+	}
+
+	var id = 33
+
+	var s1 = new show(55)
+	console.log(s1)
+
+
+	function shower(idd) {
+		this.idd = idd
+		setTimeout(()=>{
+			console.log(this,this.idd)     //this -> shower
+		}, 10);
+	}
+
+	var idd = 33
+
+	var s2 = new shower(55)
+	console.log(s2)
+</script>
+</html>
