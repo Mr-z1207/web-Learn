@@ -1,0 +1,16 @@
+{
+  "name": "01-base",
+  "version": "1.0.0",
+  "description": "",
+  "main": "读取文件服务器.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "silly-datetime": "^0.1.2",
+    "swig": "^1.4.2"
+  }
+}
