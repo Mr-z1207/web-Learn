@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+	<div class="continer">
+		<div class="header">
+			<h1>To Do List</h1>
+			<input type="text" autocomplete="off" class="input">
+		</div>
+		<ul>
+			{% for item in items %}
+			<li class="list-item" data-id="{{item.id}}">
+				<span class="sp-lt">{{item.task}}</span>
+				<span class="sp-rt">记录时间：{{item.id}}</span>
+			</li>
+			{% endfor %}
+		</ul>
+	</div>
+</body>
+<script src="js/jquery-1.12.4.min.js"></script>
+<script src="js/index.js"></script>
+</html>
