@@ -2,6 +2,7 @@ const express = require('express')
 const swig = require('swig')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const Cookies = require('cookies')
 
 const app = express()
 const port = 3000
@@ -36,9 +37,6 @@ app.use(bodyParser.json())
 
 
 
-
-
-
 //开发阶段设置不走缓存
 swig.setDefaults({
   // cache: 'memory'
@@ -58,6 +56,19 @@ app.set('views', './views')
 //第一个参数必须是view engine
 //第二个参数是模板名称,也就是app.engine的第一个参数
 app.set('view engine', 'html')
+
+
+app.use((req,res,next)=>{
+	req.cookies = new Cookies(req,res);
+	let userInfo = {}
+    if(req.cookies.get('userInfo')){
+        userInfo = JSON.parse(req.cookies.get('userInfo'))
+    } 
+    req.userInfo = userInfo
+    
+    next()
+})
+
 
 app.use("/",require("./routes/main.js"))
 app.use("/user",require("./routes/user.js"))
