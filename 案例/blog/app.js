@@ -3,10 +3,12 @@ const swig = require('swig')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const Cookies = require('cookies')
-
+const session = require('express-session')
+const MongoStore = require("connect-mongo")(session)
+//*************************************************************************
 const app = express()
 const port = 3000
-
+//*************************************************************************
 //1.连接数据库
 mongoose.connect('mongodb://localhost/blog', { useNewUrlParser: true })
 
@@ -26,7 +28,7 @@ db.once('open', () => {
 
 
 
-
+//*************************************************************************
 app.use(express.static('public'))
 
 // parse application/x-www-form-urlencoded
@@ -36,7 +38,7 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 
-
+//*************************************************************************
 //开发阶段设置不走缓存
 swig.setDefaults({
   // cache: 'memory'
@@ -58,19 +60,46 @@ app.set('views', './views')
 app.set('view engine', 'html')
 
 
-app.use((req,res,next)=>{
-	req.cookies = new Cookies(req,res);
-	let userInfo = {}
-    if(req.cookies.get('userInfo')){
-        userInfo = JSON.parse(req.cookies.get('userInfo'))
-    } 
-    req.userInfo = userInfo
+//*************************************************************************
+//设置Cookies保存用户信息
+// app.use((req,res,next)=>{
+// 	req.cookies = new Cookies(req,res);
+// 	let userInfo = {}
+//     if(req.cookies.get('userInfo')){
+//         userInfo = JSON.parse(req.cookies.get('userInfo'))
+//     } 
+//     req.userInfo = userInfo
     
+//     next()
+// })
+
+// 添加session中间件
+app.use(session({
+    //设置cookie名称
+    name:'kzid',
+    //用它来对session cookie签名，防止篡改
+    secret:'abc',
+    //强制保存session即使它并没有变化
+    resave: true,
+    //强制将未初始化的session存储
+    saveUninitialized: true, 
+    //如果为true,则每次请求都更新cookie的过期时间
+    rolling:true,
+    //cookie过期时间 1天
+    cookie:{maxAge:1000*60*60*24},
+    //设置session存储在数据库中
+    store:new MongoStore({ mongooseConnection: mongoose.connection })   
+}))
+
+//*************************************************************************
+app.use((req,res,next)=>{  
+    req.userInfo = req.session.userInfo || {}
     next()
 })
-
+//*************************************************************************
 
 app.use("/",require("./routes/main.js"))
 app.use("/user",require("./routes/user.js"))
+app.use("/admin",require("./routes/admin.js"))
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))

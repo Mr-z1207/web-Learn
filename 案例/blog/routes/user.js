@@ -47,6 +47,7 @@ router.post('/login',(req, res) => {
 		if (data) {
 			// console.log(data)
 			// req.cookies.set('userInfo',JSON.stringify(data))
+			req.session.userInfo = data
 			res.send({
 				code:1,
 				Msg:"登录成功",
@@ -65,6 +66,14 @@ router.post('/login',(req, res) => {
 			code:10,
 			Msg:"服务器端错误,请稍后再试"
 		})
+	})
+})
+//退出
+router.get('/logout',(req, res)=>{
+	req.session.destroy()
+	res.json({
+		code:1,
+		Msg:"退出成功"
 	})
 })
 

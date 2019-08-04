@@ -11,7 +11,7 @@ const userSchema = new mongoose.Schema({
 		type:String,
 		required:[true,"密码必须输入"]
 	},
-	isAmin:{
+	isAdmin:{
 		type:Boolean,
 		default:false
 	}

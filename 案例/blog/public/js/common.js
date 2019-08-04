@@ -11,9 +11,9 @@
 		$login.show()
 		$register.hide()
 	})
-	$(window).load(function() {
-		$login.show()
-	})
+	// $(window).load(function() {
+	// 	$login.show()
+	// })
 
 
 	//用户名以字母开头包含数字和下划线的3-10位字符
@@ -60,13 +60,11 @@
 					$err.html(data.Msg)
 				}
 				else if(data.code == 1){
-					alert(data.Msg)
-					$login.show()
-					$register.hide()
+					$('#go-login').trigger('click')
 					// $err.html(data.Msg)
 				}
 			}).fail(function(err) {
-				console.log(err)
+				// console.log(err)
 				$err.html("请求失败，请稍后再试")
 			})
 		}		
@@ -108,11 +106,7 @@
 					$err.html(data.Msg)
 				}
 				else if(data.code == 1){
-					alert(data.Msg)
-					$login.hide()
-					// console.log(data)
-					$userInfo.show()
-					$userInfo.find('#name').html(data.data.username)
+					window.location.reload()
 				}
 			}).fail(function(err) {
 				console.log(err)
