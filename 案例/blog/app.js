@@ -17,12 +17,12 @@ const db = mongoose.connection
 
 //连接数据库失败
 db.on('error', (err) => {
-    console.log('connection db error:',err)
-    throw err
+	console.log('connection db error:',err)
+	throw err
 })
 //连接数据库
 db.once('open', () => {
-    console.log('connection db success')
+	console.log('connection db success')
 })
 
 
@@ -65,8 +65,8 @@ app.set('view engine', 'html')
 // app.use((req,res,next)=>{
 // 	req.cookies = new Cookies(req,res);
 // 	let userInfo = {}
-//     if(req.cookies.get('userInfo')){
-//         userInfo = JSON.parse(req.cookies.get('userInfo'))
+//	if(req.cookies.get('userInfo')){
+//		userInfo = JSON.parse(req.cookies.get('userInfo'))
 //     } 
 //     req.userInfo = userInfo
     
@@ -101,5 +101,6 @@ app.use((req,res,next)=>{
 app.use("/",require("./routes/main.js"))
 app.use("/user",require("./routes/user.js"))
 app.use("/admin",require("./routes/admin.js"))
+app.use("/category",require("./routes/category.js"))
 
 app.listen(port, () => console.log(`app listening on port ${port}!`))
