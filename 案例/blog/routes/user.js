@@ -1,6 +1,6 @@
 const express = require('express')
 const users = require('../models/user.js')
-const HAMC = require('../util/HMAC.js')
+const HMAC = require('../util/HMAC.js')
 // const Cookies = require('cookies')
 
 const router = express.Router()
@@ -17,7 +17,7 @@ router.post('/register',(req, res) => {
 				Msg:"该用户名太受欢迎了，请更换一个吧!"
 			})
 		}else{
-			users.insertMany({username:username,password:HAMC(password)})
+			users.insertMany({username:username,password:HMAC(password)})
 			.then(data=>{
 				res.send({
 					code:1,
@@ -42,7 +42,7 @@ router.post('/login',(req, res) => {
 	const {username,password} = req.body //在app.js引用
 	// console.log(username,password)
 	//同名认证
-	users.findOne({username:username,password:HAMC(password)},"-password -__v")
+	users.findOne({username:username,password:HMAC(password)},"-password -__v")
 	.then(data=>{
 		if (data) {
 			// console.log(data)

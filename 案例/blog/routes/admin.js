@@ -1,6 +1,7 @@
 const express = require('express')
 const users = require('../models/user.js')
 const pagination = require('../util/pagination.js')
+const HMAC = require('../util/HMAC.js')
 
 const router = express.Router()
 
@@ -69,5 +70,31 @@ router.get("/user",(req,res)=>{
 			url:"/admin/user"
 		})
 	})
+})
+
+router.get('/password',(req,res)=>{
+    res.render("admin/password",{
+        userInfo:req.userInfo
+    })
+})
+//处理修改密码
+router.post('/password',(req,res)=>{
+    const { password } = req.body
+    users.updateOne({_id:req.userInfo._id},{password:HMAC(password)})
+    .then(result=>{
+        req.session.destroy()
+        res.render("admin/success",{
+            userInfo:req.userInfo,
+            Msg:"修改密码成功,请重新登录",
+            url:'/'
+        })
+    })
+    .catch(err=>{
+        res.render("admin/err",{
+            userInfo:req.userInfo,
+            Msg:"修改密码失败",
+            url:'/admin/password'
+        })
+    })
 })
 module.exports = router

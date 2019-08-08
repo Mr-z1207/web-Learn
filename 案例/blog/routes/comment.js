@@ -63,4 +63,44 @@ router.get('/list',(req,res)=>{
         })        
     })
 })
+
+
+
+
+
+
+
+
+
+
+router.get("/",(req,res)=>{
+	comment.getPaginationCommentsData(req)
+	.then(data=>{
+		// console.log(data)
+		res.render("admin/comment_list",{
+			userInfo:req.userInfo,
+			comments:data.docs,
+			page:data.page,
+			list:data.list,
+			pageMax:data.pageMax,
+			url:"/comment",
+		})
+	})
+})
+router.get('/delete/:id', (req, res) => {
+    const { id } = req.params
+    comment.deleteOne({_id:id})
+    .then(result=>{
+        res.render("admin/success",{
+            Msg:"删除评论成功",
+            url:'/comment'
+        })
+    })
+    .catch(err=>{
+        res.render("admin/err",{
+            Msg:"数据库操作失败",
+            url:'/comment'
+        })
+    })    
+})
 module.exports = router
