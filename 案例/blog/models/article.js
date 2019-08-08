@@ -1,4 +1,6 @@
 const mongoose = require('mongoose');
+const moment = require('moment')
+const pagination = require('../util/pagination.js')
 
 const articleSchema = new mongoose.Schema({
 	title:{
@@ -29,6 +31,22 @@ const articleSchema = new mongoose.Schema({
     }
 
 });
+
+articleSchema.virtual('createdTime').get(function(){
+    return moment(this.createdAt).format('YYYY-MM-DD HH:mm:ss')
+})
+
+articleSchema.statics.getPagination = function(req,query={}) {
+    const paginations =  pagination({
+        page:req.query.page,
+        modules:this,
+        sort:{_id:-1},
+        query:query,
+        populates:[{path: 'user', select: 'username' },{path: 'category', select: 'name'}]
+    })
+
+    return paginations
+}
 
 const article = mongoose.model('article', articleSchema);
 module.exports = article

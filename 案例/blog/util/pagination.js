@@ -1,5 +1,5 @@
 async function pagination(option) {
-	let {page,modules,query={},sort={_id:-1},projection="-__v"} = option
+	let {page,modules,query={},sort={_id:-1},projection="-__v",populates} = option
 	
 	page = parseInt(page)
 	const limit = 2
@@ -7,7 +7,7 @@ async function pagination(option) {
 		page = 1
 	}
 
-	const count = await modules.countDocuments()
+	const count = await modules.countDocuments(query)
 
 
 	const pageMax = Math.ceil(count / limit)
@@ -23,7 +23,15 @@ async function pagination(option) {
 	}
 	const skip = (page-1)*limit
 
-	const docs = await modules.find(query,projection).sort(sort).skip(skip).limit(limit)
+	let modfind = modules.find(query,projection)
+
+	if (populates) {
+		populates.forEach(populate=>{
+			modfind = modfind.populate(populate)
+		})
+	}
+
+	const docs = await modfind.sort(sort).skip(skip).limit(limit)
 	
 	return {
         docs:docs,

@@ -7,8 +7,8 @@
   <title>
     {% block title %}{% endblock %}
   </title>
-  <link rel="stylesheet" href="lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/common.css">
   {% block head %}{% endblock %}
 </head>
 <body>
@@ -22,16 +22,23 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand link" href="#">我的个人博客</a>
+        <a class="navbar-brand link" href="/">我的个人博客</a>
       </div>
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
         <ul class="nav navbar-nav">
-          <li class="active"><a href="index.html">首页<span class="sr-only">(current)</span></a></li>
-          <li><a href="list.html">HTML/CSS</a></li>
-          <li><a href="list.html">JavaScript</a></li>
-          <li><a href="list.html">学无止境</a></li>
-          <li><a href="list.html">我的足迹</a></li>
+          {% if categoryid %}
+            <li><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% else %}
+            <li class="active"><a href="/">首页<span class="sr-only">(current)</span></a></li>
+          {% endif %}
+          {% for category in category %}
+          {% if category._id.toString() == categoryid %}
+          <li class="active"><a href="/list/{{category._id.toString()}}">{{category.name}}</a></li>
+          {% else %}
+          <li><a href="/list/{{category._id.toString()}}">{{category.name}}</a></li>
+          {% endif %}
+          {% endfor %}
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container -->
@@ -122,12 +129,12 @@
 
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/ad/ad1.jpg" alt="广告1">
+              <img src="/img/ad/ad1.jpg" alt="广告1">
             </a>
           </div>
           <div class="ad">
             <a href="#" class="thumbnail">
-              <img src="img/ad/ad2.jpg" alt="广告2">
+              <img src="/img/ad/ad2.jpg" alt="广告2">
             </a>
           </div>
           <div class="panel panel-default custom-panel">
@@ -138,7 +145,7 @@
               <div class="media">
                 <div class="media-left">
                   <a href="#">
-                    <img class="media-object img-me img-circle" src="img/me.jpg" alt="博主帅照">
+                    <img class="media-object img-me img-circle" src="/img/me.jpg" alt="博主帅照">
                   </a>
                 </div>
                 <div class="media-body">
@@ -154,14 +161,9 @@
             </div>
             <div class="panel-body">
               <ul class="list-group">
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>
-                <li class="list-group-item"><a href="detail.html" class="link text-ellipsis" target="_blank">Cras justo odioCras justo odioCras justo odioCras justo odioCras justo odio</a></li>                                                 
+                {% for  article in  topArticles %}
+                  <li class="list-group-item"><a href="/detail/{{article._id.toString()}}" class="link text-ellipsis" target="_blank">[{{ article.click }}]{{article.title}}</a></li>
+                {% endfor %}
               </ul>     
             </div>
           </div>
@@ -170,7 +172,7 @@
               <h3 class="panel-title">关注我</h3>
             </div>
             <div class="panel-body">
-              <img src="img/wechat.jpeg" class="img-responsive" alt="">
+              <img src="/img/wechat.jpeg" class="img-responsive" alt="">
             </div>
           </div>                                         
         </div>
@@ -181,10 +183,12 @@
     Blog Design by <a href="#">Kuazhu</a> <a href="#">豫ICP备11002373号-1</a>.
   </footer>
 
-<script src="lib/jquery/jquery-1.12.4.min.js"></script> 
-<script src="lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
-<script src="js/common.js"></script>
-<script src="js/logout.js"></script>
+<script src="/lib/jquery/jquery-1.12.4.min.js"></script> 
+<script src="/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+<script src="/lib/moment.min.js"></script>
+<script src="/js/pagination.js"></script>
+<script src="/js/common.js"></script>
+<script src="/js/logout.js"></script>
 {% block footer %}{% endblock %}
 </body>
 

@@ -114,4 +114,109 @@
 			})
 		}
 	})
+
+	//处理文章分页功能
+	var $articlePage = $('#article-page')
+
+	function buildArticleHtml(data){
+		// console.log(data)
+		var html = ''
+		data.forEach(function(article) {
+			var createdTime = moment(article.createdAt).format('YYYY-MM-DD HH:mm:ss')
+			html +=
+			`<div class="panel panel-default content-item">
+			  <div class="panel-heading">
+			    <h3 class="panel-title">
+			      <a href="/detail/${article._id.toString()}" class="link" target="_blank">${article.title}</a>
+			    </h3>
+			  </div>
+			  <div class="panel-body">${article.intro}</div>
+			  <div class="panel-footer">
+			    <span class="glyphicon glyphicon-user"></span>
+			    <span class="panel-footer-text text-muted">${article.user.username}</span>
+			    <span class="glyphicon glyphicon-th-list"></span>
+			    <span class="panel-footer-text text-muted">${article.category.name}</span>
+			    <span class="glyphicon glyphicon-time"></span>
+			    <span class="panel-footer-text text-muted">${createdTime}</span>
+			    <span class="glyphicon glyphicon-eye-open"></span>
+			    <span class="panel-footer-text text-muted"><em>${article.click}</em>已阅读</span>
+			  </div>
+			</div>`
+		})
+		return html
+	}
+	function buildPaginationHtml(page,pageMax,list){
+		var html = ''
+		html += `<ul class="pagination">`
+		if (page == 1) {
+			html += `<li class="disabled">`
+		}else{
+			html += `<li>`
+		}
+		html += `<a href="javascript:;" aria-label="Previous">
+			        <span aria-hidden="true">&laquo;</span>
+			      </a>
+			    </li>`
+	    list.forEach(function(i) {
+	    	if (i == page) {
+	    		html += `<li class="active">`
+	    	}else{
+	    		html += `<li>`
+	    	}
+	    	html += `<a href="jacascript:;">${i}</a></li>`
+	    })
+	    if (page == pageMax) {
+	    	html += `<li class="disabled">`
+	    }else{
+	    	html += `<li>`
+	    }
+	    html += `<a href="javascript:;" aria-label="Next">
+			        <span aria-hidden="true">&raquo;</span>
+			      </a>
+			    </li>`
+		html += `</ul>`
+		return html
+	}
+
+
+	$articlePage.on('get-data',function(ev,data){
+		// console.log(data.docs)
+		//构建文章html
+		$('#article-wrap').html(buildArticleHtml(data.docs))
+		$('#article-page').html(buildPaginationHtml(data.page,data.pageMax,data.list))
+	})
+    $articlePage.pagination({
+        url:'/articles'    
+    })
+
+
+
+    //////////////////////////
+     function buildCommentHtml(comments){
+        var html = ''
+        comments.forEach(function(comment){
+        	var createdTime = moment(comment.createdAt).format('YYYY-MM-DD HH:mm:ss')
+        	html += `<div class="panel panel-default">
+				        <div class="panel-heading">${ comment.user.username } 发表于 ${ createdTime } </div>
+				        <div class="panel-body">
+				          ${ comment.content }
+				        </div>
+				     </div>`
+        })
+
+        return html
+    }
+    var $commentPage = $('#comment-page')
+
+    $commentPage.on('get-data',function(ev,data){
+		$('#comment-wrap').html(buildCommentHtml(data.docs))
+
+		$pagination = $commentPage.find('.pagination')
+		$pagination.html(buildPaginationHtml(data.page,data.pageMax,data.list))
+	})
+
+
+    $commentPage.pagination({
+        url:'/comment/list'
+    })
 })(jQuery);
