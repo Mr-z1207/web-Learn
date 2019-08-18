@@ -5,41 +5,51 @@ import './App.css'
 class App extends Component{
 	constructor(props){
 		super(props);
-		this.arr = [];
 	    this.state = {
 	    	list:[],
 	    	task:''
 	    }
+	    this.handleChange = this.handleChange.bind(this)
+	    this.handleClick = this.handleClick.bind(this)
 	}
-	static getDerivedStateFromProps(nextProps, prevState){
-		console.log(nextProps, prevState)
-		return null 
-	}
-	getSnapshotBeforeUpdate(prevProps, prevState){
-		console.log(prevProps, prevState)
-		return prevState.task
-	}
-	componentDidUpdate(prevProps, prevState,snapshot){
-		console.log(prevProps, prevState,snapshot)
-	}
+	// static getDerivedStateFromProps(nextProps, prevState){
+	// 	console.log(nextProps, prevState)
+	// 	return null 
+	// }
+	// getSnapshotBeforeUpdate(prevProps, prevState){
+	// 	console.log(prevProps, prevState)
+	// 	return prevState.task
+	// }
+	// componentDidUpdate(prevProps, prevState,snapshot){
+	// 	console.log(prevProps, prevState,snapshot)
+	// }
 	handleClick(){
 		// console.log(this)
-		this.setState({
-			list:[...this.state.list,this.state.task],
+		this.setState((preState)=>({
+			list:[...preState.list,preState.task],
 			task:''
-		})
+		}))
 	}
 	handleChange(ev){
 		// console.log(ev.target.value)
-		this.setState({
-			task:ev.target.value
-		})
+		const task = ev.target.value
+		this.setState(()=>({
+			task:task
+		}))
 	}
 	handleDel(index){
 		let list = [...this.state.list]
 		list.splice(index,1)
-		this.setState({
+		this.setState(()=>({
 			list:list
+		}))
+	}
+	getItem(){
+		return this.state.list.map((item,index)=>{
+			// console.log(item)
+			// return <li key={index} onClick={this.handleDel.bind(this,index)}>{item}</li>
+			return <Item key={index} task={item} handleDel={this.handleDel.bind(this,index)}/>
+			// return <Item key={index} task={item} handleDel={true}/>
 		})
 	}
 	render(){
@@ -54,20 +64,14 @@ class App extends Component{
 			{/* js代码，例如：对象，要写在{花括号}里面 */}
 			<p className='p-style'>外部样式的写法，类名用className</p>
 			{/* import './App.css'   引入CSS文件 */}
-			<input type="text" onChange={this.handleChange.bind(this)} value={this.state.task}/>
-			<button onClick={this.handleClick.bind(this)}>提交</button>
+
+
+
+			<input type="text" onChange={this.handleChange} value={this.state.task}/>
+			<button onClick={this.handleClick}>提交</button>
 			<ul>
 				{
-					this.state.list.map((item,index)=>{
-						// console.log(item)
-						// return <li key={index} onClick={this.handleDel.bind(this,index)}>{item}</li>
-						return <Item key={index} task={item} handleDel={this.handleDel.bind(this,index)}/>
-						// return <Item key={index} task={item} handleDel={true}/>
-					})
-
-					// [<li>1</li>,<li>2</li>] 
-					// map返回一个数组，例如上面
-					// jsx 会把这个数组解析成HTML
+					this.getItem()
 				}
 			</ul>
 		</React.Fragment>

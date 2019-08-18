@@ -12,7 +12,9 @@ module.exports = {
   //出口
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    //指定输出参考根路径
+    publicPath:'/',
   },
   module: {
     rules: [
@@ -40,7 +42,7 @@ module.exports = {
         use: {
             loader: 'babel-loader',
             options: {
-                presets: ['env', 'react'],
+                presets: ['env','es2015','react','stage-3'],
                 plugins: [
                     ["import", { "libraryName": "antd", "libraryDirectory": "es", "style": "css" }] 
                 ]
@@ -60,6 +62,7 @@ module.exports = {
   ],
   devServer:{
     contentBase: path.join(__dirname, 'dist'),//内容的目录
-    port:8080//服务运行的端口
+    port:8080,//服务运行的端口,
+    historyApiFallback:true//让h5路由不向后端发送请求
   }
 };
