@@ -2,27 +2,25 @@ import * as Type from './actionConstant.js'
 const { fromJS } = require('immutable');
 
 const defaultState = fromJS({
-	dataList:[],
+	list:[],
+	categories:[],
 	current:1,
 	pageSize:0,
 	total:0,
-	spinning:false,
 })
 
 export default (state=defaultState,action)=>{
-	if (action.type == Type.GET_USERDATA) {
+	if (action.type == Type.SET_CATEGORIES) {
+		return state.set('categories',fromJS(action.payLoad))
+	}
+	if (action.type == Type.SET_PAGE) {
+		// console.log(action.payLoad)
 		return state.merge({
-			dataList:fromJS(action.payLoad.list),
+			list:fromJS(action.payLoad.list),
 			current:action.payLoad.current,
 			pageSize:action.payLoad.pageSize,
 			total:action.payLoad.total,
 		})
-	}
-	if (action.type == Type.GETUSER_REQEST_START) {
-		return state.set('spinning',true)		
-	}
-	if (action.type == Type.GETUSER_REQEST_DONE) {
-		return state.set('spinning',false)
 	}
     return state
 }

@@ -56,7 +56,7 @@ class User extends Component{
         super(props)
     }
     componentDidMount(){
-       this.props.getUserData()
+       this.props.getUserData(1)
     }
 	render() {
 		const { UserData,current,pageSize,total,getUserData,spinning } = this.props

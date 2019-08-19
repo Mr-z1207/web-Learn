@@ -1,4 +1,5 @@
 
-export const GET_USERDATA = "user@get_userdata"
-export const GETUSER_REQEST_START = "user@getuser_reqest_start"
-export const GETUSER_REQEST_DONE = "user@getuser_reqest_done"
+export const SET_CATEGORIES = "category@set_categories"
+export const SET_PAGE = "category@set_page"
+export const PAGE_REQEST_START = "category@page_reqest_start"
+export const PAGE_REQEST_DONE = "category@page_reqest_done"
