@@ -47,7 +47,7 @@ const getCategoryDataAction = (page)=>{
         })
         .then(result=>{
             if(result.code == 0){
-                console.log('result:::',result)
+                // console.log('result:::',result)
                 dispatch(getSetPageAction(result.data))
             }else{
                 message.error('获取分类数据失败,请稍后再试')

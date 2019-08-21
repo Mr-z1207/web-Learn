@@ -7,8 +7,8 @@ import {
     Switch,
 } from "react-router-dom"
 
-import list from 'pages/Category/list.js'
-import CategoryAdd from 'pages/Category/add.js'
+import list from 'pages/Product/list.js'
+import ProductSave from 'pages/Product/save.js'
 
 class Category extends Component{
 	constructor(props){
@@ -17,8 +17,8 @@ class Category extends Component{
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/Category/" component={list}/>
-				<Route exact path="/Category/add" component={CategoryAdd}/>
+				<Route exact path="/Product/" component={list}/>
+				<Route exact path="/Product/save" component={ProductSave}/>
 			</Switch>
 		)
 	}

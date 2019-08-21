@@ -106,8 +106,8 @@ class CategoryList extends Component{
 			<AdminLayout>
 				<Breadcrumb style={{ margin: '16px 0' }}>
 					<Breadcrumb.Item>首页</Breadcrumb.Item>
-					<Breadcrumb.Item>用户管理</Breadcrumb.Item>
-					<Breadcrumb.Item>用户列表</Breadcrumb.Item>
+					<Breadcrumb.Item>分类管理</Breadcrumb.Item>
+					<Breadcrumb.Item>分类列表</Breadcrumb.Item>
 				</Breadcrumb>
 				<Link to='/Category/add' style={{float:'right'}}>
 					<Button type="primary">添加分类</Button>
@@ -139,6 +139,7 @@ const mapStateToProps = (state)=>({
 	current:state.get('category').get('current'),
 	pageSize:state.get('category').get('pageSize'),
 	total:state.get('category').get('total'),
+	columns:state.get('category').get('columns')
 })
 
 const mapDispatchToProps = (dispatch)=>({

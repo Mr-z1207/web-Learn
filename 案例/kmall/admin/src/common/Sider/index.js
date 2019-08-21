@@ -23,6 +23,9 @@ class AdminSider extends Component{
 					<Menu.Item key="3">
 						<NavLink to="/Category"><Icon type="bar-chart" />分类管理</NavLink>
 					</Menu.Item>
+					<Menu.Item key="4">
+						<NavLink to="/Product"><Icon type="shop" />商品管理</NavLink>
+					</Menu.Item>
 				</Menu>
 			</Sider>
 	    )

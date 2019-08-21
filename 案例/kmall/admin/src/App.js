@@ -1,3 +1,4 @@
+import './App.css'
 import React,{ Component } from 'react'
 // import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { 
@@ -13,6 +14,7 @@ import Login from 'pages/Login/'
 import Home from 'pages/Home/'
 import User from 'pages/User/'
 import Category from 'pages/Category/'
+import Product from 'pages/Product/'
 import Err from 'common/Err/'
 import { getUsername } from 'util'
 
@@ -43,6 +45,7 @@ class App extends Component{
 	                <ProtectedRoute exact path="/" component={Home} />
 	                <ProtectedRoute exact path="/User" component={User} />
 	                <ProtectedRoute path="/Category" component={Category} />
+	                <ProtectedRoute path="/Product" component={Product} />
 	                <Route component={Err}/>
                 </Switch>
 			</Router>

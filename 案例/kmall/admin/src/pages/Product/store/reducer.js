@@ -7,11 +7,23 @@ const defaultState = fromJS({
 	current:1,
 	pageSize:0,
 	total:0,
+	mainImg:'',
+	imgs:'',
+	detail:'',
 })
 
 export default (state=defaultState,action)=>{
 	if (action.type == Type.SET_CATEGORIES) {
 		return state.set('categories',fromJS(action.payLoad))
+	}
+	if (action.type == Type.SET_MAIN_IMAGE) {
+		return state.set('mainImg',action.payLoad)
+	}
+	if (action.type == Type.SET_IMAGES) {
+		return state.set('imgs',action.payLoad)
+	}
+	if (action.type == Type.SET_DETAIL) {
+		return state.set('detail',action.payLoad)
 	}
 	if (action.type == Type.SET_PAGE) {
 		// console.log(action.payLoad)

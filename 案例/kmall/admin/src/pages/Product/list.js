@@ -28,67 +28,7 @@ class CategoryList extends Component{
 				title: '分类名称',
 				dataIndex: 'name',
 				key: 'name',
-				width:'30%',
-				render:(name,record)=><Input 
-					style={{width:'60%'}}
-					defaultValue={name}
-					onBlur={
-						(ev)=>{
-							console.log(111)
-							if(ev.target.value != name){
-								handleUpdateName(record._id,ev.target.value)    
-							}
-						}
-					}
-				/>
-			},
-			{
-				title: '手机分类名称',
-				dataIndex: 'mobileName',
-				key: 'mobileName',
-				width:'30%',
-				render:(mobileName,record)=><Input 
-					style={{width:'60%'}}
-					defaultValue={mobileName}
-					onBlur={
-                        (ev)=>{
-                            if(ev.target.value != mobileName){
-                                handleUpdateMobileName(record._id,ev.target.value)    
-                            }
-                        }
-                    }
-				/>
-			},
-			{
-				title: '是否显示',
-				dataIndex: 'isShow',
-				key: 'isShow',
-				render:(isShow,record)=><Switch 
-					checkedChildren="显示" 
-					unCheckedChildren="隐藏" 
-					checked={isShow == '0' ? false : true}
-					onChange={
-						(checked)=>{
-							handleUpdateIsShow(record._id,checked ? '1' : '0')
-						}
-					} 
-				/>
-			},
-			{
-                title: '排序',
-                dataIndex: 'order',
-                key: 'order',
-                render:(order,record)=><InputNumber 
-                    defaultValue={order}
-                    onBlur={
-                        (ev)=>{
-                            if(ev.target.value != order){
-                                handleUpdateOrder(record._id,ev.target.value)    
-                            }
-                        }
-                    }
-                />                 
-            },
+			}
 		]
 
 		const { 
@@ -107,11 +47,11 @@ class CategoryList extends Component{
 			<AdminLayout>
 				<Breadcrumb style={{ margin: '16px 0' }}>
 					<Breadcrumb.Item>首页</Breadcrumb.Item>
-					<Breadcrumb.Item>用户管理</Breadcrumb.Item>
-					<Breadcrumb.Item>用户列表</Breadcrumb.Item>
+					<Breadcrumb.Item>商品管理</Breadcrumb.Item>
+					<Breadcrumb.Item>商品列表</Breadcrumb.Item>
 				</Breadcrumb>
-				<Link to='/Category/add' style={{float:'right'}}>
-					<Button type="primary">添加分类</Button>
+				<Link to='/Product/save' style={{float:'right'}}>
+					<Button type="primary">新增商品</Button>
 				</Link>
 				<div style={{ padding: '30px' }}>
 					<Table 
