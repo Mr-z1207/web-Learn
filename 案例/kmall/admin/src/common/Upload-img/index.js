@@ -7,7 +7,7 @@ class UploadImg extends Component {
         this.state = {
 			previewVisible: false,
 			previewImage: '',
-			fileList: [],
+			fileList: this.props.fileList
 		}
 		this.handleCancel = this.handleCancel.bind(this)
 		this.handlePreview = this.handlePreview.bind(this)

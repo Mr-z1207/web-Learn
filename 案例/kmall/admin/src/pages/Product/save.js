@@ -15,21 +15,46 @@ class ProductSave extends Component{
 	constructor(props){
 		super(props)
 		this.handleSubmit = this.handleSubmit.bind(this)
+		this.state = {
+			productId:this.props.match.params.ProductId
+		}
 	}
 	componentDidMount(){
         this.props.getCategories()
+        if (this.state.productId) {
+        	this.props.getProductDetail(this.state.productId)
+        }
     }
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
-            if (!err) {
-                this.props.handleSave(values)
-            }
+            this.props.handleSave(err,values)
         })
     }
 	render() {
 		const { getFieldDecorator } = this.props.form
-		const { categories,handleMainImage,handleImages,handleDetail } = this.props
+		const { categories,
+				handleMainImage,
+				handleImages,
+				handleDetail,
+				mainImgValidateStatus,
+				mainImgHelp,
+				imgsValidateStatus,
+				imgsHelp,
+				detailValidateStatus,
+				detailHelp,
+
+				category,
+		        name,
+		        description,
+		        price,
+		        stock,
+		        detail,
+		        mainImage,
+		        images,
+			} = this.props
+		const MainImageList = []
+		const imagesList = []
 		return (
 			<AdminLayout>
 				<Breadcrumb style={{ margin: '16px 0' }}>
@@ -42,6 +67,7 @@ class ProductSave extends Component{
 					<Form.Item label="商品分类">
 						{getFieldDecorator('category', {
 							rules: [{ required: true, message: '请选择商品分类' }],
+							initialValue:category
 						})(
 							<Select placeholder="请选择商品分类">
 								{
@@ -55,24 +81,33 @@ class ProductSave extends Component{
 					<Form.Item label="商品名称">
 						{getFieldDecorator('name', {
 							rules: [{ required: true, message: '请输入商品名称' }],
+							initialValue:name
 						})(<Input />)}
 					</Form.Item>
 					<Form.Item label="商品描述">
 						{getFieldDecorator('description', {
 							rules: [{ required: true, message: '请输入商品描述' }],
+							initialValue:description
 						})(<Input />)}
 					</Form.Item>
 					<Form.Item label="商品价格">
 						{getFieldDecorator('price', {
 							rules: [{ required: true, message: '请输入商品价格' }],
+							initialValue:price
 						})(<InputNumber min={0} />)}
 					</Form.Item>
 					<Form.Item label="商品库存">
 						{getFieldDecorator('stock', {
 							rules: [{ required: true, message: '请输入商品库存' }],
+							initialValue:stock
 						})(<InputNumber min={0} />)}
 					</Form.Item>
-					<Form.Item label="商品封面" required={true}>
+					<Form.Item 
+						label="商品封面" 
+						required={true} 
+						validateStatus={mainImgValidateStatus}
+						help={mainImgHelp}
+					>
 						<UploadImg 
 							max={1}
 							action={UPLOAD_PRODUCT_IMAGE}
@@ -81,9 +116,15 @@ class ProductSave extends Component{
 									handleMainImage(fileList)
 								}
 							}
+							fileList={MainImageList}
 						/>
 					</Form.Item>
-					<Form.Item label="商品图片" required={true}>
+					<Form.Item 
+						label="商品图片" 
+						required={true}
+						validateStatus={imgsValidateStatus}
+						help={imgsHelp}
+					>
 						<UploadImg 
 							max={3}
 							action={UPLOAD_PRODUCT_IMAGE}
@@ -92,9 +133,10 @@ class ProductSave extends Component{
 									handleImages(fileList)
 								}
 							}
+							fileList={imagesList}
 						/>
 					</Form.Item>
-					<Form.Item label="商品详情" required={true}>
+					<Form.Item label="商品详情">
 						<RichEditor
 							url={UPLOAD_PRODUCT_DETAIL_IMAGES}
 							getValue={
@@ -102,6 +144,7 @@ class ProductSave extends Component{
 									handleDetail(values)
 								}
 							}
+							values={detail}
 						/>
 					</Form.Item>
 					<Form.Item wrapperCol={{ span: 12, offset: 5 }}>
@@ -118,7 +161,22 @@ class ProductSave extends Component{
 const WrappedProductSave = Form.create({ name: 'product' })(ProductSave)
 //映射属性到组件
 const mapStateToProps = (state) => ({
-	categories:state.get('product').get('categories')
+	categories:state.get('product').get('categories'),
+	mainImgValidateStatus:state.get('product').get('mainImgValidateStatus'),
+	mainImgHelp:state.get('product').get('mainImgHelp'),
+	imgsValidateStatus:state.get('product').get('imgsValidateStatus'),
+	imgsHelp:state.get('product').get('imgsHelp'),
+	detailValidateStatus:state.get('product').get('detailValidateStatus'),
+	detailHelp:state.get('product').get('detailHelp'),
+
+	category:state.get('product').get('category'),
+    name:state.get('product').get('name'),
+    description:state.get('product').get('description'),
+    price:state.get('product').get('price'),
+    stock:state.get('product').get('stock'),
+    detail:state.get('product').get('detail'),        
+    mainImage:state.get('product').get('mainImage'),        
+    images:state.get('product').get('images'),
 })
 //映射方法到组件
 const mapDispatchToProps = (dispatch) => ({
@@ -131,11 +189,14 @@ const mapDispatchToProps = (dispatch) => ({
 	handleDetail:(values)=>{
 		dispatch(Action.setDetailAction(values))
 	},
-	handleSave:(values)=>{
-		dispatch(Action.getSaveAction(values))
+	handleSave:(err,values)=>{
+		dispatch(Action.getSaveAction(err,values))
 	},
 	getCategories:()=>{
 		dispatch(Action.getCategoriesAction())
+	},
+	getProductDetail:(productId)=>{
+		dispatch(Action.getProductDetailAction(productId))
 	}
 })
 export default connect(mapStateToProps, mapDispatchToProps)(WrappedProductSave)

@@ -53,7 +53,7 @@ const ProductSchema = new mongoose.Schema({
   timestamps:true
 });
 
-ProductSchema.statics.getPaginationProducts = function(page,query={},projection='name _id price status order isShow isHot',sort={order:-1}){
+ProductSchema.statics.getPaginationProducts = function(page,query={},projection='name _id price status order isShow isHot',sort={order:-1,_id:-1}){
     return new Promise((resolve,reject)=>{
       let options = {
         page: page,

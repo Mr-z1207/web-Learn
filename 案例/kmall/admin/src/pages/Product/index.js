@@ -18,7 +18,8 @@ class Category extends Component{
 		return (
 			<Switch>
 				<Route exact path="/Product/" component={list}/>
-				<Route exact path="/Product/save" component={ProductSave}/>
+				<Route exact path="/Product/save/:ProductId?" component={ProductSave}/>
+				{/* :ProductId?  加问号，匹配正则 */}
 			</Switch>
 		)
 	}

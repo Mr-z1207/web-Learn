@@ -39,7 +39,7 @@ class App extends Component{
 			/>
 		)
 		return (
-			<Router>
+			<Router forceRefresh={true}>
                  <Switch>
                  	<LoginRoute path="/Login" component={Login} />
 	                <ProtectedRoute exact path="/" component={Home} />
