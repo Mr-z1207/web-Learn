@@ -166,10 +166,10 @@ router.put("/",(req,res)=>{
 	let update = {
 		name:body.name,
 		category:body.category,
-		detail:body.detail,
+		detail:body.Detail,
 		description:body.description,
-		mainImage:body.mainImage,
-		images:body.images,
+		mainImage:body.MainImage,
+		images:body.Images,
 		price:body.price,
 		stock:body.stock
 	}

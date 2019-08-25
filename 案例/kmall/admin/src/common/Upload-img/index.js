@@ -7,13 +7,22 @@ class UploadImg extends Component {
         this.state = {
 			previewVisible: false,
 			previewImage: '',
-			fileList: this.props.fileList
+			fileList: [],
+			isLoad:false
 		}
 		this.handleCancel = this.handleCancel.bind(this)
 		this.handlePreview = this.handlePreview.bind(this)
 		this.handleChange = this.handleChange.bind(this)
     }
-
+    static getDerivedStateFromProps(props, state){
+        if(props.fileList.length > 0 && state.fileList.length == 0 && !state.isLoad){
+            return {
+                fileList:props.fileList,
+                isLoad:true
+            }
+        }
+        return null
+    }
 	handleCancel(){
 		return this.setState({ previewVisible: false })
 	}
@@ -29,7 +38,7 @@ class UploadImg extends Component {
 		// this.props.getFileList(fileList)
 		return this.setState({ fileList },()=>{
 			this.props.getFileList(fileList.map(file=>{
-				if (file.status == "done") {
+				if (file.response) {
 					return file.response.url
 				}
 			}).join())

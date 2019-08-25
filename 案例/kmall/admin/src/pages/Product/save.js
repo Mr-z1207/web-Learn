@@ -28,6 +28,7 @@ class ProductSave extends Component{
     handleSubmit(e) {
         e.preventDefault();
         this.props.form.validateFields((err, values) => {
+        	values.id = this.state.productId
             this.props.handleSave(err,values)
         })
     }
@@ -53,14 +54,30 @@ class ProductSave extends Component{
 		        mainImage,
 		        images,
 			} = this.props
-		const MainImageList = []
-		const imagesList = []
+		let MainImageList = []
+		if (mainImage) {
+			MainImageList.push({
+				uid: '0',
+        		status: 'done',
+        		url: mainImage,
+        		response:{url:mainImage}
+			})
+		}
+		let imagesList = []
+		if (images) {
+			imagesList = images.split(',').map((url,index)=>({
+				uid: index,
+        		status: 'done',
+        		url: url,
+        		response:{url:url}
+			}))
+		}
 		return (
 			<AdminLayout>
 				<Breadcrumb style={{ margin: '16px 0' }}>
 					<Breadcrumb.Item>首页</Breadcrumb.Item>
 					<Breadcrumb.Item>商品管理</Breadcrumb.Item>
-					<Breadcrumb.Item>新增商品</Breadcrumb.Item>
+					<Breadcrumb.Item>{this.state.productId ? "修改商品" : "添加商品"}</Breadcrumb.Item>
 				</Breadcrumb>
 				<div className="content">
 				<Form labelCol={{ span: 5 }} wrapperCol={{ span: 12 }} >
@@ -175,8 +192,8 @@ const mapStateToProps = (state) => ({
     price:state.get('product').get('price'),
     stock:state.get('product').get('stock'),
     detail:state.get('product').get('detail'),        
-    mainImage:state.get('product').get('mainImage'),        
-    images:state.get('product').get('images'),
+    mainImage:state.get('product').get('mainImg'),        
+    images:state.get('product').get('imgs'),
 })
 //映射方法到组件
 const mapDispatchToProps = (dispatch) => ({

@@ -1,5 +1,6 @@
 import React,{ Component } from 'react'
 import { Breadcrumb, Button, Table, Input, InputNumber, Switch, Divider } from 'antd';
+const { Search } = Input
 import moment from 'moment'
 
 import "./index.css"
@@ -28,6 +29,15 @@ class ProductList extends Component{
 				title: '商品名称',
 				dataIndex: 'name',
 				key: 'name',
+				render:(name)=>{
+					if (keyword) {
+						const reg = new RegExp('('+keyword+')','ig')
+						const html = name.replace(reg,'<b style="color:#ff6700"}}>$1</b>')
+						return <span dangerouslySetInnerHTML={{__html:html}} ></span>
+					}else{
+						return name
+					}
+				}
 			},
 			{
 				title: '首页显示',
@@ -109,6 +119,7 @@ class ProductList extends Component{
 			handleUpdateStatus,
 			handleUpdateIsHot,
 			handleUpdateOrder,
+			keyword,
 		} = this.props
 		const data = List.toJS()
 		// console.log(data)
@@ -119,8 +130,16 @@ class ProductList extends Component{
 					<Breadcrumb.Item>商品管理</Breadcrumb.Item>
 					<Breadcrumb.Item>商品列表</Breadcrumb.Item>
 				</Breadcrumb>
+				<Search 
+                    placeholder="请输入商品名称关键字" 
+                    onSearch={
+                        value => handlePage(1,value)
+                    } 
+                    enterButton 
+                    style={{ width: 300 }}
+                />
 				<Link to='/Product/save' style={{float:'right'}}>
-					<Button type="primary">商品分类</Button>
+					<Button type="primary">新增商品</Button>
 				</Link>
 				<div style={{ padding: '30px' }}>
 					<Table 
@@ -128,6 +147,11 @@ class ProductList extends Component{
 						columns={columns} 
 						dataSource={data}
 						pagination={{current,pageSize,total}}
+						onChange={
+                            (page)=>{
+                                handlePage(page.current,keyword)
+                            }
+                        }
 					/>
 				</div>
 			</AdminLayout>
@@ -140,7 +164,8 @@ const mapStateToProps = (state)=>({
 	current:state.get('product').get('current'),
 	pageSize:state.get('product').get('pageSize'),
 	total:state.get('product').get('total'),
-	categories:state.get('product').get('categories')
+	categories:state.get('product').get('categories'),
+	keyword:state.get('product').get('keyword')
 })
 
 const mapDispatchToProps = (dispatch)=>({

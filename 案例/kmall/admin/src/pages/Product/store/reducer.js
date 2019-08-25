@@ -20,11 +20,13 @@ const defaultState = fromJS({
 	detailHelp:'',
 
 	category:'',
+	categoryName:'',
 	name:'',
 	description:'',
 	price:'',
     stock:'',
-    detail:'',
+
+    keyword:'',
 })
 
 export default (state=defaultState,action)=>{
@@ -61,25 +63,27 @@ export default (state=defaultState,action)=>{
 		})
 	}
 	if (action.type == Type.SET_PAGE) {
-		// console.log(action.payLoad)
+		console.log(action.payLoad)
 		return state.merge({
 			list:fromJS(action.payLoad.list),
 			current:action.payLoad.current,
 			pageSize:action.payLoad.pageSize,
 			total:action.payLoad.total,
+			keyword:action.payLoad.keyword
 		})
 	}
 	if (action.type == Type.SET_PRODUCT_DETAIL) {
 		console.log("aaaa:::::",action.payLoad)
 		return state.merge({
-			category:action.payload.category._id,
-			name:action.payload.name,
-			description:action.payload.description,
-			price:action.payload.price,
-		    stock:action.payload.stock,
-		    detail:action.payload.detail,
-		    mainImage:action.payload.mainImage,
-            images:action.payload.images,
+			category:action.payLoad.category._id,
+			categoryName:action.payLoad.category.name,
+			name:action.payLoad.name,
+			description:action.payLoad.description,
+			price:action.payLoad.price,
+		    stock:action.payLoad.stock,
+		    detail:action.payLoad.detail,
+		    mainImg:action.payLoad.mainImage,
+            imgs:action.payLoad.images,
 		})
 	}
     return state

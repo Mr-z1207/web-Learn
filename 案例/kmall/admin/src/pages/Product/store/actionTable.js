@@ -63,7 +63,14 @@ const getSaveAction = (err,values)=>{
         if (hasErr) {
             return
         }
-        api.saveProducts({
+        let request = api.saveProducts
+        if(values.id){
+            request = api.updateProducts
+        }
+        console.log('MainImage',MainImage)
+        console.log('Images',Images)
+        console.log('Detail',Detail)
+        request({
             ...values,
             MainImage,
             Detail,
@@ -71,7 +78,7 @@ const getSaveAction = (err,values)=>{
         })
         .then(result=>{
             if(result.code == 0){
-                message.success('添加商品成功',()=>{
+                message.success(result.message,()=>{
                     window.location.href = '/Product'
                 })
             }else{
@@ -87,9 +94,13 @@ const getSaveAction = (err,values)=>{
 
 const getProductDataAction = (page,keyword)=>{
     return (dispatch,getState)=>{
-        api.getProductsList({
-            page:page
-        })
+        const options = {
+           page:page 
+        }
+        if(keyword){
+            options.keyword = keyword
+        }
+        api.getProductsList(options)
         .then(result=>{
             if(result.code == 0){
                 // console.log('result:::',result)
@@ -193,9 +204,9 @@ const getUpdateOrderAction = (id,newOrder)=>{
         })               
     }
 }
-const setProductDetailAction = (payload)=>({
+const setProductDetailAction = (payLoad)=>({
     type:Type.SET_PRODUCT_DETAIL,
-    payload
+    payLoad
 })
 const getProductDetailAction = (productId)=>{
     return (dispatch,getState)=>{
@@ -203,7 +214,7 @@ const getProductDetailAction = (productId)=>{
             id:productId
         })
         .then(result=>{
-            console.log(result)
+            console.log('result',result.data)
             if(result.code == 0){
                 dispatch(setProductDetailAction(result.data))
             }

@@ -9,6 +9,7 @@ import {
 
 import list from 'pages/Product/list.js'
 import ProductSave from 'pages/Product/save.js'
+import ProductDetail from 'pages/Product/detail.js'
 
 class Category extends Component{
 	constructor(props){
@@ -19,6 +20,7 @@ class Category extends Component{
 			<Switch>
 				<Route exact path="/Product/" component={list}/>
 				<Route exact path="/Product/save/:ProductId?" component={ProductSave}/>
+				<Route path="/product/detail/:productId?" component={ProductDetail} />
 				{/* :ProductId?  加问号，匹配正则 */}
 			</Switch>
 		)
