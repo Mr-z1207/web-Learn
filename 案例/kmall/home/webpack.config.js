@@ -1,15 +1,16 @@
-/*
-* @Author: TomChen
-* @Date:   2019-08-08 16:30:19
-* @Last Modified by:   TomChen
-* @Last Modified time: 2019-08-14 17:00:18
-*/
-
 const path = require('path')
 
 const htmlWebpackPlugin = require('html-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
+const getHtmlConfig = (name,title)=>({
+    template:'./src/views/'+name+'.html',//模板文件
+    filename:name+'.html',//输出的文件名
+    title:title,
+    hash:true,//给生成的js/css文件添加一个唯一的hash
+    chunks:['common',name]
+})
 
 module.exports = {
     //指定环境
@@ -20,7 +21,10 @@ module.exports = {
     // entry: {main:'./src/index.js'},
     //多入口
     entry:{
-        index:'./src/pages/index/index.js',
+        'common'                :'./src/pages/common/index.js',
+        'index'                 :'./src/pages/index/index.js',
+        'list'                  :'./src/pages/list/index.js',
+        'user-login'            :'./src/pages/user-login/index.js',
     },
     //出口
     output: {
@@ -39,6 +43,7 @@ module.exports = {
             util:path.resolve(__dirname,'./src/util'),
             common:path.resolve(__dirname,'./src/common'),
             api:path.resolve(__dirname,'./src/api'),
+            node_modules:path.resolve(__dirname,'./node_modules'),
         }
     },
     module: {
@@ -57,12 +62,13 @@ module.exports = {
             },
         //处理图片
             {
-                test: /\.(png|jpg|gif)$/i,
+                test: /\.(png|jpg|gif|eot|svg|ttf|woff2|woff)\??.*$/i,
                 use: [
                     {
                         loader: 'url-loader',
                         options: {
-                            limit: 400
+                            limit: 400,
+                            name:'resource/[name].[ext]'
                         }
                     }
                 ]
@@ -74,45 +80,24 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        // presets: ['env', 'react'],
-                        presets: ['env','es2015','react','stage-3'],
-                        plugins: [["import", { "libraryName": "antd", "libraryDirectory": "es", "style": true }] ]
+                        presets: ['env','es2015','stage-3'],
                     },
                 }
             },
-            {
-                test: /\.less$/,
-                use: [{
-                    loader: 'style-loader',
-                }, {
-                    loader: 'css-loader', // translates CSS into CommonJS
-                }, {
-                    loader: 'less-loader', // compiles Less to CSS
-                    options: {
-                        modifyVars: {
-                            'primary-color': '#1DA57A',
-                            'link-color': '#1DA57A',
-                            'border-radius-base': '2px',
-                        },
-                        javascriptEnabled: true,
-                    },
-                }],
-            }
         ]
     },
     plugins:[
         new CleanWebpackPlugin(),
-        new MiniCssExtractPlugin({}),
-        new htmlWebpackPlugin({
-            template:'./src/views/index.html',//模板文件
-            filename:'index.html',//输出的文件名
-            //inject:'head',//脚本写在那个标签里,默认是true(在body结束后)
-            hash:true,//给生成的js/css文件添加一个唯一的hash
-        })
+        new htmlWebpackPlugin(getHtmlConfig('index','首页')),
+        new htmlWebpackPlugin(getHtmlConfig('list','列表页')),
+        new htmlWebpackPlugin(getHtmlConfig('user-login','用户登录')),
+        new MiniCssExtractPlugin({
+            filename: 'css/[name]-[hash]-bundle.css'
+        }),
     ],
     devServer: {
         contentBase: './dist',//内容的目录
-        port:3001,//指定服务端口
+        port:3002,//指定服务端口
         historyApiFallback:true//让h5路由不向后端发送请求
     },                
 }
