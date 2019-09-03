@@ -1,28 +1,42 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <!-- 3、使用组件 -->
+    <Header />
+    <List :todos="todos" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
-  }
-}
+	// 1、引入组件
+	import Header from './components/Header.vue'
+	import List from './components/List.vue'
+	// 2、注册组件
+	export default {
+		name:'App',
+		components:{
+            Header,
+            List,
+        },
+        data:function() {
+        	return {
+        		todos:[
+        			{
+        				task:'吃饭',
+                        done:true
+        			},
+        			{
+        				task:'睡觉',
+                        done:false
+        			}
+        		]
+        	}
+        }
+	}
 </script>
 
 <style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+	#app{
+        width: 600px;
+        margin: 100px auto;
+    }
 </style>
