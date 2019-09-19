@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	
+</body>
+<script>
+	var arr = [1,12,13,24,35,23,12,24,13,15,17]
+
+	var newArr = []
+	for(var i = 0; i<arr.length; i++){
+		if(newArr.indexOf(arr[i],0) == -1){
+			newArr.push(arr[i])
+		}
+	}
+	newArr.sort(function(n1,n2) {
+		return n1-n2;
+	})
+	console.log(newArr)
+</script>
+</html>
