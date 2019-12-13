@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style>
+		div{
+			width: 400px;
+			height: 200px;
+			background-color: #f00;
+		}
+	</style>
+</head>
+<body>
+	<button>1</button>
+	<button>2</button>
+	<div></div>
+</body>
+<script src="js/jquery-1.12.4.js"></script>
+<script>
+	var js = {
+		showner : {
+			init : function($elem) {
+				init($elem)
+			},
+			show : function($elem) {
+				show($elem,function() {
+					$elem.show()
+					$elem.trigger('shown').data('sta','shown')
+				})
+			},
+			hide : function($elem) {
+				hide($elem,function() {
+					$elem.hide()
+					$elem.trigger('hidden').data('sta','hidden')
+				})
+			}
+		},
+		sport : {
+			init : function($elem) {
+				js._init($elem)
+			},
+			show : function($elem,mod) {
+				js._show($elem,mod)
+			},
+			hide : function($elem,mod) {
+				js._hide($elem,mod)
+			}
+		},
+		slideRow : {
+			init : function($elem) {
+				js._rowInit($elem,{
+					width:0,
+					paddingLeft:0,
+					paddingRight:0,
+					borderLeftWidth:0,
+					borderRightWidth:0
+				})
+			},
+			show : function($elem) {
+				js._rowShow($elem)
+			},
+			hide : function($elem) {
+				js._rowHide($elem,{
+					width:0,
+					paddingLeft:0,
+					paddingRight:0,
+					borderLeftWidth:0,
+					borderRightWidth:0
+				})
+			}
+		},
+		feadslideRow : {
+			init : function($elem) {
+				js._rowInit($elem,{
+					width:0,
+					paddingLeft:0,
+					paddingRight:0,
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					opacity:0
+				})
+			},
+			show : function($elem) {
+				js._rowShow($elem)
+			},
+			hide : function($elem) {
+				js._rowHide($elem,{
+					width:0,
+					paddingLeft:0,
+					paddingRight:0,
+					borderLeftWidth:0,
+					borderRightWidth:0,
+					opacity:0
+				})
+			}
+		}
+	}
+
+
+
+	//*****************防止多次点击**************************
+	function init($elem,hiddenback) {
+		if ($elem.is(':hidden')) {
+			$elem.data('sta','hidden')
+			typeof hiddenback == "function" && hiddenback()
+		}else{
+			$elem.data('sta','shown')
+		}
+	}
+	function show($elem,callback) {
+		if ($elem.data('sta') == 'show') return;
+		if ($elem.data('sta') == 'shown') return;
+		$elem.trigger('show').data('sta','show')
+		typeof callback == 'function' && callback();
+	}
+	function hide($elem,callback) {
+		if ($elem.data('sta') == 'hide') return;
+		if ($elem.data('sta') == 'hidden') return;
+		$elem.trigger('hide').data('sta','hide')
+		typeof callback == 'function' && callback();
+	}
+	//******************************************************
+
+	//*****************抽离出的函数**************************
+	js._init = function($elem,hiddenback) {
+		$elem.removeClass('transition')
+		init($elem,hiddenback)
+	}
+	js._show = function($elem,mod) {
+		show($elem,function() {
+			$elem.stop()[mod](function() {
+				$elem.trigger('shown').data('sta','shown')
+			})
+		})
+	}
+	js._hide = function($elem,mod) {
+		hide($elem,function() {
+			$elem.stop()[mod](function() {
+				$elem.trigger('hidden').data('sta','hidden')
+			})
+		})
+	}
+	js._rowInit = function($elem,options) {
+		var styles = {};
+		for(key in options){
+			styles[key] = $elem.css(key)
+		}
+		$elem.data('styles',styles)
+		js._init($elem,function(options){
+			$elem.css(options)
+		})
+	}
+	js._rowShow = function($elem) {
+		show($elem,function(){
+			$elem.animate($elem.data('styles'),function() {
+				$elem.trigger('shown').data('sta','shown')
+			})
+		})
+	}
+	js._rowHide = function($elem,options) {
+		hide($elem,function() {
+			$elem.animate(options,function() {
+				$elem.trigger('hidden').data('sta','hidden')
+			})
+		})
+	}
+	//******************************************************
+</script>
+<script>
+	$(function() {
+		$('div').on('show shown hide hidden',function(ev) {
+			console.log(ev.type)
+		})
+
+
+		js.feadslideRow.init($('div'))
+		$('button').eq(0).on('click',function() {
+			js.feadslideRow.show($('div'),"slideDown")
+		})
+		$('button').eq(1).on('click',function() {
+			js.feadslideRow.hide($('div'),"fadeOut")
+		})
+	})
+</script>
+</html>

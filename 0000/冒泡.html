@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>冒泡演示</title>
+	<style>
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#btn-box{
+			height: 30px;
+			width: 60px;
+			margin: 10px auto;
+		}
+		#btn{
+			height: 30px;
+			margin: 0 auto;
+		}
+		#box{
+			width: 100%;
+			height: 60px;
+			text-align: center;
+		}
+		span{
+			padding: 10px 20px;
+			text-align: center;
+		}
+	</style>
+</head>
+<body>
+	<div id="btn-box">
+		<button id="btn">点我排序</button>
+	</div>
+	<div id="box"></div>
+</body>
+<script>
+	var arr = []
+	var oBox = document.getElementById('box')
+	function getData() {
+		var Num = Math.ceil(Math.random()*100)
+		return Num
+	}
+	init()
+	function init() {
+		for(var i = 0; i < 8; i++){
+			var span = document.createElement('span')
+			var num = getData()
+			span.innerHTML = num
+			arr.push(num)
+			oBox.appendChild(span)
+		}
+	}
+	var oBtn = document.getElementById('btn')
+	oBtn.onclick = function(){
+		var temp;
+		for(var i = 0; i < arr.length - 1; i++){
+			for(var j = 0; j < arr.length - i - 1; j++){
+				if (arr[j] > arr[j+1]) {
+					temp = arr[j]
+					arr[j] = arr[j+1]
+					arr[j+1] = temp
+				}
+			}
+		}
+		var br = document.createElement('br')
+		oBox.appendChild(br)
+		for(var n = 0; n < arr.length; n++){
+			var span = document.createElement('span')
+			span.innerHTML = arr[n]
+			oBox.appendChild(span)
+		}
+	}
+</script>
+</html>

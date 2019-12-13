@@ -1,0 +1,65 @@
+/*共通宽度*/
+.container{
+	width: 1200px;
+	margin-right: auto;
+	margin-left: auto;
+}
+/*浮动相关*/
+.fl{
+	float: left;
+}
+.fr{
+	float: right;
+}
+.clearfix:after{
+	content: "";
+	display: block;
+	height: 0;
+	clear: both;
+	visibility: hidden;
+}
+.clearfix{
+	*zoom: 1;
+}
+/*共同样式开始*/
+
+/*基本字体大小*/
+body{
+	font-size: 12px;
+}
+/*a连接*/
+a{
+	text-decoration: none;
+	color: #3c434a;
+}
+a.link:hover{
+	color: #ea675a
+}
+/*过度*/
+.transition{
+	transition: all 500ms;
+}
+/*下拉层共同样式*/
+.dropdown{
+	position: relative;
+}
+.dropdown-layer{
+	position: absolute;
+	display: none;
+}
+.dropdown-left{
+	left: 0;
+}
+.dropdown-right{
+	right: 0;
+}
+/*下拉层加载图片*/
+.dropdown-loading{
+	width: 32px;
+	height:32px;
+	margin:20px;
+	background-image: url(../images/loading.gif);
+	background-repeat: no-repeat;
+	background-position: center center;
+}
+/*共同样式结束
