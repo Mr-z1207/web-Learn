@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>vue-test</title>
+</head>
+<body>
+	<div id="app">
+		{{massage}}
+	</div>
+</body>
+<script src="./node_modules/vue/dist/vue.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	vm = new Vue({
+		el:'#app',
+		data:{
+			massage:'hello'
+		}
+	})
+	
+	console.log(vm)
+</script>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>001-实例-数据与方法.html</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="pHello">{{massage}}</p>
+        <button onclick="change()">点我</button>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // vm就是从Vue构造函数new出来的实例; vm (ViewModel的缩写)
+    // 每个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始的：
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            massage:'hello',
+        },
+    })
+
+    console.log(vm)
+    // Vue 实例还暴露了一些有用的实例属性与方法。它们都有前缀 $
+    // 实例属性
+    // vm.$el ; Vue 实例使用的根 DOM 元素。
+    console.log(vm.$el)
+
+    // vm.$refs ; 一个对象，持有注册过 ref 特性 的所有 DOM 元素和组件实例。
+    console.log(vm.$refs)         //    ---> {pHello: p}  一个对象
+    console.log(vm.$refs.pHello)  //    ---> <p>hello</p> 一个DOM
+
+    // vm.$data ; Vue 实例观察的数据对象
+    console.log(vm.$data)     //    ---> {__ob__: Observer} 一个对象
+    console.log(vm.massage)   //    ---> hello              值
+
+    //*********************************************************************************************
+    // vm.b= 'aaa'                             //********直接写，没有用
+    function change(){
+        // 改变属性值，页面内容也发生改变
+        vm.massage = 'world'                   //********只改他，不改b，外面的b就可以用
+        // vm.b= 'a1a'                         //********只改他，没有用，改了massage，这个也能改了
+    }
+    //*********************************************************************************************
+
+    // 实例方法
+
+    // vm.$watch
+    // 观察 Vue 实例上的一个表达式或者一个函数计算结果的变化。回调函数得到的参数为新值和旧值。
+
+    vm.$watch('massage', function(newVal, oldVal){
+        console.log(newVal)   // ---> world
+        console.log(oldVal)   // ---> hello
+    })
+
+</script>
+</html>
