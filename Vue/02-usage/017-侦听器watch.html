@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="FullName2">
+        <p>firstName: {{firstName}}</p>
+        <p>lastName: {{lastName}}</p>
+        <p>fullName2: {{FullName2}}</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"wensong",
+            lastName:"Zhou"
+        },
+        computed:{
+            FullName2:{
+                get(){
+                console.log('get....')
+                    return this.firstName + ' ' + this.lastName
+                },
+                set(newVal){
+                    var names = newVal.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        },
+        // 侦听器一个对象
+        watch:{
+            // 用数据名，作为方法名
+            FullName2(newVal, oldVal){
+                console.log('is watching....')
+                console.log('newVal:::',newVal)
+                console.log('oldVal:::',oldVal)
+            }
+        }
+    })
+
+    // 它与$watch是一模一样的
+    vm.$watch("FullName2", function(newVal, oldVal){
+        console.log('is $watching....')
+        console.log('$:::newVal:::',newVal)
+        console.log('$:::oldVal:::',oldVal)
+    })
+</script>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table id="app">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+        </tr>
+        <tr v-for="person in persons">
+            <td>{{person.name}}</td>
+            <td>{{person.age}}</td>
+        </tr>
+	</table>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            persons:[
+                {name:'张三',age:18},
+                {name:'李四',age:20}
+            ]
+        }
+    })
+</script>
+</html>

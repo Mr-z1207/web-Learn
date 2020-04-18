@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>002-实例-生命周期</title>
+</head>
+<body>
+    <div id="app">
+        <p ref="p1">{{massage}}</p>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            massage:'hello'
+        },
+        beforeCreate(){
+            console.log('beforeCreate')
+            console.log(this.$el)        // undefined
+            console.log(this.$data)      // undefined
+            console.log(this.$refs.p1)   // undefined
+            console.log('*********************************')
+        },
+        created(){
+            console.log('created')
+            console.log(this.$el)         // undefined
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // undefined
+            console.log('*********************************')
+        },
+        beforeMount(){
+            console.log('beforeMount')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // undefined
+            console.log('*********************************')
+        },
+        mounted(){
+            console.log('mounted')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // dom节点
+            console.log('*********************************')
+        },
+        beforeUpdate(){
+            console.log('beforeUpdate')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // dom节点
+            console.log('*********************************')
+        },
+        updated(){
+            console.log('updated')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // dom节点
+            console.log('*********************************')
+        },
+        beforeDestroy(){
+            console.log('beforeDestroy')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // dom节点
+            console.log('*********************************')
+        },
+        destroyed(){
+            console.log('destroyed')
+            console.log(this.$el)         // dom节点
+            console.log(this.$data)       // {__ob__: Observer}
+            console.log(this.$refs.p1)    // undefined
+            console.log('*********************************')
+        },
+    })
+</script>
+</html>

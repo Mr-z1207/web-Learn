@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .father{
+            width: 500px;
+            height: 500px;
+            border: 1px solid #000;
+            background-color: #5f5;
+        }
+        .son{
+            width: 200px;
+            height: 200px;
+            margin: 50px auto;
+            border: 1px solid #000;
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <a @click="prevent($event)" href="https://www.taobao.com">淘宝</a>
+        <a @click.prevent href="https://www.taobao.com">淘宝</a>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{},
+        methods:{
+            prevent(ev){
+                ev.preventDefault()
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <p :style="{background:'#f5f', color:'#55f'}">我是p1</p>
+        <p :style="{background:bg, color:clr}">我是p2</p>
+        <p :style="[{background:bg}, {color:clr}]">我是p4</p>
+        <p :style="objStyle">我是p5</p>
+        <p :style="arrStyle">我是p6</p>
+    </div>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            clr:'#55f',
+            bg:'#f5f',
+
+            objStyle:{
+                color:'#55f',
+                background:'#f5f',
+            },
+            arrStyle:[
+                {background:'#f5f'},
+                {color:'#55f'}
+            ]
+        }
+    })
+</script>
+</html>

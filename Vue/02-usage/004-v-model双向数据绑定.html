@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>004-v-model双向数据绑定</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="massage">
+        <div>
+            lazy
+            <input type="text" v-model.lazy="massage">
+            失去焦点时改变
+        </div>
+        <div>
+            number
+            <input v-model.number="massage" type="number">
+            输入字符串转为有效的数字
+            <!-- 先输入非数字就无效了 -->
+        </div>
+        <div>
+            trim
+            <input type="text" v-model.trim="massage">
+            自动过滤用户输入的首尾空白字符
+            <!-- 先输入非数字就无效了 -->
+        </div>
+        <p>{{massage}}</p>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            massage:''
+        }
+    })
+</script>
+</html>

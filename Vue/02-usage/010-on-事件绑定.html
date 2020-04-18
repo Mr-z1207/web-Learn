@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button v-on:click="count++">被点击了{{count}}次</button>
+        <button @click="countadd">被点击了{{count}}次</button>
+        <button @click="say">say</button>
+        <button @click="say(event,'hi')">say(event,'hi')</button>
+        <button @click="say($event,'hi')">say($event,'hi')</button>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            count:0,
+        },
+        methods:{
+            countadd:function(){
+                this.count++
+            },
+            say(ev,msg){
+                console.log(ev)    // event      报错(undefined)     event
+                console.log(msg)   //undefined   hi                 hi
+            }
+        }
+    })
+</script>
+</html>

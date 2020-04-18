@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>003-实例-插值</title>
+</head>
+<body>
+    <div id="app">
+        <!-- 最简单常用的插值 -->
+        <p>{{massage}}</p>
+        <!-- text插值 -->
+        <p v-text="massage"></p>
+        <!-- 一次性插值 -->
+        <!-- vm.massage='www'他不会改变 -->
+        <p v-once>{{massage}}</p>
+        <!-- 插入HTML -->
+        <p>直接插---&gt;&gt;    {{rawHTML}}</p>
+        <p v-html="rawHTML">v-html:---&gt;&gt;(这里的字没了)</p>
+        <p>v-html:---&gt;&gt;   <span v-html="rawHTML">span里面插入了一个span</span></p>
+        <!-- 注意，你不能使用 v-html 来复合局部模板，因为 Vue 不是基于字符串的模板引擎。 -->
+        <!-- 你的站点上动态渲染的任意 HTML 可能会非常危险，因为它很容易导致 XSS 攻击。 -->
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    // vm就是从Vue构造函数new出来的实例; vm (ViewModel的缩写)
+    // 每个 Vue 应用都是通过用 Vue 函数创建一个新的 Vue 实例开始的：
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            massage:'hello',
+            rawHTML:'<span style="color:red;">我是span</span>'
+        },
+    })
+</script>
+</html>

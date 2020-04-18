@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="FullName2">
+        <p>firstName: {{firstName}}</p>
+        <p>lastName: {{lastName}}</p>
+        <p>fullName: {{getFullName()}}</p>
+        <p>fullName: {{FullName}}</p>
+        <p>fullName2: {{FullName2}}</p>
+    </div>
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            firstName:"wensong",
+            lastName:"Zhou"
+        },
+        // 可以写一个方法
+        methods:{
+            getFullName(){
+                return this.firstName + ' ' + this.lastName
+            }
+        },
+        // 计算属性写法
+        computed:{
+            // 基本写法：相当于在data中定义了一个FullName
+            FullName(){
+                return this.firstName + ' ' + this.lastName
+            },
+            // get 和 set
+            FullName2:{             // 一个对象里面有两个方法
+                get(){             // get --> fullName2 的值
+                console.log('get....')
+                    return this.firstName + ' ' + this.lastName
+                },
+                set(newVal){       // set --> fullName2 发生变化时，newVal就是变化后的新值
+                    var names = newVal.split(' ')
+                    this.firstName = names[0]
+                    this.lastName = names[names.length - 1]
+                }
+            }
+        }
+    })
+</script>
+</html>

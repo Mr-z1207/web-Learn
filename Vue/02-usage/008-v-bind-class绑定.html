@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            background-color: #f5f;
+        }
+        .err{
+            color: #5ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <p class="active err">我是p1</p>
+        <p :class="{active:true, err:true}">我是p2</p>
+        <p :class="{active:isActive, err:isErr}">我是p4</p>
+        <p :class="['active', 'err']">我是p5</p>
+        <p :class="[isActive ? 'active' : '', 'err']">我是p6</p>
+        <p :class="objClass">我是p7</p>
+        <p :class="arrClass">我是p8</p>
+    </div>
+
+</body>
+<script src="js/vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            isActive:true,
+            isErr:false,
+
+            objClass:{
+                active:true,
+                err:false
+            },
+            arrClass:[
+                'active',
+                'err'
+            ]
+        }
+    })
+</script>
+</html>
